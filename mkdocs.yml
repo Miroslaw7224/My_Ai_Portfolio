@@ -1,0 +1,18 @@
+site_name: Moje projekty
+site_author: Mirosław Baczkowski
+site_description: >-
+    Portfolio moich wspaniałych projektów z Data Science i AI!
+
+theme:
+  name: material
+  palette:
+    primary: "#2F4F4F"
+    accent: "#66CDAA"
+
+nav:
+- Strona Domowa: index.md
+- Obecny projekt:
+
+- Poprzednie projekty:
+  - "Iris": Iris/index.md
+  - "Titanic": Titanic/index.md
