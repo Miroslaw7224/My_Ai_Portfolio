@@ -1,0 +1,20 @@
+site_name: Moje projekty
+site_author: Mirosław Baczkowski
+site_description: >-
+    Portfolio moich wspaniałych projektów z Data Science i AI!
+
+repo_name: Miroslaw7224/My_Ai_Portfolio
+repo_url: https://github.com/Miroslaw7224/My_Ai_Portfolio
+
+theme:
+  name: material
+  palette:
+    primary: "#2F4F4F"
+    accent: "#66CDAA"
+
+nav:
+- Strona Domowa: index.md
+- Obecny projekt:
+  - "Iris": Iris/index.md
+- Poprzednie projekty:
+  - "Titanic": Titanic/index.md
