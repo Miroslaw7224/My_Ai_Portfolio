@@ -34,7 +34,7 @@ Witamy w fascynującym projekcie analizy danych irysów! Ten projekt prezentuje 
 ## 🚀 Szybki Start
 
 <div style="display: flex; gap: 15px; margin: 20px 0; flex-wrap: wrap;">
-    <a href="Iris.ipynb" class="md-button md-button--primary" style="flex: 1; min-width: 200px; text-align: center;">
+    <a href="Iris.ipynb" class="md-button md-button--primary" style="flex: 1; min-width: 200px; text-align: center;" download>
         📓 Pobierz Notebook
     </a>
     <a href="iris.html" class="md-button md-button--primary" target="_blank" style="flex: 1; min-width: 200px; text-align: center;">
