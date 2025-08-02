@@ -1,20 +1,66 @@
-site_name: Moje projekty
+site_name: Moje Portfolio AI
 site_author: Mirosław Baczkowski
-site_description: >-
-    Portfolio moich wspaniałych projektów z Data Science i AI!
-
+site_description: Portfoli moich projektów oraz analiz.
 repo_name: Miroslaw7224/My_Ai_Portfolio
-repo_url: https://github.com/Miroslaw7224/My_Ai_Portfolio
-
+docs_dir: docs
+site_dir: site
+use_directory_urls: true
+#repo_url: https://github.com/Miroslaw7224/My_Ai_Portfolio
 theme:
   name: material
+  language: pl
+  features:
+    - navigation.instant
+    - navigation.sections
+    - navigation.expand
+    - navigation.top
+    - navigation.footer
+    - navigation.tabs
+    - navigation.tracking
+    - toc.integrate
+    - search.highlight
+    - search.share
+    - content.code.annotate
+    - content.tabs.link
   palette:
-    primary: "#2F4F4F"
-    accent: "#66CDAA"
+    - scheme: default
+      primary: "#000000"
+      accent: "#4caf50"
+      background:
+        primary: "#ffffff"
+        secondary: "#fafafa"
+      surface: "#ffffff"
+  font:
+    text: Roboto
+    code: Roboto Mono
+  icon:
+    logo: material/robot
+
 
 nav:
-- Strona Domowa: index.md
-- Obecny projekt:
-  - "Iris": Iris/index.md
-- Poprzednie projekty:
-  - "Titanic": Titanic/index.md
+- O mnie: index.md
+- Obecne projekty:
+  - Titanic: Titanic/index.md
+- Zakończone projekty:
+  - Iris: Iris/index.md
+markdown_extensions:
+  - admonition
+  - codehilite:
+      guess_lang: false
+  - footnotes
+  - toc:
+      permalink: true
+  - tables
+  - def_list
+  - attr_list
+  - md_in_html
+  - pymdownx.superfences
+  - pymdownx.tabbed
+  - pymdownx.tasklist
+  - pymdownx.details
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+
+plugins:
+  - search
