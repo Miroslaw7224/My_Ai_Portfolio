@@ -1,12 +1,12 @@
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="pl" class="no-js">
   <head>
     
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Portfolio moich wspaniałych projektów z Data Science i AI!">
+        <meta name="description" content="Portfoli moich projektów oraz analiz.">
       
       
         <meta name="author" content="Mirosław Baczkowski">
@@ -14,7 +14,7 @@
       
       
       
-        <link rel="next" href="Iris/">
+        <link rel="next" href="Titanic/">
       
       
       <link rel="icon" href="assets/images/favicon.png">
@@ -22,7 +22,7 @@
     
     
       
-        <title>Moje projekty</title>
+        <title>Moje Portfolio AI</title>
       
     
     
@@ -60,10 +60,12 @@
   
     
     
+      
     
     
     
-    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="#2F4F4F" data-md-color-accent="#66CDAA">
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="#000000" data-md-color-accent="#4caf50">
   
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
@@ -72,8 +74,8 @@
     <div data-md-component="skip">
       
         
-        <a href="#witaj-na-stronie-portfolio" class="md-skip">
-          Skip to content
+        <a href="#portfolio-ai-data-science" class="md-skip">
+          Przejdź do treści
         </a>
       
     </div>
@@ -84,14 +86,12 @@
     
       
 
-  
-
-<header class="md-header md-header--shadow" data-md-component="header">
-  <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="." title="Moje projekty" class="md-header__button md-logo" aria-label="Moje projekty" data-md-component="logo">
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Nagłówek">
+    <a href="." title="Moje Portfolio AI" class="md-header__button md-logo" aria-label="Moje Portfolio AI" data-md-component="logo">
       
   
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a2 2 0 0 1 2 2c0 .74-.4 1.39-1 1.73V7h1a7 7 0 0 1 7 7h1a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-1v1a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-1H2a1 1 0 0 1-1-1v-3a1 1 0 0 1 1-1h1a7 7 0 0 1 7-7h1V5.73c-.6-.34-1-.99-1-1.73a2 2 0 0 1 2-2M7.5 13A2.5 2.5 0 0 0 5 15.5 2.5 2.5 0 0 0 7.5 18a2.5 2.5 0 0 0 2.5-2.5A2.5 2.5 0 0 0 7.5 13m9 0a2.5 2.5 0 0 0-2.5 2.5 2.5 2.5 0 0 0 2.5 2.5 2.5 2.5 0 0 0 2.5-2.5 2.5 2.5 0 0 0-2.5-2.5"/></svg>
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -102,13 +102,13 @@
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
           <span class="md-ellipsis">
-            Moje projekty
+            Moje Portfolio AI
           </span>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Strona Domowa
+              O mnie
             
           </span>
         </div>
@@ -116,7 +116,19 @@
     </div>
     
       
+        <form class="md-header__option" data-md-component="palette">
+  
     
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="#000000" data-md-color-accent="#4caf50"  aria-hidden="true"  type="radio" name="__palette" id="__palette_0">
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
     
     
     
@@ -130,16 +142,21 @@
   <label class="md-search__overlay" for="__search"></label>
   <div class="md-search__inner" role="search">
     <form class="md-search__form" name="search">
-      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <input type="text" class="md-search__input" name="query" aria-label="Szukaj" placeholder="Szukaj" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
       <label class="md-search__icon md-icon" for="__search">
         
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
         
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
       </label>
-      <nav class="md-search__options" aria-label="Search">
+      <nav class="md-search__options" aria-label="Szukaj">
         
-        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Udostępnij" aria-label="Udostępnij" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Wyczyść" aria-label="Wyczyść" tabindex="-1">
           
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
         </button>
@@ -150,7 +167,7 @@
       <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
         <div class="md-search-result" data-md-component="search-result">
           <div class="md-search-result__meta">
-            Initializing search
+            Inicjowanie wyszukiwania
           </div>
           <ol class="md-search-result__list" role="presentation"></ol>
         </div>
@@ -161,18 +178,6 @@
       
     
     
-      <div class="md-header__source">
-        <a href="https://github.com/Miroslaw7224/My_Ai_Portfolio" title="Go to repository" class="md-source" data-md-component="source">
-  <div class="md-source__icon md-icon">
-    
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path fill="currentColor" d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
-  </div>
-  <div class="md-source__repository">
-    Miroslaw7224/My_Ai_Portfolio
-  </div>
-</a>
-      </div>
-    
   </nav>
   
 </header>
@@ -181,6 +186,76 @@
       
       
         
+          
+            
+<nav class="md-tabs" aria-label="Zakładki" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    
+  
+  
+    <li class="md-tabs__item md-tabs__item--active">
+      <a href="." class="md-tabs__link">
+        
+  
+  
+    
+  
+  O mnie
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="Titanic/" class="md-tabs__link">
+          
+  
+  
+  Obecne projekty
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="Iris/" class="md-tabs__link">
+          
+  
+  
+  Zakończone projekty
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
           
         
       
@@ -195,29 +270,21 @@
                     
 
 
+  
 
-<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Nawigacja" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="." title="Moje projekty" class="md-nav__button md-logo" aria-label="Moje projekty" data-md-component="logo">
+    <a href="." title="Moje Portfolio AI" class="md-nav__button md-logo" aria-label="Moje Portfolio AI" data-md-component="logo">
       
   
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a2 2 0 0 1 2 2c0 .74-.4 1.39-1 1.73V7h1a7 7 0 0 1 7 7h1a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-1v1a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-1H2a1 1 0 0 1-1-1v-3a1 1 0 0 1 1-1h1a7 7 0 0 1 7-7h1V5.73c-.6-.34-1-.99-1-1.73a2 2 0 0 1 2-2M7.5 13A2.5 2.5 0 0 0 5 15.5 2.5 2.5 0 0 0 7.5 18a2.5 2.5 0 0 0 2.5-2.5A2.5 2.5 0 0 0 7.5 13m9 0a2.5 2.5 0 0 0-2.5 2.5 2.5 2.5 0 0 0 2.5 2.5 2.5 2.5 0 0 0 2.5-2.5 2.5 2.5 0 0 0-2.5-2.5"/></svg>
 
     </a>
-    Moje projekty
+    Moje Portfolio AI
   </label>
-  
-    <div class="md-nav__source">
-      <a href="https://github.com/Miroslaw7224/My_Ai_Portfolio" title="Go to repository" class="md-source" data-md-component="source">
-  <div class="md-source__icon md-icon">
-    
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path fill="currentColor" d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
-  </div>
-  <div class="md-source__repository">
-    Miroslaw7224/My_Ai_Portfolio
-  </div>
-</a>
-    </div>
   
   <ul class="md-nav__list" data-md-scrollfix>
     
@@ -242,7 +309,7 @@
   
   
   <span class="md-ellipsis">
-    Strona Domowa
+    O mnie
     
   </span>
   
@@ -255,7 +322,7 @@
   
   
   <span class="md-ellipsis">
-    Strona Domowa
+    O mnie
     
   </span>
   
@@ -264,7 +331,7 @@
       
         
 
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+<nav class="md-nav md-nav--secondary" aria-label="Spis treści">
   
   
   
@@ -273,23 +340,116 @@
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
-      Table of contents
+      Spis treści
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#commands" class="md-nav__link">
+  <a href="#witaj-w-moim-portfolio" class="md-nav__link">
     <span class="md-ellipsis">
-      Commands
+      👋 Witaj w moim portfolio!
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#project-layout" class="md-nav__link">
+  <a href="#o-mnie" class="md-nav__link">
     <span class="md-ellipsis">
-      Project layout
+      🎯 O mnie
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#moje-projekty" class="md-nav__link">
+    <span class="md-ellipsis">
+      🚀 Moje projekty
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🚀 Moje projekty">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#obecny-projekt-titanic-survival-prediction" class="md-nav__link">
+    <span class="md-ellipsis">
+      🚢 Obecny projekt: Titanic Survival Prediction
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#zakonczone-projekty" class="md-nav__link">
+    <span class="md-ellipsis">
+      🌸 Zakończone projekty
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🌸 Zakończone projekty">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#iris-dataset" class="md-nav__link">
+    <span class="md-ellipsis">
+      Iris Dataset
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#technologie" class="md-nav__link">
+    <span class="md-ellipsis">
+      🛠️ Technologie
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#umiejetnosci" class="md-nav__link">
+    <span class="md-ellipsis">
+      📊 Umiejętności
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#edukacja-i-certyfikaty" class="md-nav__link">
+    <span class="md-ellipsis">
+      🎓 Edukacja i certyfikaty
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#kontakt" class="md-nav__link">
+    <span class="md-ellipsis">
+      📞 Kontakt
     </span>
   </a>
   
@@ -313,12 +473,19 @@
     
     
     
+      
+      
+        
+      
+    
     
     <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
         
           
           <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
@@ -326,7 +493,7 @@
   
   
   <span class="md-ellipsis">
-    Obecny projekt
+    Obecne projekty
     
   </span>
   
@@ -337,75 +504,7 @@
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
-            Obecny projekt
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="Iris/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Iris
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    
-    
-    
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
-        
-          
-          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
-            
-  
-  
-  <span class="md-ellipsis">
-    Poprzednie projekty
-    
-  </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_3">
-            <span class="md-nav__icon md-icon"></span>
-            Poprzednie projekty
+            Obecne projekty
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -439,56 +538,87 @@
   
 
     
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Zakończone projekty
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Zakończone projekty
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Iris/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Iris
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
   </ul>
 </nav>
                   </div>
                 </div>
               </div>
             
-            
-              
-              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
-                <div class="md-sidebar__scrollwrap">
-                  <div class="md-sidebar__inner">
-                    
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#commands" class="md-nav__link">
-    <span class="md-ellipsis">
-      Commands
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#project-layout" class="md-nav__link">
-    <span class="md-ellipsis">
-      Project layout
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-                  </div>
-                </div>
-              </div>
             
           
           
@@ -498,25 +628,104 @@
                   
 
 
-  
-  
 
-
-<h1 id="witaj-na-stronie-portfolio">Witaj na stronie Portfolio</h1>
-<p>For full documentation visit <a href="https://www.mkdocs.org">mkdocs.org</a>.</p>
-<h2 id="commands">Commands</h2>
+<h1 id="portfolio-ai-data-science">Portfolio AI &amp; Data Science<a class="headerlink" href="#portfolio-ai-data-science" title="Permanent link">&para;</a></h1>
+<h2 id="witaj-w-moim-portfolio">👋 Witaj w moim portfolio!<a class="headerlink" href="#witaj-w-moim-portfolio" title="Permanent link">&para;</a></h2>
+<p>Cześć! Jestem <strong>Mirosław Baczkowski</strong> i specjalizuję się w projektach z zakresu <strong>Data Science</strong> i <strong>Sztucznej Inteligencji</strong>. </p>
+<hr />
+<h2 id="o-mnie">🎯 O mnie<a class="headerlink" href="#o-mnie" title="Permanent link">&para;</a></h2>
+<p>Jestem pasjonatem analizy danych i uczenia maszynowego. Moje projekty łączą w sobie:</p>
 <ul>
-<li><code>mkdocs new [dir-name]</code> - Create a new project.</li>
-<li><code>mkdocs serve</code> - Start the live-reloading docs server.</li>
-<li><code>mkdocs build</code> - Build the documentation site.</li>
-<li><code>mkdocs -h</code> - Print help message and exit.</li>
+<li>
+<p>📊 <strong>Analizę danych</strong> i wizualizację</p>
+</li>
+<li>
+<p>🤖 <strong>Machine Learning</strong> i AI</p>
+</li>
+<li>
+<p>💻 <strong>Programowanie</strong> w Python</p>
+</li>
+<li>
+<p>📈 <strong>Statystykę</strong> i modelowanie</p>
+</li>
 </ul>
-<h2 id="project-layout">Project layout</h2>
-<pre><code>mkdocs.yml    # The configuration file.
-docs/
-    index.md  # The documentation homepage.
-    ...       # Other markdown pages, images and other files.
-</code></pre>
+<hr />
+<h2 id="moje-projekty">🚀 Moje projekty<a class="headerlink" href="#moje-projekty" title="Permanent link">&para;</a></h2>
+<h3 id="obecny-projekt-titanic-survival-prediction">🚢 <strong>Obecny projekt: Titanic Survival Prediction</strong><a class="headerlink" href="#obecny-projekt-titanic-survival-prediction" title="Permanent link">&para;</a></h3>
+<div class="admonition tip">
+<p><strong>Analiza przeżywalności pasażerów Titanica z wykorzystaniem różnych algorytmów ML</strong></p>
+<p><a href="Titanic/"><strong>Zobacz projekt →</strong></a></p>
+</div>
+<h3 id="zakonczone-projekty">🌸 <strong>Zakończone projekty</strong><a class="headerlink" href="#zakonczone-projekty" title="Permanent link">&para;</a></h3>
+<h4 id="iris-dataset">Iris Dataset<a class="headerlink" href="#iris-dataset" title="Permanent link">&para;</a></h4>
+<div class="admonition note" style="background-color: #e3f2fd !important; border-color: #2196f3 !important; color: #1565c0 !important;">
+<p><strong>Klasyfikacja gatunków kwiatów Iris z wykorzystaniem Machine Learning</strong></p>
+<p><a href="Iris/"><strong>Zobacz projekt →</strong></a></p>
+</div>
+<hr />
+<h2 id="technologie">🛠️ Technologie<a class="headerlink" href="#technologie" title="Permanent link">&para;</a></h2>
+<div class="grid">
+<ul>
+<li><strong>Python</strong> - główny język programowania</li>
+<li><strong>Pandas</strong> - analiza i manipulacja danych</li>
+<li><strong>NumPy</strong> - obliczenia numeryczne</li>
+<li><strong>Scikit-learn</strong> - machine learning</li>
+<li><strong>Matplotlib/Seaborn</strong> - wizualizacja danych</li>
+<li><strong>Jupyter Notebooks</strong> - interaktywna analiza</li>
+</ul>
+</div>
+<hr />
+<h2 id="umiejetnosci">📊 Umiejętności<a class="headerlink" href="#umiejetnosci" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Kategoria</th>
+<th>Poziom</th>
+<th>Technologie</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Machine Learning</strong></td>
+<td>Zaawansowany</td>
+<td>Scikit-learn, TensorFlow</td>
+</tr>
+<tr>
+<td><strong>Analiza danych</strong></td>
+<td>Zaawansowany</td>
+<td>Pandas, NumPy, SQL</td>
+</tr>
+<tr>
+<td><strong>Wizualizacja</strong></td>
+<td>Średnio-zaawansowany</td>
+<td>Matplotlib, Seaborn, Plotly</td>
+</tr>
+<tr>
+<td><strong>Programowanie</strong></td>
+<td>Średnio-zaawansowany</td>
+<td>Python, R, SQL</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="edukacja-i-certyfikaty">🎓 Edukacja i certyfikaty<a class="headerlink" href="#edukacja-i-certyfikaty" title="Permanent link">&para;</a></h2>
+<div class="admonition warning" style="background-color: #fff3e0 !important; border-color: #ff9800 !important; color: #e65100 !important;">
+<p><strong>W TRAKCIE AKTUALIZACJI</strong></p>
+</div>
+<h2 id="_1"><a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<h2 id="kontakt">📞 Kontakt<a class="headerlink" href="#kontakt" title="Permanent link">&para;</a></h2>
+<p>Jeśli jesteś zainteresowany współpracą lub masz pytania dotyczące moich projektów, chętnie odpowiem!</p>
+<ul>
+<li>📧 <strong>Email</strong>: <a href="mailto:miro.job7224@gmail.com">miro.job7224@gmail.com</a></li>
+<li>💼 <strong>LinkedIn</strong>: <a href="https://www.linkedin.com/in/mirosław-baczkowski-00a449377">Mój LinkedIn</a></li>
+<li>🐙 <strong>GitHub</strong>: <a href="https://github.com/Miroslaw7224/My_Ai_Portfolio">Mój GitHub</a></li>
+</ul>
+<hr />
+<div class="admonition note">
+<p><strong>💡 Tip</strong>: Przejdź do konkretnego projektu, aby zobaczyć szczegółową analizę i kod!</p>
+</div>
+<hr />
+<p><em>Dziękuję za odwiedzenie mojego portfolio! 🚀</em> </p>
 
 
 
@@ -534,12 +743,44 @@ docs/
             </div>
           
           
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
 <script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
         </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Powrót do góry
+</button>
         
       </main>
       
         <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Stopka" >
+        
+        
+          
+          <a href="Titanic/" class="md-footer__link md-footer__link--next" aria-label="Następna strona: Titanic">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Następna strona
+              </span>
+              <div class="md-ellipsis">
+                Titanic
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
@@ -565,7 +806,7 @@ docs/
     
     
       
-      <script id="__config" type="application/json">{"base": ".", "features": [], "search": "assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"base": ".", "features": ["navigation.instant", "navigation.sections", "navigation.expand", "navigation.top", "navigation.footer", "navigation.tabs", "navigation.tracking", "toc.integrate", "search.highlight", "search.share", "content.code.annotate", "content.tabs.link"], "search": "assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Skopiowano do schowka", "clipboard.copy": "Kopiuj do schowka", "search.result.more.one": "1 wi\u0119cej na tej stronie", "search.result.more.other": "# wi\u0119cej na tej stronie", "search.result.none": "Brak wynik\u00f3w wyszukiwania", "search.result.one": "Wyniki wyszukiwania: 1", "search.result.other": "Wyniki wyszukiwania: #", "search.result.placeholder": "Zacznij pisa\u0107, aby szuka\u0107", "search.result.term.missing": "Brak", "select.version": "Wybierz wersj\u0119"}, "version": null}</script>
     
     
       <script src="assets/javascripts/bundle.50899def.min.js"></script>

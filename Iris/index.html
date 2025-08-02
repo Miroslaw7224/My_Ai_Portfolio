@@ -1,22 +1,20 @@
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="pl" class="no-js">
   <head>
     
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Portfolio moich wspaniałych projektów z Data Science i AI!">
+        <meta name="description" content="Portfoli moich projektów oraz analiz.">
       
       
         <meta name="author" content="Mirosław Baczkowski">
       
       
       
-        <link rel="prev" href="..">
+        <link rel="prev" href="../Titanic/">
       
-      
-        <link rel="next" href="../Titanic/">
       
       
       <link rel="icon" href="../assets/images/favicon.png">
@@ -24,7 +22,7 @@
     
     
       
-        <title>Iris - Moje projekty</title>
+        <title>Iris - Moje Portfolio AI</title>
       
     
     
@@ -62,10 +60,12 @@
   
     
     
+      
     
     
     
-    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="#2F4F4F" data-md-color-accent="#66CDAA">
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="#000000" data-md-color-accent="#4caf50">
   
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
@@ -75,7 +75,7 @@
       
         
         <a href="#analiza-eksploracyjna-danych-irysow-eda" class="md-skip">
-          Skip to content
+          Przejdź do treści
         </a>
       
     </div>
@@ -86,14 +86,12 @@
     
       
 
-  
-
-<header class="md-header md-header--shadow" data-md-component="header">
-  <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href=".." title="Moje projekty" class="md-header__button md-logo" aria-label="Moje projekty" data-md-component="logo">
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Nagłówek">
+    <a href=".." title="Moje Portfolio AI" class="md-header__button md-logo" aria-label="Moje Portfolio AI" data-md-component="logo">
       
   
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a2 2 0 0 1 2 2c0 .74-.4 1.39-1 1.73V7h1a7 7 0 0 1 7 7h1a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-1v1a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-1H2a1 1 0 0 1-1-1v-3a1 1 0 0 1 1-1h1a7 7 0 0 1 7-7h1V5.73c-.6-.34-1-.99-1-1.73a2 2 0 0 1 2-2M7.5 13A2.5 2.5 0 0 0 5 15.5 2.5 2.5 0 0 0 7.5 18a2.5 2.5 0 0 0 2.5-2.5A2.5 2.5 0 0 0 7.5 13m9 0a2.5 2.5 0 0 0-2.5 2.5 2.5 2.5 0 0 0 2.5 2.5 2.5 2.5 0 0 0 2.5-2.5 2.5 2.5 0 0 0-2.5-2.5"/></svg>
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -104,7 +102,7 @@
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
           <span class="md-ellipsis">
-            Moje projekty
+            Moje Portfolio AI
           </span>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
@@ -118,7 +116,19 @@
     </div>
     
       
+        <form class="md-header__option" data-md-component="palette">
+  
     
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="#000000" data-md-color-accent="#4caf50"  aria-hidden="true"  type="radio" name="__palette" id="__palette_0">
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
     
     
     
@@ -132,16 +142,21 @@
   <label class="md-search__overlay" for="__search"></label>
   <div class="md-search__inner" role="search">
     <form class="md-search__form" name="search">
-      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <input type="text" class="md-search__input" name="query" aria-label="Szukaj" placeholder="Szukaj" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
       <label class="md-search__icon md-icon" for="__search">
         
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
         
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
       </label>
-      <nav class="md-search__options" aria-label="Search">
+      <nav class="md-search__options" aria-label="Szukaj">
         
-        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Udostępnij" aria-label="Udostępnij" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Wyczyść" aria-label="Wyczyść" tabindex="-1">
           
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
         </button>
@@ -152,7 +167,7 @@
       <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
         <div class="md-search-result" data-md-component="search-result">
           <div class="md-search-result__meta">
-            Initializing search
+            Inicjowanie wyszukiwania
           </div>
           <ol class="md-search-result__list" role="presentation"></ol>
         </div>
@@ -163,18 +178,6 @@
       
     
     
-      <div class="md-header__source">
-        <a href="https://github.com/Miroslaw7224/My_Ai_Portfolio" title="Go to repository" class="md-source" data-md-component="source">
-  <div class="md-source__icon md-icon">
-    
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path fill="currentColor" d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
-  </div>
-  <div class="md-source__repository">
-    Miroslaw7224/My_Ai_Portfolio
-  </div>
-</a>
-      </div>
-    
   </nav>
   
 </header>
@@ -183,6 +186,76 @@
       
       
         
+          
+            
+<nav class="md-tabs" aria-label="Zakładki" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link">
+        
+  
+  
+    
+  
+  O mnie
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../Titanic/" class="md-tabs__link">
+          
+  
+  
+  Obecne projekty
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="./" class="md-tabs__link">
+          
+  
+  
+  Zakończone projekty
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
           
         
       
@@ -197,29 +270,21 @@
                     
 
 
+  
 
-<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Nawigacja" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href=".." title="Moje projekty" class="md-nav__button md-logo" aria-label="Moje projekty" data-md-component="logo">
+    <a href=".." title="Moje Portfolio AI" class="md-nav__button md-logo" aria-label="Moje Portfolio AI" data-md-component="logo">
       
   
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a2 2 0 0 1 2 2c0 .74-.4 1.39-1 1.73V7h1a7 7 0 0 1 7 7h1a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-1v1a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-1H2a1 1 0 0 1-1-1v-3a1 1 0 0 1 1-1h1a7 7 0 0 1 7-7h1V5.73c-.6-.34-1-.99-1-1.73a2 2 0 0 1 2-2M7.5 13A2.5 2.5 0 0 0 5 15.5 2.5 2.5 0 0 0 7.5 18a2.5 2.5 0 0 0 2.5-2.5A2.5 2.5 0 0 0 7.5 13m9 0a2.5 2.5 0 0 0-2.5 2.5 2.5 2.5 0 0 0 2.5 2.5 2.5 2.5 0 0 0 2.5-2.5 2.5 2.5 0 0 0-2.5-2.5"/></svg>
 
     </a>
-    Moje projekty
+    Moje Portfolio AI
   </label>
-  
-    <div class="md-nav__source">
-      <a href="https://github.com/Miroslaw7224/My_Ai_Portfolio" title="Go to repository" class="md-source" data-md-component="source">
-  <div class="md-source__icon md-icon">
-    
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path fill="currentColor" d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
-  </div>
-  <div class="md-source__repository">
-    Miroslaw7224/My_Ai_Portfolio
-  </div>
-</a>
-    </div>
   
   <ul class="md-nav__list" data-md-scrollfix>
     
@@ -235,12 +300,87 @@
   
   
   <span class="md-ellipsis">
-    Strona Domowa
+    O mnie
     
   </span>
   
 
       </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Obecne projekty
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Obecne projekty
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Titanic/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Titanic
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
     </li>
   
 
@@ -257,20 +397,28 @@
     
     
     
-    
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
         
           
-          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
             
   
   
   <span class="md-ellipsis">
-    Obecny projekt
+    Zakończone projekty
     
   </span>
   
@@ -278,10 +426,10 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_2">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
-            Obecny projekt
+            Zakończone projekty
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -328,7 +476,7 @@
       
         
 
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+<nav class="md-nav md-nav--secondary" aria-label="Spis treści">
   
   
   
@@ -337,7 +485,7 @@
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
-      Table of contents
+      Spis treści
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
@@ -462,74 +610,6 @@
   
 </nav>
       
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    
-    
-    
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
-        
-          
-          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
-            
-  
-  
-  <span class="md-ellipsis">
-    Poprzednie projekty
-    
-  </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_3">
-            <span class="md-nav__icon md-icon"></span>
-            Poprzednie projekty
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../Titanic/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Titanic
-    
-  </span>
-  
-
-      </a>
     </li>
   
 
@@ -549,149 +629,6 @@
               </div>
             
             
-              
-              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
-                <div class="md-sidebar__scrollwrap">
-                  <div class="md-sidebar__inner">
-                    
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#opis-projektu" class="md-nav__link">
-    <span class="md-ellipsis">
-      📋 Opis Projektu
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="📋 Opis Projektu">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#cel-analizy" class="md-nav__link">
-    <span class="md-ellipsis">
-      🎯 Cel Analizy
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#zawartosc-analizy" class="md-nav__link">
-    <span class="md-ellipsis">
-      📊 Zawartość Analizy
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="📊 Zawartość Analizy">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#gowne-komponenty" class="md-nav__link">
-    <span class="md-ellipsis">
-      🔍 Główne Komponenty
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#technologie-uzyte" class="md-nav__link">
-    <span class="md-ellipsis">
-      📈 Technologie Użyte
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#szybki-start" class="md-nav__link">
-    <span class="md-ellipsis">
-      🚀 Szybki Start
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#szczegoowe-podsumowanie" class="md-nav__link">
-    <span class="md-ellipsis">
-      📋 Szczegółowe Podsumowanie
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#wizualizacje" class="md-nav__link">
-    <span class="md-ellipsis">
-      🎨 Wizualizacje
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#kontekst-historyczny" class="md-nav__link">
-    <span class="md-ellipsis">
-      📚 Kontekst Historyczny
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="📚 Kontekst Historyczny">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#mierzone-cechy" class="md-nav__link">
-    <span class="md-ellipsis">
-      📏 Mierzone Cechy
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#praktyczne-zastosowania" class="md-nav__link">
-    <span class="md-ellipsis">
-      🎯 Praktyczne Zastosowania
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-                  </div>
-                </div>
-              </div>
-            
           
           
             <div class="md-content" data-md-component="content">
@@ -700,14 +637,11 @@
                   
 
 
-  
-  
 
-
-<h1 id="analiza-eksploracyjna-danych-irysow-eda">🌸 Analiza Eksploracyjna Danych Irysów (EDA)</h1>
-<h2 id="opis-projektu">📋 Opis Projektu</h2>
+<h1 id="analiza-eksploracyjna-danych-irysow-eda">🌸 Analiza Eksploracyjna Danych Irysów (EDA)<a class="headerlink" href="#analiza-eksploracyjna-danych-irysow-eda" title="Permanent link">&para;</a></h1>
+<h2 id="opis-projektu">📋 Opis Projektu<a class="headerlink" href="#opis-projektu" title="Permanent link">&para;</a></h2>
 <p>Witamy w fascynującym projekcie analizy danych irysów! Ten projekt prezentuje kompletną analizę eksploracyjną (EDA) słynnego zbioru danych Iris, który jest jednym z najważniejszych zbiorów danych w historii uczenia maszynowego.</p>
-<h3 id="cel-analizy">🎯 Cel Analizy</h3>
+<h3 id="cel-analizy">🎯 Cel Analizy<a class="headerlink" href="#cel-analizy" title="Permanent link">&para;</a></h3>
 <ul>
 <li><strong>Eksploracja danych</strong> - zrozumienie struktury i charakterystyki zbioru danych</li>
 <li><strong>Wizualizacja</strong> - tworzenie intuicyjnych wykresów i diagramów</li>
@@ -715,8 +649,8 @@
 <li><strong>Wnioskowanie</strong> - wyciąganie praktycznych wniosków z danych</li>
 </ul>
 <hr />
-<h2 id="zawartosc-analizy">📊 Zawartość Analizy</h2>
-<h3 id="gowne-komponenty">🔍 Główne Komponenty</h3>
+<h2 id="zawartosc-analizy">📊 Zawartość Analizy<a class="headerlink" href="#zawartosc-analizy" title="Permanent link">&para;</a></h2>
+<h3 id="gowne-komponenty">🔍 Główne Komponenty<a class="headerlink" href="#gowne-komponenty" title="Permanent link">&para;</a></h3>
 <ul>
 <li><strong>Analiza statystyczna</strong> - podstawowe statystyki opisowe</li>
 <li><strong>Wizualizacje rozkładów</strong> - histogramy i wykresy gęstości</li>
@@ -725,7 +659,7 @@
 <li><strong>Wykresy punktowe</strong> - wizualizacja relacji między cechami</li>
 <li><strong>Analiza gatunków</strong> - porównanie charakterystyk różnych typów irysów</li>
 </ul>
-<h3 id="technologie-uzyte">📈 Technologie Użyte</h3>
+<h3 id="technologie-uzyte">📈 Technologie Użyte<a class="headerlink" href="#technologie-uzyte" title="Permanent link">&para;</a></h3>
 <ul>
 <li><strong>Python</strong> - główny język programowania</li>
 <li><strong>Pandas</strong> - manipulacja i analiza danych</li>
@@ -734,7 +668,7 @@
 <li><strong>Jupyter Notebook</strong> - interaktywna analiza</li>
 </ul>
 <hr />
-<h2 id="szybki-start">🚀 Szybki Start</h2>
+<h2 id="szybki-start">🚀 Szybki Start<a class="headerlink" href="#szybki-start" title="Permanent link">&para;</a></h2>
 <div style="display: flex; gap: 15px; margin: 20px 0; flex-wrap: wrap;">
     <a href="Iris.ipynb" class="md-button md-button--primary" style="flex: 1; min-width: 200px; text-align: center;" download>
         📓 Pobierz Notebook
@@ -745,7 +679,7 @@
 </div>
 
 <hr />
-<h2 id="szczegoowe-podsumowanie">📋 Szczegółowe Podsumowanie</h2>
+<h2 id="szczegoowe-podsumowanie">📋 Szczegółowe Podsumowanie<a class="headerlink" href="#szczegoowe-podsumowanie" title="Permanent link">&para;</a></h2>
 <div style="background-color: #f8f9fa; border-radius: 8px; padding: 25px; border-left: 4px solid #007acc; margin: 20px 0;">
     <h3>🔬 Kluczowe Wnioski z Analizy</h3>
 
@@ -781,7 +715,7 @@
 </div>
 
 <hr />
-<h2 id="wizualizacje">🎨 Wizualizacje</h2>
+<h2 id="wizualizacje">🎨 Wizualizacje<a class="headerlink" href="#wizualizacje" title="Permanent link">&para;</a></h2>
 <div style="background-color: #e8f4fd; border-radius: 8px; padding: 20px; margin: 20px 0;">
     <h3>📈 Dostępne Wizualizacje</h3>
     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px; margin-top: 15px;">
@@ -805,14 +739,14 @@
 </div>
 
 <hr />
-<h2 id="kontekst-historyczny">📚 Kontekst Historyczny</h2>
+<h2 id="kontekst-historyczny">📚 Kontekst Historyczny<a class="headerlink" href="#kontekst-historyczny" title="Permanent link">&para;</a></h2>
 <p>Zbiór danych Iris, wprowadzony przez Ronalda Fishera w 1936 roku, jest jednym z najważniejszych zbiorów danych w historii statystyki i uczenia maszynowego. Składa się z pomiarów trzech gatunków irysów:</p>
 <ul>
 <li><strong>Iris Setosa</strong> - najbardziej charakterystyczny gatunek</li>
 <li><strong>Iris Versicolor</strong> - gatunek pośredni</li>
 <li><strong>Iris Virginica</strong> - największy gatunek</li>
 </ul>
-<h3 id="mierzone-cechy">📏 Mierzone Cechy</h3>
+<h3 id="mierzone-cechy">📏 Mierzone Cechy<a class="headerlink" href="#mierzone-cechy" title="Permanent link">&para;</a></h3>
 <ul>
 <li><strong>Długość działki</strong> (Sepal Length)</li>
 <li><strong>Szerokość działki</strong> (Sepal Width)</li>
@@ -820,7 +754,7 @@
 <li><strong>Szerokość płatka</strong> (Petal Width)</li>
 </ul>
 <hr />
-<h2 id="praktyczne-zastosowania">🎯 Praktyczne Zastosowania</h2>
+<h2 id="praktyczne-zastosowania">🎯 Praktyczne Zastosowania<a class="headerlink" href="#praktyczne-zastosowania" title="Permanent link">&para;</a></h2>
 <div style="background-color: #fff3cd; border-radius: 8px; padding: 20px; margin: 20px 0; border-left: 4px solid #ffc107;">
     <h3>💡 Dlaczego Ta Analiza Jest Wartościowa?</h3>
     <ul>
@@ -857,12 +791,44 @@
             </div>
           
           
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
 <script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
         </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Powrót do góry
+</button>
         
       </main>
       
         <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Stopka" >
+        
+          
+          <a href="../Titanic/" class="md-footer__link md-footer__link--prev" aria-label="Poprzednia strona: Titanic">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Poprzednia strona
+              </span>
+              <div class="md-ellipsis">
+                Titanic
+              </div>
+            </div>
+          </a>
+        
+        
+      </nav>
+    
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
@@ -888,7 +854,7 @@
     
     
       
-      <script id="__config" type="application/json">{"base": "..", "features": [], "search": "../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"base": "..", "features": ["navigation.instant", "navigation.sections", "navigation.expand", "navigation.top", "navigation.footer", "navigation.tabs", "navigation.tracking", "toc.integrate", "search.highlight", "search.share", "content.code.annotate", "content.tabs.link"], "search": "../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Skopiowano do schowka", "clipboard.copy": "Kopiuj do schowka", "search.result.more.one": "1 wi\u0119cej na tej stronie", "search.result.more.other": "# wi\u0119cej na tej stronie", "search.result.none": "Brak wynik\u00f3w wyszukiwania", "search.result.one": "Wyniki wyszukiwania: 1", "search.result.other": "Wyniki wyszukiwania: #", "search.result.placeholder": "Zacznij pisa\u0107, aby szuka\u0107", "search.result.term.missing": "Brak", "select.version": "Wybierz wersj\u0119"}, "version": null}</script>
     
     
       <script src="../assets/javascripts/bundle.50899def.min.js"></script>
