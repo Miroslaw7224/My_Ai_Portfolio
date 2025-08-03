@@ -22,6 +22,7 @@ theme:
     - search.share
     - content.code.annotate
     - content.tabs.link
+    - content.image.zoom
   palette:
     - scheme: default
       primary: "#000000"
@@ -41,6 +42,7 @@ nav:
 - O mnie: index.md
 - Obecne projekty: obecne-projekty.md
 - Zakończone projekty:
+  - Code Sensei : Code_sensei/code_sensei.md
   - Titanic: Titanic/index.md
   - Iris: Iris/index.md
 markdown_extensions:
@@ -64,3 +66,7 @@ markdown_extensions:
 
 plugins:
   - search
+
+extra:
+  version:
+    provider: mike

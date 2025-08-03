@@ -22,7 +22,7 @@ Jestem pasjonatem analizy danych i uczenia maszynowego. Moje projekty łączą w
 
 ## 🚀 Moje projekty
 
-### 🌸 **Zakończone projekty**
+### **Zakończone projekty**
 
 #### 🚢 Titanic Survival Prediction
 
@@ -44,7 +44,15 @@ Jestem pasjonatem analizy danych i uczenia maszynowego. Moje projekty łączą w
 
 </div>
 
+#### 🧠 Code Sensei
 
+<div class="admonition note" markdown style="background-color: #e3f2fd !important; border-color: #2196f3 !important; color: #1565c0 !important;">
+
+**Interaktywna aplikacja webowa do analizy i refaktoryzacji kodu z użyciem AI**  
+
+[**Zobacz projekt →**](Code_sensei/code_sensei.md)
+
+</div>
 ---
 
 ## 🛠️ Technologie
@@ -56,20 +64,24 @@ Jestem pasjonatem analizy danych i uczenia maszynowego. Moje projekty łączą w
 - **Pandas** - analiza i manipulacja danych
 - **NumPy** - obliczenia numeryczne
 - **Statystyka opisowa** - analiza rozkładów i korelacji
+- **SQLite** – lokalna baza danych (historia i koszty w Code Sensei)
 
 ### 🎨 **Wizualizacja Danych**
 - **Matplotlib** - podstawowe wykresy i diagramy
 - **Seaborn** - zaawansowane wizualizacje statystyczne
 - **Plotly** - interaktywne wykresy i dashboardy
 
-### 🤖 **Machine Learning**
+### 🤖 **Sztuczna Inteligencja i Machine Learning**
 - **Scikit-learn** - algorytmy uczenia maszynowego
 - **TensorFlow** - głębokie uczenie
+- **OpenAI API (GPT-4o, TTS)** – analiza kodu i generowanie audio w Code Sensei
+
 
 ### 💻 **Narzędzia Programistyczne**
 - **Jupyter Notebooks** - interaktywna analiza i dokumentacja
 - **MkDocs** - tworzenie dokumentacji technicznej
 - **Git** - kontrola wersji i współpraca
+- **Streamlit** – aplikacje webowe dla Data Science
 
 </div>
 
@@ -84,6 +96,9 @@ Jestem pasjonatem analizy danych i uczenia maszynowego. Moje projekty łączą w
 | **Machine Learning** | Średnio-zaawansowany | Scikit-learn, TensorFlow | Klasyfikacja binarna |
 | **Programowanie** | Średnio-zaawansowany | Python, Jupyter, MkDocs | Dokumentacja projektów |
 | **Dokumentacja** | Średnio-zaawansowany | MkDocs, Markdown, HTML | Portfolio online |
+| **Aplikacje webowe** | Średnio-zaawansowany | Streamlit | Code Sensei |
+| **Integracje AI** | Średnio-zaawansowany | OpenAI API (GPT-4o, TTS) | Code Sensei |
+
 
 ---
 
@@ -91,20 +106,20 @@ Jestem pasjonatem analizy danych i uczenia maszynowego. Moje projekty łączą w
 
 <div class="admonition success" markdown style="background-color: #e8f5e8 !important; border-color: #4caf50 !important; color: #2e7d32 !important;">
 
-### 🚢 **Projekt Titanic - Ukończony!**
+### 🧠 **Projekt Code Sensei – Ukończony!**
 
 **Osiągnięcia:**
-- ✅ Kompletna eksploracyjna analiza danych (EDA)
-- ✅ Zaawansowane wizualizacje z Matplotlib, Seaborn i Plotly
-- ✅ Analiza korelacji i rozkładów statystycznych
-- ✅ Dokumentacja techniczna z MkDocs
-- ✅ Portfolio online z interaktywnymi elementami
+- ✅ Stworzenie interaktywnej aplikacji webowej w Streamlit
+- ✅ Integracja z OpenAI API (GPT-4o i TTS) do analizy oraz generowania audio
+- ✅ Implementacja historii analiz i podsumowania kosztów
+- ✅ Refaktoryzacja kodu i Q&A w czasie rzeczywistym
+- ✅ Hosting aplikacji na Streamlit Cloud i integracja z portfolio
 
 **Nowe umiejętności:**
-- 📊 Statystyka opisowa i analiza rozkładów
-- 🎨 Interaktywne wizualizacje z Plotly
-- 📝 Profesjonalna dokumentacja projektów
-- 🌐 Hosting i prezentacja online
+- 🧩 Budowa interfejsu webowego dla projektów AI
+- 🔑 Integracja API OpenAI i zarządzanie kosztami tokenów
+- 🗄️ Wykorzystanie SQLite do przechowywania historii i statystyk
+- 🎧 Generowanie wyjaśnień audio (Text-to-Speech)
 
 </div>
 
