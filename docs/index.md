@@ -22,9 +22,11 @@ Jestem pasjonatem analizy danych i uczenia maszynowego. Moje projekty łączą w
 
 ## 🚀 Moje projekty
 
-### 🚢 **Obecny projekt: Titanic Survival Prediction**
+### 🌸 **Zakończone projekty**
 
-<div class="admonition tip" markdown>
+#### 🚢 Titanic Survival Prediction
+
+<div class="admonition note" markdown style="background-color: #e3f2fd !important; border-color: #2196f3 !important; color: #1565c0 !important;">
 
 **Analiza przeżywalności pasażerów Titanica z wykorzystaniem różnych algorytmów ML**
 
@@ -32,9 +34,7 @@ Jestem pasjonatem analizy danych i uczenia maszynowego. Moje projekty łączą w
 
 </div>
 
-### 🌸 **Zakończone projekty**
-
-#### Iris Dataset
+#### 🌸 Iris Dataset
 
 <div class="admonition note" markdown style="background-color: #e3f2fd !important; border-color: #2196f3 !important; color: #1565c0 !important;">
 
@@ -44,18 +44,32 @@ Jestem pasjonatem analizy danych i uczenia maszynowego. Moje projekty łączą w
 
 </div>
 
+
 ---
 
 ## 🛠️ Technologie
 
 <div class="grid" markdown>
 
+### 📊 **Analiza i Przetwarzanie Danych**
 - **Python** - główny język programowania
 - **Pandas** - analiza i manipulacja danych
 - **NumPy** - obliczenia numeryczne
-- **Scikit-learn** - machine learning
-- **Matplotlib/Seaborn** - wizualizacja danych
-- **Jupyter Notebooks** - interaktywna analiza
+- **Statystyka opisowa** - analiza rozkładów i korelacji
+
+### 🎨 **Wizualizacja Danych**
+- **Matplotlib** - podstawowe wykresy i diagramy
+- **Seaborn** - zaawansowane wizualizacje statystyczne
+- **Plotly** - interaktywne wykresy i dashboardy
+
+### 🤖 **Machine Learning**
+- **Scikit-learn** - algorytmy uczenia maszynowego
+- **TensorFlow** - głębokie uczenie
+
+### 💻 **Narzędzia Programistyczne**
+- **Jupyter Notebooks** - interaktywna analiza i dokumentacja
+- **MkDocs** - tworzenie dokumentacji technicznej
+- **Git** - kontrola wersji i współpraca
 
 </div>
 
@@ -63,12 +77,36 @@ Jestem pasjonatem analizy danych i uczenia maszynowego. Moje projekty łączą w
 
 ## 📊 Umiejętności
 
-| Kategoria | Poziom | Technologie |
-|-----------|--------|-------------|
-| **Machine Learning** | Zaawansowany | Scikit-learn, TensorFlow |
-| **Analiza danych** | Zaawansowany | Pandas, NumPy, SQL |
-| **Wizualizacja** | Średnio-zaawansowany | Matplotlib, Seaborn, Plotly |
-| **Programowanie** | Średnio-zaawansowany | Python, R, SQL |
+| Kategoria | Poziom | Technologie | Ostatni Projekt |
+|-----------|--------|-------------|-----------------|
+| **Analiza danych** | Zaawansowany | Pandas, NumPy, Statystyka opisowa | Titanic EDA |
+| **Wizualizacja** | Zaawansowany | Matplotlib, Seaborn, Plotly | Histogramy, korelacje |
+| **Machine Learning** | Średnio-zaawansowany | Scikit-learn, TensorFlow | Klasyfikacja binarna |
+| **Programowanie** | Średnio-zaawansowany | Python, Jupyter, MkDocs | Dokumentacja projektów |
+| **Dokumentacja** | Średnio-zaawansowany | MkDocs, Markdown, HTML | Portfolio online |
+
+---
+
+## 🏆 Ostatnie Osiągnięcia
+
+<div class="admonition success" markdown style="background-color: #e8f5e8 !important; border-color: #4caf50 !important; color: #2e7d32 !important;">
+
+### 🚢 **Projekt Titanic - Ukończony!**
+
+**Osiągnięcia:**
+- ✅ Kompletna eksploracyjna analiza danych (EDA)
+- ✅ Zaawansowane wizualizacje z Matplotlib, Seaborn i Plotly
+- ✅ Analiza korelacji i rozkładów statystycznych
+- ✅ Dokumentacja techniczna z MkDocs
+- ✅ Portfolio online z interaktywnymi elementami
+
+**Nowe umiejętności:**
+- 📊 Statystyka opisowa i analiza rozkładów
+- 🎨 Interaktywne wizualizacje z Plotly
+- 📝 Profesjonalna dokumentacja projektów
+- 🌐 Hosting i prezentacja online
+
+</div>
 
 ---
 

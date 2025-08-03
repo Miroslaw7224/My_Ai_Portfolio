@@ -39,9 +39,9 @@ theme:
 
 nav:
 - O mnie: index.md
-- Obecne projekty:
-  - Titanic: Titanic/index.md
+- Obecne projekty: obecne-projekty.md
 - Zakończone projekty:
+  - Titanic: Titanic/index.md
   - Iris: Iris/index.md
 markdown_extensions:
   - admonition
