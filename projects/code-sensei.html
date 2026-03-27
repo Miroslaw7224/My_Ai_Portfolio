@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Code Sensei — Mirosław Baczkowski</title>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Share+Tech+Mono&family=Exo+2:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    --navy: #020818;
+    --deep: #040d2a;
+    --blue: #0ff;
+    --blue2: #007fff;
+    --blue3: #00d4ff;
+    --text: #c8e6f5;
+    --muted: #4a6f8a;
+  }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--navy);
+    color: var(--text);
+    font-family: 'Exo 2', sans-serif;
+    overflow-x: hidden;
+  }
+
+  #canvas {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(0,200,255,0.025) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0,200,255,0.025) 1px, transparent 1px);
+    background-size: 60px 60px;
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  .orb { position: fixed; border-radius: 50%; filter: blur(140px); pointer-events: none; z-index: 0; }
+  .orb1 { width: 700px; height: 700px; background: radial-gradient(circle, rgba(0,80,180,0.1), transparent 70%); top: -200px; right: -200px; animation: orb-float 20s ease-in-out infinite; }
+  .orb2 { width: 500px; height: 500px; background: radial-gradient(circle, rgba(0,180,255,0.07), transparent 70%); bottom: 100px; left: -100px; animation: orb-float 15s ease-in-out infinite reverse; }
+  @keyframes orb-float { 0%,100% { transform: translate(0,0); } 33% { transform: translate(30px,-20px); } 66% { transform: translate(-20px,30px); } }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 60px;
+    height: 70px;
+    background: rgba(2,8,24,0.85);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(0,200,255,0.12);
+  }
+  .nav-logo { font-family: 'Orbitron', monospace; font-size: 1rem; font-weight: 700; color: var(--blue3); letter-spacing: 3px; text-shadow: 0 0 20px var(--blue3); text-decoration: none; }
+  .nav-logo span { color: #fff; }
+  .nav-back { font-family: 'Share Tech Mono', monospace; font-size: 0.75rem; color: var(--muted); text-decoration: none; letter-spacing: 2px; text-transform: uppercase; transition: color 0.3s, text-shadow 0.3s; }
+  .nav-back:hover { color: var(--blue); text-shadow: 0 0 15px var(--blue); }
+
+  /* CONTENT */
+  .container {
+    position: relative;
+    z-index: 10;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 120px 40px 80px;
+  }
+
+  .back-link {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--blue3);
+    text-decoration: none;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 40px;
+    transition: gap 0.3s;
+  }
+  .back-link:hover { gap: 14px; }
+
+  .project-header {
+    margin-bottom: 60px;
+  }
+
+  .project-tag {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--blue3);
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .project-tag::before {
+    content: '';
+    width: 40px;
+    height: 1px;
+    background: var(--blue3);
+    box-shadow: 0 0 8px var(--blue3);
+  }
+
+  h1 {
+    font-family: 'Orbitron', monospace;
+    font-size: clamp(2rem, 4vw, 3.5rem);
+    font-weight: 900;
+    color: #fff;
+    margin-bottom: 24px;
+    line-height: 1.2;
+  }
+
+  .project-subtitle {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: var(--text);
+    opacity: 0.8;
+    max-width: 800px;
+    margin-bottom: 40px;
+  }
+
+  .project-links {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 60px;
+    flex-wrap: wrap;
+  }
+
+  /* Primary button - wypełniony */
+  .btn-primary {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.75rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    padding: 14px 36px;
+    background: var(--blue3);
+    color: #020818;
+    border: 1px solid var(--blue3);
+    text-decoration: none;
+    transition: all 0.3s;
+    cursor: pointer;
+    display: inline-block;
+    box-shadow: 0 0 20px rgba(0,212,255,0.4);
+  }
+  .btn-primary:hover {
+    box-shadow: 0 0 40px rgba(0,212,255,0.7);
+    background: #fff;
+  }
+
+  /* Secondary button - obrys */
+  .btn-secondary {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.75rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    padding: 14px 36px;
+    background: transparent;
+    border: 1px solid var(--blue3);
+    color: var(--blue3);
+    text-decoration: none;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s;
+    cursor: pointer;
+    display: inline-block;
+  }
+  .btn-secondary::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--blue3);
+    transform: translateX(-100%);
+    transition: transform 0.3s;
+    z-index: -1;
+  }
+  .btn-secondary:hover {
+    color: var(--navy);
+    box-shadow: 0 0 30px rgba(0,212,255,0.5);
+  }
+  .btn-secondary:hover::before { transform: translateX(0); }
+
+  .section {
+    margin-bottom: 80px;
+  }
+
+  h2 {
+    font-family: 'Orbitron', monospace;
+    font-size: clamp(1.4rem, 2.5vw, 2rem);
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: 2px;
+    margin-bottom: 32px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+
+  h2::before {
+    content: '//';
+    font-size: 0.65rem;
+    color: var(--blue3);
+    letter-spacing: 3px;
+    opacity: 0.6;
+  }
+
+  h2::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, rgba(0,200,255,0.4), transparent);
+  }
+
+  p {
+    font-size: 1rem;
+    line-height: 1.8;
+    color: var(--text);
+    opacity: 0.8;
+    margin-bottom: 20px;
+  }
+
+  .stack-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 40px;
+  }
+
+  .stack-tag {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.65rem;
+    padding: 8px 16px;
+    border: 1px solid rgba(0,200,255,0.3);
+    color: var(--blue3);
+    letter-spacing: 1.5px;
+    background: rgba(0,200,255,0.05);
+    text-transform: uppercase;
+    transition: all 0.3s;
+  }
+  .stack-tag:hover {
+    background: rgba(0,200,255,0.15);
+    border-color: var(--blue3);
+    box-shadow: 0 0 20px rgba(0,200,255,0.2);
+  }
+
+  .screenshots {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 24px;
+    margin-bottom: 40px;
+  }
+
+  .screenshot-card {
+    position: relative;
+    background: rgba(4,13,42,0.8);
+    border: 1px solid rgba(0,200,255,0.12);
+    padding: 16px;
+    transition: all 0.4s;
+    cursor: pointer;
+  }
+
+  .screenshot-card:hover {
+    border-color: rgba(0,200,255,0.35);
+    transform: translateY(-4px);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.5), 0 0 40px rgba(0,200,255,0.08);
+  }
+
+  .screenshot-card img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border: 1px solid rgba(0,200,255,0.1);
+  }
+
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+  }
+
+  .feature-card {
+    background: rgba(4,13,42,0.6);
+    border: 1px solid rgba(0,200,255,0.1);
+    padding: 24px;
+    transition: all 0.3s;
+  }
+
+  .feature-card:hover {
+    border-color: rgba(0,200,255,0.3);
+    box-shadow: 0 0 20px rgba(0,200,255,0.08);
+  }
+
+  .feature-title {
+    font-family: 'Orbitron', monospace;
+    font-size: 0.9rem;
+    color: var(--blue3);
+    letter-spacing: 1px;
+    margin-bottom: 12px;
+  }
+
+  .feature-desc {
+    font-size: 0.85rem;
+    line-height: 1.7;
+    color: var(--text);
+    opacity: 0.7;
+  }
+
+  .challenges {
+    background: rgba(2,8,24,0.9);
+    border: 1px solid rgba(0,200,255,0.2);
+    padding: 32px;
+    margin-bottom: 40px;
+  }
+
+  .challenges ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .challenges li {
+    font-size: 0.9rem;
+    line-height: 1.8;
+    color: var(--text);
+    opacity: 0.8;
+    padding-left: 24px;
+    position: relative;
+    margin-bottom: 12px;
+  }
+
+  .challenges li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--blue3);
+  }
+
+  footer {
+    position: relative;
+    z-index: 10;
+    padding: 30px 80px;
+    border-top: 1px solid rgba(0,200,255,0.08);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .footer-text {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.6rem;
+    color: var(--muted);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+
+  @media (max-width: 768px) {
+    .container { padding: 100px 20px 60px; }
+    nav { padding: 0 20px; }
+    footer { padding: 20px; flex-direction: column; gap: 10px; text-align: center; }
+    .screenshots { grid-template-columns: 1fr; }
+    .features-grid { grid-template-columns: 1fr; }
+    .project-links { flex-direction: column; width: 100%; }
+    .btn-primary, .btn-secondary { width: 100%; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<canvas id="canvas"></canvas>
+<div class="orb orb1"></div>
+<div class="orb orb2"></div>
+
+<!-- NAV -->
+<nav>
+  <a href="../index.html" class="nav-logo">MB<span>.</span>AI</a>
+  <a href="../index.html" class="nav-back">← Powrót do portfolio</a>
+</nav>
+
+<!-- CONTENT -->
+<div class="container">
+  <a href="../index.html" class="back-link">← Wszystkie projekty</a>
+
+  <div class="project-header">
+    <div class="project-tag">Full Stack · AI · Web App</div>
+    <h1>Code Sensei</h1>
+    <p class="project-subtitle">
+      Interaktywna aplikacja webowa do analizy i refaktoryzacji kodu z użyciem AI. 
+      Integracja OpenAI GPT-4o, generowanie audio (TTS), historia analiz i zarządzanie kosztami tokenów.
+    </p>
+    <div class="project-links">
+      <a href="https://code-sense.streamlit.app/" class="btn-primary" target="_blank">// LIVE DEMO ↗</a>
+      <a href="https://github.com/Miroslaw7224/Code_Sensei" class="btn-secondary" target="_blank">// GITHUB REPO ↗</a>
+    </div>
+  </div>
+
+  <!-- PROBLEM → ROZWIĄZANIE -->
+  <div class="section">
+    <h2>Problem → Rozwiązanie</h2>
+    <p>
+      <strong style="color: var(--blue3);">Problem:</strong> Programiści często potrzebują szybkiego wyjaśnienia działania kodu, 
+      refaktoryzacji lub odpowiedzi na pytania dotyczące fragmentów kodu. Ręczna analiza jest czasochłonna, 
+      a dokumentacja często nieaktualna.
+    </p>
+    <p>
+      <strong style="color: var(--blue3);">Rozwiązanie:</strong> Code Sensei to aplikacja webowa, która wykorzystuje 
+      OpenAI GPT-4o do automatycznej analizy kodu w czasie rzeczywistym. Użytkownik wkleja kod, wybiera typ analizy 
+      (opis ogólny, szczegółowy, Q&A, refaktoryzacja) i otrzymuje natychmiastową odpowiedź. Dodatkowo może wygenerować 
+      wyjaśnienie audio (TTS) i przeglądać historię wszystkich analiz z podsumowaniem kosztów.
+    </p>
+  </div>
+
+  <!-- STACK TECHNOLOGICZNY -->
+  <div class="section">
+    <h2>Stack Technologiczny</h2>
+    <div class="stack-grid">
+      <span class="stack-tag">Python 3.x</span>
+      <span class="stack-tag">Streamlit</span>
+      <span class="stack-tag">OpenAI API (GPT-4o)</span>
+      <span class="stack-tag">Text-to-Speech (TTS)</span>
+      <span class="stack-tag">SQLite</span>
+      <span class="stack-tag">Pandas</span>
+      <span class="stack-tag">Streamlit Cloud</span>
+      <span class="stack-tag">Git / GitHub</span>
+    </div>
+  </div>
+
+  <!-- SCREENSHOTY -->
+  <div class="section">
+    <h2>Screenshoty</h2>
+    <div class="screenshots">
+      <div class="screenshot-card">
+        <img src="../docs/images/Code_sensei_1.jpg" alt="Code Sensei - Interfejs główny">
+      </div>
+      <div class="screenshot-card">
+        <img src="../docs/images/Code_sensei_2.jpg" alt="Code Sensei - Historia analiz">
+      </div>
+    </div>
+  </div>
+
+  <!-- FUNKCJE -->
+  <div class="section">
+    <h2>Kluczowe Funkcje</h2>
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-title">Analiza kodu AI</div>
+        <div class="feature-desc">Generowanie opisów ogólnych i szczegółowych (blokowych lub linia po linii) w języku polskim lub angielskim.</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-title">Wyjaśnienia audio (TTS)</div>
+        <div class="feature-desc">Automatyczne generowanie nagrań audio z opisów kodu z wyborem głosu (Alloy, Nova, Shimmer).</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-title">Tryb Q&A</div>
+        <div class="feature-desc">Zadawanie pytań o kod i otrzymywanie kontekstowych odpowiedzi od AI.</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-title">Refaktoryzacja</div>
+        <div class="feature-desc">Automatyczne przekształcenie kodu na bardziej czytelny z komentarzem wyjaśniającym zmiany.</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-title">Historia analiz</div>
+        <div class="feature-desc">Przegląd wszystkich wygenerowanych opisów z filtrowaniem i eksportem do CSV.</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-title">Zarządzanie kosztami</div>
+        <div class="feature-desc">Automatyczne przeliczanie tokenów OpenAI na koszt w PLN z podsumowaniem statystyk.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- WYZWANIA TECHNICZNE -->
+  <div class="section">
+    <h2>Kluczowe Wyzwania Techniczne</h2>
+    <div class="challenges">
+      <ul>
+        <li><strong>Integracja OpenAI API:</strong> Implementacja wielotrybowego promptowania (opis ogólny, szczegółowy, Q&A, refaktoryzacja) z obsługą różnych modeli GPT.</li>
+        <li><strong>Generowanie audio TTS:</strong> Konwersja opisów tekstowych na pliki MP3 z możliwością odtwarzania i pobierania.</li>
+        <li><strong>Zarządzanie historią:</strong> Projektowanie schematu bazy SQLite do przechowywania analiz, nagrań audio i statystyk kosztów.</li>
+        <li><strong>Obliczanie kosztów:</strong> Automatyczne przeliczanie tokenów (prompt + completion) na koszt w PLN z uwzględnieniem różnych modeli i cen.</li>
+        <li><strong>UX w Streamlit:</strong> Tworzenie intuicyjnego interfejsu z sidebar, zakładkami, przyciskami audio i eksportem CSV.</li>
+        <li><strong>Deployment na Streamlit Cloud:</strong> Konfiguracja secrets (API keys), zarządzanie zależnościami i optymalizacja wydajności.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- JAK DZIAŁA -->
+  <div class="section">
+    <h2>Jak to działa?</h2>
+    <p>
+      <strong>1. Użytkownik wkleja kod</strong> → Wprowadza klucz OpenAI API i wkleja fragment kodu do analizy.
+    </p>
+    <p>
+      <strong>2. Wybór trybu analizy</strong> → Wybiera język (polski/angielski) i typ opisu (ogólny/szczegółowy).
+    </p>
+    <p>
+      <strong>3. Generowanie opisu</strong> → AI analizuje kod i generuje wyjaśnienie działania.
+    </p>
+    <p>
+      <strong>4. Opcjonalne audio</strong> → Użytkownik może wygenerować nagranie audio z opisem.
+    </p>
+    <p>
+      <strong>5. Historia i statystyki</strong> → Wszystkie analizy są zapisywane w bazie SQLite z możliwością przeglądania, filtrowania i eksportu.
+    </p>
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-text">© 2026 Mirosław Baczkowski</div>
+  <div class="footer-text"><a href="../index.html" style="color: var(--blue3); text-decoration: none;">← Powrót do portfolio</a></div>
+</footer>
+
+<script>
+const canvas = document.getElementById('canvas');
+const ctx = canvas.getContext('2d');
+
+function resize() {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+}
+resize();
+window.addEventListener('resize', resize);
+
+const NODE_COUNT = 55;
+const MAX_DIST = 180;
+
+const nodes = Array.from({ length: NODE_COUNT }, () => ({
+  x: Math.random() * canvas.width,
+  y: Math.random() * canvas.height,
+  vx: (Math.random() - 0.5) * 0.45,
+  vy: (Math.random() - 0.5) * 0.45,
+  r: Math.random() * 2.2 + 1.2,
+  pulse: Math.random() * Math.PI * 2,
+  pulseSpeed: 0.012 + Math.random() * 0.018,
+  active: Math.random() < 0.2,
+}));
+
+const signals = [];
+let signalTimer = 0;
+
+function spawnSignal() {
+  for (let attempt = 0; attempt < 20; attempt++) {
+    const a = nodes[Math.floor(Math.random() * nodes.length)];
+    const b = nodes[Math.floor(Math.random() * nodes.length)];
+    const dx = a.x - b.x, dy = a.y - b.y;
+    if (Math.sqrt(dx * dx + dy * dy) < MAX_DIST) {
+      signals.push({ from: a, to: b, t: 0, speed: 0.008 + Math.random() * 0.006 });
+      break;
+    }
+  }
+}
+
+function draw() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+  nodes.forEach(n => {
+    n.x += n.vx;
+    n.y += n.vy;
+    n.pulse += n.pulseSpeed;
+    if (n.x < 0) { n.x = 0; n.vx *= -1; }
+    if (n.x > canvas.width) { n.x = canvas.width; n.vx *= -1; }
+    if (n.y < 0) { n.y = 0; n.vy *= -1; }
+    if (n.y > canvas.height) { n.y = canvas.height; n.vy *= -1; }
+  });
+
+  for (let i = 0; i < nodes.length; i++) {
+    for (let j = i + 1; j < nodes.length; j++) {
+      const a = nodes[i], b = nodes[j];
+      const dx = a.x - b.x, dy = a.y - b.y;
+      const dist = Math.sqrt(dx * dx + dy * dy);
+      if (dist < MAX_DIST) {
+        const fade = 1 - dist / MAX_DIST;
+        ctx.beginPath();
+        ctx.moveTo(a.x, a.y);
+        ctx.lineTo(b.x, b.y);
+        ctx.strokeStyle = `rgba(0,160,220,${0.09 * fade})`;
+        ctx.lineWidth = 0.7;
+        ctx.stroke();
+      }
+    }
+  }
+
+  signalTimer++;
+  if (signalTimer > 40) { spawnSignal(); signalTimer = 0; }
+
+  for (let i = signals.length - 1; i >= 0; i--) {
+    const s = signals[i];
+    s.t += s.speed;
+    if (s.t >= 1) { signals.splice(i, 1); continue; }
+
+    const sx = s.from.x + (s.to.x - s.from.x) * s.t;
+    const sy = s.from.y + (s.to.y - s.from.y) * s.t;
+
+    const trailLen = 0.12;
+    const t0 = Math.max(0, s.t - trailLen);
+    const tx = s.from.x + (s.to.x - s.from.x) * t0;
+    const ty = s.from.y + (s.to.y - s.from.y) * t0;
+    const grad = ctx.createLinearGradient(tx, ty, sx, sy);
+    grad.addColorStop(0, 'rgba(0,220,255,0)');
+    grad.addColorStop(1, 'rgba(0,220,255,0.7)');
+    ctx.beginPath();
+    ctx.moveTo(tx, ty);
+    ctx.lineTo(sx, sy);
+    ctx.strokeStyle = grad;
+    ctx.lineWidth = 1.5;
+    ctx.stroke();
+
+    ctx.beginPath();
+    ctx.arc(sx, sy, 2.5, 0, Math.PI * 2);
+    ctx.fillStyle = 'rgba(0,240,255,0.85)';
+    ctx.fill();
+
+    const glowGrad = ctx.createRadialGradient(sx, sy, 0, sx, sy, 10);
+    glowGrad.addColorStop(0, 'rgba(0,220,255,0.25)');
+    glowGrad.addColorStop(1, 'rgba(0,220,255,0)');
+    ctx.beginPath();
+    ctx.arc(sx, sy, 10, 0, Math.PI * 2);
+    ctx.fillStyle = glowGrad;
+    ctx.fill();
+  }
+
+  nodes.forEach(n => {
+    const pulseFactor = 0.7 + 0.3 * Math.sin(n.pulse);
+    const alpha = n.active ? 0.85 * pulseFactor : 0.35 * pulseFactor;
+    const radius = n.active ? n.r * 1.8 : n.r;
+
+    if (n.active) {
+      const glow = ctx.createRadialGradient(n.x, n.y, 0, n.x, n.y, radius * 5);
+      glow.addColorStop(0, `rgba(0,220,255,${0.18 * pulseFactor})`);
+      glow.addColorStop(1, 'rgba(0,220,255,0)');
+      ctx.beginPath();
+      ctx.arc(n.x, n.y, radius * 5, 0, Math.PI * 2);
+      ctx.fillStyle = glow;
+      ctx.fill();
+    }
+
+    ctx.beginPath();
+    ctx.arc(n.x, n.y, radius, 0, Math.PI * 2);
+    ctx.fillStyle = `rgba(0,210,255,${alpha})`;
+    ctx.fill();
+  });
+
+  requestAnimationFrame(draw);
+}
+requestAnimationFrame(draw);
+</script>
+</body>
+</html>
