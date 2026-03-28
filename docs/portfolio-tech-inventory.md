@@ -13,7 +13,7 @@ Ten plik jest **jedynym źródłem prawdy** dla kanonicznych nazw technologii, p
 
 1. Zaktualizuj tagi w sekcji Stack w `projects/<slug>.html`.
 2. Zaktualizuj **ten plik** (aliasy, wiersze macierzy, kolumnę „Projekty”).
-3. Zsynchronizuj karty na `index.html` z nazwami kanonicznymi (skrót na karcie jest OK, byle spójny z aliasami).
+3. Zsynchronizuj tagi na kartach `index.html` z nazwami kanonicznymi (skrót na karcie jest OK, byle spójny z aliasami).
 4. Przepisz blok `#skills` w `index.html`: kolejność **malejąco po liczbie projektów**, przy **remisie** — alfabetycznie po nazwie kanonicznej (A–Z, znaki specjalne typu `@` na końcu lub przed literami — tutaj: `@` traktujemy jak literę „a” w sortowaniu pakietów npm).
 
 ---
@@ -28,6 +28,7 @@ Ten plik jest **jedynym źródłem prawdy** dla kanonicznych nazw technologii, p
 | Text-to-Speech (TTS) | TTS |
 | TanStack Query v5 | TanStack Query |
 | Next.js 15 | Next.js |
+| Next.js 14 | Next.js |
 | React 19 | React |
 | TypeScript (strict) | TypeScript |
 | @ducanh2912/next-pwa | next-pwa |
@@ -37,35 +38,42 @@ Ten plik jest **jedynym źródłem prawdy** dla kanonicznych nazw technologii, p
 | PostgreSQL · RLS | PostgreSQL · RLS |
 | shadcn/ui · Radix | shadcn/ui · Radix |
 | Tailwind (karta `index`) | Tailwind CSS |
+| Gemini API | Gemini API |
 
 ---
 
 ## Macierz: technologia → projekty (slug)
 
-Slugi: `code-sensei`, `english-buddy`, `gen-podsum-ai`, `titanic`, `iris`.
+Slugi: `code-sensei`, `english-buddy`, `gen-podsum-ai`, `second-brain`, `titanic`, `iris`.
 
 | Nazwa kanoniczna | Projekty (slug) | Liczba |
 |------------------|-----------------|--------|
 | OpenAI API | code-sensei, english-buddy, gen-podsum-ai | 3 |
 | Pandas | code-sensei, titanic, iris | 3 |
 | Python | code-sensei, titanic, iris | 3 |
+| React | english-buddy, gen-podsum-ai, second-brain | 3 |
+| TypeScript | english-buddy, gen-podsum-ai, second-brain | 3 |
+| ESLint · Prettier | english-buddy, second-brain | 2 |
+| Husky | english-buddy, second-brain | 2 |
 | Jupyter Notebooks | titanic, iris | 2 |
+| Lucide React | gen-podsum-ai, second-brain | 2 |
 | Matplotlib | titanic, iris | 2 |
+| Next.js | english-buddy, second-brain | 2 |
 | NumPy | titanic, iris | 2 |
-| React | english-buddy, gen-podsum-ai | 2 |
 | Scikit-learn | titanic, iris | 2 |
 | Seaborn | titanic, iris | 2 |
-| TypeScript | english-buddy, gen-podsum-ai | 2 |
+| Tailwind CSS | english-buddy, second-brain | 2 |
+| Vitest · Playwright | english-buddy, second-brain | 2 |
 | @openai/agents | english-buddy | 1 |
-| ESLint · Prettier | english-buddy | 1 |
 | Express | gen-podsum-ai | 1 |
 | FFmpeg | gen-podsum-ai | 1 |
+| Firebase Admin | second-brain | 1 |
+| Firebase Auth | second-brain | 1 |
+| Firestore | second-brain | 1 |
+| Gemini API | second-brain | 1 |
 | Git / GitHub | code-sensei | 1 |
-| Husky | english-buddy | 1 |
-| Lucide React | gen-podsum-ai | 1 |
 | Luxon · uuid | english-buddy | 1 |
 | Multer | gen-podsum-ai | 1 |
-| Next.js | english-buddy | 1 |
 | next-pwa | english-buddy | 1 |
 | Node.js | gen-podsum-ai | 1 |
 | Plotly | titanic | 1 |
@@ -79,17 +87,16 @@ Slugi: `code-sensei`, `english-buddy`, `gen-podsum-ai`, `titanic`, `iris`.
 | Streamlit | code-sensei | 1 |
 | Streamlit Cloud | code-sensei | 1 |
 | Supabase Auth | english-buddy | 1 |
-| Tailwind CSS | english-buddy | 1 |
 | TanStack Query | english-buddy | 1 |
+| TipTap | second-brain | 1 |
 | TTS | code-sensei | 1 |
-| Vitest · Playwright | english-buddy | 1 |
 | Zustand | english-buddy | 1 |
 
-**Łącznie wierszy (kanonicznych technologii):** 38.
+**Łącznie wierszy (kanonicznych technologii):** 43.
 
 ---
 
 ## Kolejność na `index.html` (`#skills`)
 
-1. Grupy według kolumny **Liczba** (malejąco): 5 → 3 → 2 → 1.  
-2. W grupie o tej samej liczbie: sortowanie **alfabetyczne** po nazwie kanonicznej (polski układ znaków; w praktyce nazwy są po angielsku — np. dla `[ 3 ]`: OpenAI API, Pandas, Python; dla `[ 2 ]`: Jupyter Notebooks, Matplotlib, NumPy, React, Scikit-learn, Seaborn, TypeScript).
+1. Grupy według kolumny **Liczba** (malejąco): np. **3 → 2 → 1** (aktualny maksimum to 3 projekty na technologię).
+2. W grupie o tej samej liczbie: sortowanie **alfabetyczne** po nazwie kanonicznej (polski układ znaków; w praktyce nazwy są po angielsku — np. dla `[ 3 ]`: OpenAI API, Pandas, Python, React, TypeScript; dla `[ 2 ]`: ESLint · Prettier, Husky, Jupyter Notebooks, Lucide React, Matplotlib, Next.js, NumPy, Scikit-learn, Seaborn, Tailwind CSS, Vitest · Playwright).
