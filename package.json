@@ -1,0 +1,9 @@
+{
+  "name": "my-ai-portfolio",
+  "private": true,
+  "description": "Statyczne portfolio — podgląd lokalny przez prosty serwer HTTP",
+  "scripts": {
+    "start": "npx --yes serve . -l tcp://127.0.0.1:8000",
+    "serve": "npx --yes serve . -l tcp://127.0.0.1:8000"
+  }
+}

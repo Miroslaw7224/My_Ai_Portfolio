@@ -40,9 +40,9 @@ nav:
   - "// init": index.md
   - "// projekty": obecne-projekty.md
   - "// portfolio":
-    - "Code Sensei": Code_sensei/code_sensei.md
-    - "Titanic": Titanic/index.md
-    - "Iris": Iris/index.md
+    - "Code Sensei": projects/Code_sensei/code_sensei.md
+    - "Titanic": projects/Titanic/index.md
+    - "Iris": projects/Iris/index.md
 markdown_extensions:
   - admonition
   - codehilite:

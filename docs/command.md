@@ -2,65 +2,90 @@
 
 ## Lokalne uruchomienie (Development)
 
-### Opcja 1: Python HTTP Server
+Z głównego katalogu repozytorium (`Portfolio/`):
+
+### Opcja 1: npm (zalecane)
+
 ```bash
-# Z głównego katalogu projektu
+npm start
+```
+
+Serwer statyczny na [http://127.0.0.1:8000](http://127.0.0.1:8000) (skrypt w `package.json`).
+
+### Opcja 2: Python HTTP Server
+
+```bash
 python -m http.server 8000
 ```
-Następnie otwórz przeglądarkę: `http://localhost:8000`
 
-### Opcja 2: Python HTTP Server (Python 2.x)
+### Opcja 3: Live Server (VS Code)
+
+1. Rozszerzenie „Live Server”
+2. PPM na `index.html` → Open with Live Server
+
+### Opcja 4: npx serve (bez package.json)
+
 ```bash
-python -m SimpleHTTPServer 8000
+npx serve . -l tcp://127.0.0.1:8000
 ```
 
-### Opcja 3: Live Server (VS Code Extension)
-1. Zainstaluj rozszerzenie "Live Server" w VS Code
-2. Kliknij prawym przyciskiem na `index.html`
-3. Wybierz "Open with Live Server"
+Na Windows w **PowerShell** do otwarcia pliku bez serwera: `Start-Process .\index.html`
 
-### Opcja 4: npx serve (Node.js)
+---
+
+## Konwencja plików (jedna wersja)
+
+- **Zrzuty ekranu i grafiki projektów** — wyłącznie w **`docs/images/`** (strony w `projects/*.html` i MkDocs odwołują się stamtąd).
+- **Treści projektów (MkDocs + HTML, notebooki)** — w **`docs/projects/<nazwa>/`** (np. `Titanic`, `Iris`, `Code_sensei`). Dzięki temu przy większej liczbie projektów w `docs/` nie mieszają się z `images/`, `javascripts/`, `stylesheets/`.
+- Nie duplikuj folderu `images/` w katalogu głównym repozytorium.
+
+---
+
+## MkDocs (opcjonalnie)
+
 ```bash
-npx serve
+pip install mkdocs-material
+mkdocs serve
 ```
+
+Źródła dokumentacji: katalog **`docs/`**.
+
+---
 
 ## Deployment na GitHub Pages
 
-Portfolio automatycznie deployuje się na GitHub Pages przy każdym push do brancha `main`.
+Push do `main`/`master` uruchamia workflow `.github/workflows/deploy.yml` (całe katalogi główne repozytorium).
 
-### Workflow GitHub Actions
-Plik `.github/workflows/deploy.yml` automatycznie:
-1. Buduje stronę
-2. Deployuje na GitHub Pages
-3. Strona dostępna pod: `https://<username>.github.io/Portfolio/`
-
-### Ręczny deployment
-```bash
-git add .
-git commit -m "Update portfolio"
-git push origin main
-```
+---
 
 ## Struktura projektu
 
 ```
 Portfolio/
-├── index.html              # Strona główna
-├── projects/               # Dedykowane strony projektów
+├── index.html
+├── package.json
+├── mkdocs.yml
+├── projects/                 # Podstrony projektów (cyberpunk UI)
 │   ├── code-sensei.html
+│   ├── gen-podsum-ai.html
 │   ├── titanic.html
 │   └── iris.html
-├── images/                 # Zdjęcia projektów
-└── .github/workflows/
-    └── deploy.yml         # GitHub Actions workflow
+├── docs/                     # MkDocs (docs_dir)
+│   ├── images/               # Wspólne grafiki (jedno miejsce)
+│   ├── projects/             # Wszystkie projekty dokumentacji (analizy, opisy)
+│   │   ├── Titanic/
+│   │   ├── Iris/
+│   │   └── Code_sensei/
+│   ├── javascripts/
+│   ├── stylesheets/
+│   ├── overrides/
+│   ├── index.md
+│   └── command.md            # Ten plik
+└── .github/workflows/deploy.yml
 ```
+
+---
 
 ## Testowanie responsywności
 
-```bash
-# Uruchom lokalnie i testuj na różnych urządzeniach
-python -m http.server 8000
-
-# W przeglądarce użyj DevTools (F12)
-# Responsive Design Mode: Ctrl+Shift+M (Windows) lub Cmd+Option+M (Mac)
-```
+Uruchom lokalnie (npm lub Python), DevTools (F12) → tryb responsywny (Ctrl+Shift+M).

@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Iris Dataset Analysis — Mirosław Baczkowski</title>
+<title>Gen Podsum AI — transkrypcja i podsumowania — Mirosław Baczkowski</title>
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Share+Tech+Mono&family=Exo+2:wght@300;400;600&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
@@ -138,7 +138,6 @@
     flex-wrap: wrap;
   }
 
-  /* Primary button - wypełniony */
   .btn-primary {
     font-family: 'Share Tech Mono', monospace;
     font-size: 0.75rem;
@@ -159,7 +158,6 @@
     background: #fff;
   }
 
-  /* Secondary button - obrys */
   .btn-secondary {
     font-family: 'Share Tech Mono', monospace;
     font-size: 0.75rem;
@@ -254,6 +252,43 @@
     box-shadow: 0 0 20px rgba(0,200,255,0.2);
   }
 
+  .screenshots {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 24px;
+    margin-bottom: 40px;
+  }
+
+  .screenshot-card {
+    position: relative;
+    background: rgba(4,13,42,0.8);
+    border: 1px solid rgba(0,200,255,0.12);
+    padding: 16px;
+    transition: all 0.4s;
+  }
+
+  .screenshot-card:hover {
+    border-color: rgba(0,200,255,0.35);
+    transform: translateY(-4px);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.5), 0 0 40px rgba(0,200,255,0.08);
+  }
+
+  .screenshot-card img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border: 1px solid rgba(0,200,255,0.1);
+  }
+
+  .screenshot-caption {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.65rem;
+    color: var(--muted);
+    letter-spacing: 1px;
+    margin-top: 12px;
+    text-transform: uppercase;
+  }
+
   .features-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -337,6 +372,7 @@
     .container { padding: 100px 20px 60px; }
     nav { padding: 0 20px; }
     footer { padding: 20px; flex-direction: column; gap: 10px; text-align: center; }
+    .screenshots { grid-template-columns: 1fr; }
     .features-grid { grid-template-columns: 1fr; }
     .project-links { flex-direction: column; width: 100%; }
     .btn-primary, .btn-secondary { width: 100%; text-align: center; }
@@ -358,138 +394,88 @@
   <a href="../index.html" class="back-link">← Wszystkie projekty</a>
 
   <div class="project-header">
-    <div class="project-tag">Data Science · Machine Learning · EDA</div>
-    <h1>Iris Dataset Analysis</h1>
+    <div class="project-tag">Full Stack · AI · Audio / Video</div>
+    <h1>Gen Podsum AI</h1>
     <p class="project-subtitle">
-      Klasyfikacja gatunków kwiatów Iris z wykorzystaniem Machine Learning. 
-      Kompletna analiza eksploracyjna (EDA), wizualizacje rozkładów, macierze korelacji i modelowanie wieloklasowe.
+      Aplikacja webowa do wgrywania plików audio lub wideo: transkrypcja (Whisper), streszczenie z kluczowymi punktami i analiza sentymentu (GPT).
+      W interfejsie widać orientacyjne koszty wywołań API oraz postęp przetwarzania.
     </p>
     <div class="project-links">
-      <a href="../docs/projects/Iris/iris.html" class="btn-primary" target="_blank">// PEŁNA ANALIZA ↗</a>
-      <a href="https://github.com/Miroslaw7224/My_Ai_Portfolio" class="btn-secondary" target="_blank">// GITHUB REPO ↗</a>
+      <a href="https://github.com/Miroslaw7224/Gen_Podsum_AI" class="btn-primary" target="_blank" rel="noopener noreferrer">// GITHUB REPO ↗</a>
+      <a href="https://github.com/Miroslaw7224/Gen_Podsum_AI/blob/main/docs/README.md" class="btn-secondary" target="_blank" rel="noopener noreferrer">// DOKUMENTACJA (DOCS) ↗</a>
     </div>
   </div>
 
   <div class="section">
     <h2>Problem → Rozwiązanie</h2>
     <p>
-      <strong style="color: var(--blue3);">Problem:</strong> Klasyfikacja gatunków roślin na podstawie pomiarów morfologicznych 
-      jest fundamentalnym problemem w botanice i biologii. Ręczna identyfikacja wymaga ekspertyzy i jest czasochłonna. 
-      Jak można zautomatyzować ten proces używając danych pomiarowych?
+      <strong style="color: var(--blue3);">Problem:</strong> Trzeba szybko odpowiedzieć na pytanie „co było w nagraniu?” — bez ręcznego przepisywania długich nagrań audio lub wideo.
     </p>
     <p>
-      <strong style="color: var(--blue3);">Rozwiązanie:</strong> Projekt wykorzystuje słynny zbiór danych Iris (Ronald Fisher, 1936) 
-      do budowy modelu klasyfikacji wieloklasowej. Poprzez eksploracyjną analizę danych (EDA), wizualizacje i algorytmy Machine Learning, 
-      model uczy się rozpoznawać trzy gatunki irysów (Setosa, Versicolor, Virginica) na podstawie czterech cech morfologicznych.
+      <strong style="color: var(--blue3);">Rozwiązanie:</strong> Jeden przepływ: plik → transkrypcja → podsumowanie, kluczowe punkty i sentyment. Frontend w React (landing + panel z uploadem, wyborem modelu GPT, podglądem kosztów i postępem). Backend Node/Express przyjmuje pliki (Multer), przygotowuje audio z wideo przez FFmpeg, wywołuje OpenAI (Whisper + GPT). Klucz API można ustawić w <code style="color: var(--blue3);">.env</code> po stronie serwera lub w UI — zgodnie z repozytorium i <code style="color: var(--blue3);">.env.example</code>.
     </p>
   </div>
 
   <div class="section">
-    <h2>Stack Technologiczny</h2>
+    <h2>Stack technologiczny</h2>
     <div class="stack-grid">
-      <span class="stack-tag">Python 3.x</span>
-      <span class="stack-tag">Pandas</span>
-      <span class="stack-tag">NumPy</span>
-      <span class="stack-tag">Scikit-learn</span>
-      <span class="stack-tag">Matplotlib</span>
-      <span class="stack-tag">Seaborn</span>
-      <span class="stack-tag">Jupyter Notebook</span>
+      <span class="stack-tag">React</span>
+      <span class="stack-tag">TypeScript</span>
+      <span class="stack-tag">Node.js</span>
+      <span class="stack-tag">Express</span>
+      <span class="stack-tag">OpenAI API (Whisper + GPT)</span>
+      <span class="stack-tag">FFmpeg</span>
+      <span class="stack-tag">REST API</span>
+      <span class="stack-tag">Multer</span>
+      <span class="stack-tag">Lucide React</span>
     </div>
   </div>
 
   <div class="section">
-    <h2>Kluczowe Elementy Analizy</h2>
+    <h2>Zrzuty ekranu</h2>
+    <div class="screenshots">
+      <div class="screenshot-card">
+        <img src="../docs/images/Gen_Podsum_AI_1.png" alt="Gen Podsum AI — konfiguracja, upload, wybór modelu">
+        <p class="screenshot-caption">Konfiguracja, upload, model</p>
+      </div>
+      <div class="screenshot-card">
+        <img src="../docs/images/Gen_Podsum_AI_2.png" alt="Gen Podsum AI — wyniki: punkty, sentyment">
+        <p class="screenshot-caption">Wyniki: punkty, sentyment</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Kluczowe elementy</h2>
     <div class="features-grid">
       <div class="feature-card">
-        <div class="feature-title">Analiza statystyczna</div>
-        <div class="feature-desc">Podstawowe statystyki opisowe: średnia, mediana, odchylenie standardowe dla wszystkich cech.</div>
+        <div class="feature-title">Upload i przetwarzanie</div>
+        <div class="feature-desc">Obsługa plików audio lub wideo; ekstrakcja ścieżki audio z wideo przy użyciu FFmpeg.</div>
       </div>
       <div class="feature-card">
-        <div class="feature-title">Wizualizacje rozkładów</div>
-        <div class="feature-desc">Histogramy i wykresy gęstości dla każdej cechy z podziałem na gatunki.</div>
+        <div class="feature-title">Transkrypcja Whisper</div>
+        <div class="feature-desc">Konwersja mowy na tekst przez API OpenAI zgodnie z implementacją serwera.</div>
       </div>
       <div class="feature-card">
-        <div class="feature-title">Wykresy pudełkowe</div>
-        <div class="feature-desc">Analiza outlierów, kwartyli i rozkładów dla każdego gatunku osobno.</div>
+        <div class="feature-title">GPT: streszczenie i sentyment</div>
+        <div class="feature-desc">Streszczenie, kluczowe punkty oraz analiza sentymentu — z wyborem modelu w UI.</div>
       </div>
       <div class="feature-card">
-        <div class="feature-title">Macierze korelacji</div>
-        <div class="feature-desc">Heatmapy pokazujące zależności między cechami morfologicznymi.</div>
-      </div>
-      <div class="feature-card">
-        <div class="feature-title">Wykresy punktowe</div>
-        <div class="feature-desc">Scatter plots wizualizujące separację między gatunkami w przestrzeni cech.</div>
-      </div>
-      <div class="feature-card">
-        <div class="feature-title">Modelowanie ML</div>
-        <div class="feature-desc">Klasyfikacja wieloklasowa z użyciem różnych algorytmów (KNN, SVM, Decision Trees).</div>
+        <div class="feature-title">Koszty i postęp</div>
+        <div class="feature-desc">Orientacyjne koszty wywołań API oraz widoczny postęp operacji w interfejsie.</div>
       </div>
     </div>
   </div>
 
   <div class="section">
-    <h2>Kluczowe Wnioski</h2>
+    <h2>Jak to działa (backend)</h2>
     <div class="challenges">
       <ul>
-        <li><strong>Struktura danych:</strong> 150 próbek (po 50 dla każdego gatunku), 4 cechy numeryczne, brak brakujących wartości.</li>
-        <li><strong>Iris Setosa:</strong> Najbardziej wyróżniający się gatunek - ma najmniejsze płatki i jest łatwy do oddzielenia od pozostałych.</li>
-        <li><strong>Versicolor vs Virginica:</strong> Te dwa gatunki częściowo się nakładają, co czyni ich rozróżnienie trudniejszym.</li>
-        <li><strong>Najważniejsze cechy:</strong> Długość i szerokość płatków (petal) są bardziej dyskryminujące niż cechy działek (sepal).</li>
-        <li><strong>Korelacje:</strong> Silna korelacja między długością a szerokością płatków (r > 0.9).</li>
-        <li><strong>Dokładność modelu:</strong> Algorytmy ML osiągają ~95-98% dokładności w klasyfikacji trzech gatunków.</li>
+        <li><strong>Express:</strong> API pod ścieżkami m.in. <code style="color: var(--blue3);">/api/...</code> — m.in. koszty, postęp, obsługa klucza zgodnie z kodem serwera.</li>
+        <li><strong>Port:</strong> domyślnie m.in. <code style="color: var(--blue3);">5001</code> (wartość z <code style="color: var(--blue3);">.env.example</code>).</li>
+        <li><strong>Stan:</strong> brak klasycznej bazy SQL — śledzenie kosztów i stanu zgodnie z implementacją w API.</li>
+        <li><strong>Uruchomienie lokalne:</strong> frontend <code style="color: var(--blue3);">npm start</code> / build statyczny; backend <code style="color: var(--blue3);">cd server && npm start</code>. Publiczne demo — po wdrożeniu (np. Vercel + Render, VPS); do tego czasu aplikacja jako projekt demonstracyjny lokalnie.</li>
       </ul>
-    </div>
-  </div>
-
-  <div class="section">
-    <h2>Kontekst Historyczny</h2>
-    <p>
-      Zbiór danych Iris, wprowadzony przez <strong>Ronalda Fishera w 1936 roku</strong>, jest jednym z najważniejszych 
-      zbiorów danych w historii statystyki i uczenia maszynowego. Fisher użył go do zilustrowania liniowej analizy dyskryminacyjnej (LDA).
-    </p>
-    <p>
-      Dataset składa się z pomiarów trzech gatunków irysów: <strong>Iris Setosa</strong>, <strong>Iris Versicolor</strong> 
-      i <strong>Iris Virginica</strong>. Dla każdego kwiatu zmierzono cztery cechy morfologiczne:
-    </p>
-    <div class="features-grid" style="margin-top: 24px;">
-      <div class="feature-card">
-        <div class="feature-title">Długość działki (Sepal Length)</div>
-        <div class="feature-desc">Pomiar długości zewnętrznego listka kwiatu w centymetrach.</div>
-      </div>
-      <div class="feature-card">
-        <div class="feature-title">Szerokość działki (Sepal Width)</div>
-        <div class="feature-desc">Pomiar szerokości zewnętrznego listka kwiatu w centymetrach.</div>
-      </div>
-      <div class="feature-card">
-        <div class="feature-title">Długość płatka (Petal Length)</div>
-        <div class="feature-desc">Pomiar długości wewnętrznego listka kwiatu w centymetrach.</div>
-      </div>
-      <div class="feature-card">
-        <div class="feature-title">Szerokość płatka (Petal Width)</div>
-        <div class="feature-desc">Pomiar szerokości wewnętrznego listka kwiatu w centymetrach.</div>
-      </div>
-    </div>
-  </div>
-
-  <div class="section">
-    <h2>Zastosowania</h2>
-    <p>
-      Ten projekt pokazuje kompletny pipeline eksploracyjnej analizy danych i klasyfikacji wieloklasowej. 
-      Techniki użyte w tym projekcie można zastosować do:
-    </p>
-    <div class="features-grid">
-      <div class="feature-card">
-        <div class="feature-title">Klasyfikacja biologiczna</div>
-        <div class="feature-desc">Automatyczna identyfikacja gatunków roślin, zwierząt lub mikroorganizmów.</div>
-      </div>
-      <div class="feature-card">
-        <div class="feature-title">Kontrola jakości</div>
-        <div class="feature-desc">Klasyfikacja produktów na podstawie pomiarów (wymiary, waga, kolor).</div>
-      </div>
-      <div class="feature-card">
-        <div class="feature-title">Diagnostyka medyczna</div>
-        <div class="feature-desc">Klasyfikacja chorób na podstawie parametrów klinicznych.</div>
-      </div>
     </div>
   </div>
 

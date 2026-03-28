@@ -1,7 +1,7 @@
 # 🚢 Analiza Danych Pasażerów Titanica (1912)
 
 <div align="center">
-    <img src="../images/titanic.jpg" alt="Titanic" width="500" style="border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+    <img src="../../images/titanic.jpg" alt="Titanic" width="500" style="border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
 </div>
 
 ---

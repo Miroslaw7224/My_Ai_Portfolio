@@ -62,7 +62,7 @@ Projektuję i buduję inteligentne systemy — od analizy danych i wizualizacji,
       <span class="stack-tag">SQLite</span>
       <span class="stack-tag">TTS</span>
     </div>
-    <a href="Code_sensei/code_sensei.md" class="project-link">Zobacz projekt →</a>
+    <a href="projects/Code_sensei/code_sensei.md" class="project-link">Zobacz projekt →</a>
   </div>
 
   <div class="project-card">
@@ -76,7 +76,7 @@ Projektuję i buduję inteligentne systemy — od analizy danych i wizualizacji,
       <span class="stack-tag">Matplotlib</span>
       <span class="stack-tag">Seaborn</span>
     </div>
-    <a href="Titanic/index.md" class="project-link">Zobacz projekt →</a>
+    <a href="projects/Titanic/index.md" class="project-link">Zobacz projekt →</a>
   </div>
 
   <div class="project-card">
@@ -90,7 +90,7 @@ Projektuję i buduję inteligentne systemy — od analizy danych i wizualizacji,
       <span class="stack-tag">Matplotlib</span>
       <span class="stack-tag">Jupyter</span>
     </div>
-    <a href="Iris/index.md" class="project-link">Zobacz projekt →</a>
+    <a href="projects/Iris/index.md" class="project-link">Zobacz projekt →</a>
   </div>
 
 </div>
