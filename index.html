@@ -87,7 +87,7 @@
     grid-template-columns: 1fr 1fr;
     gap: 80px;
     align-items: center;
-    padding: 100px 80px 60px;
+    padding: 100px 80px 0;
     max-width: 1400px;
     margin: 0 auto;
   }
@@ -155,30 +155,38 @@
   }
   .btn-secondary:hover::before { transform: translateX(0); }
 
-  .hero-id-card { animation: fadeLeft 1s 0.9s ease both; }
-
   /* SECTIONS */
   section { position: relative; z-index: 10; padding: 100px 80px; }
+  #skills {
+    padding-top: 0;
+    margin-top: -40px;
+  }
   .section-header { display: flex; align-items: center; gap: 20px; margin-bottom: 60px; }
   .section-num { font-family: 'Orbitron', monospace; font-size: 0.65rem; color: var(--blue3); letter-spacing: 3px; opacity: 0.6; }
   .section-title { font-family: 'Orbitron', monospace; font-size: clamp(1.4rem, 2.5vw, 2rem); font-weight: 700; color: #fff; letter-spacing: 2px; }
   .section-line { flex: 1; height: 1px; background: linear-gradient(90deg, rgba(0,200,255,0.4), transparent); }
 
   /* PROJECTS */
-  .projects-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 24px; }
-  .project-card { position: relative; background: rgba(4,13,42,0.8); border: 1px solid rgba(0,200,255,0.12); padding: 32px; transition: all 0.4s; overflow: hidden; cursor: pointer; }
+  .projects-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 24px; align-items: stretch; }
+  .project-card {
+    position: relative; display: flex; flex-direction: column; height: 100%; background: rgba(4,13,42,0.8); border: 1px solid rgba(0,200,255,0.12); padding: 32px; transition: all 0.4s; overflow: hidden; cursor: pointer;
+    text-decoration: none; color: inherit;
+  }
+  .project-card:focus-visible {
+    outline: 2px solid var(--blue3);
+    outline-offset: 3px;
+  }
   .project-card::before { content: ''; position: absolute; top: 0; left: 0; width: 3px; height: 0; background: linear-gradient(180deg, var(--blue3), var(--blue2)); transition: height 0.4s; box-shadow: 0 0 15px var(--blue3); }
   .project-card:hover { border-color: rgba(0,200,255,0.35); background: rgba(0,200,255,0.04); transform: translateY(-4px); box-shadow: 0 20px 60px rgba(0,0,0,0.5), 0 0 40px rgba(0,200,255,0.08); }
   .project-card:hover::before { height: 100%; }
   .project-tag { font-family: 'Share Tech Mono', monospace; font-size: 0.6rem; color: var(--blue3); letter-spacing: 3px; text-transform: uppercase; margin-bottom: 16px; opacity: 0.7; }
   .project-name { font-family: 'Orbitron', monospace; font-size: 1.1rem; font-weight: 700; color: #fff; margin-bottom: 16px; line-height: 1.3; }
   .project-desc { font-size: 0.85rem; line-height: 1.7; color: var(--text); opacity: 0.7; margin-bottom: 24px; }
-  .project-stack { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 24px; }
+  .project-stack { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 0; }
   .stack-tag { font-family: 'Share Tech Mono', monospace; font-size: 0.6rem; padding: 4px 10px; border: 1px solid rgba(0,200,255,0.2); color: var(--muted); letter-spacing: 1px; text-transform: uppercase; }
-  .project-link { font-family: 'Share Tech Mono', monospace; font-size: 0.65rem; color: var(--blue3); text-decoration: none; letter-spacing: 2px; text-transform: uppercase; display: flex; align-items: center; gap: 8px; transition: gap 0.3s; }
-  .project-link:hover { gap: 14px; }
+  .project-link { font-family: 'Share Tech Mono', monospace; font-size: 0.8rem; color: var(--blue3); letter-spacing: 2px; text-transform: uppercase; display: flex; align-items: center; gap: 8px; transition: gap 0.3s; margin-top: auto; padding-top: 24px; }
+  .project-card:hover .project-link { gap: 14px; }
   .project-card.featured { border-color: rgba(0,200,255,0.25); background: rgba(0,100,200,0.05); }
-  .featured-badge { position: absolute; top: 20px; right: 20px; font-family: 'Share Tech Mono', monospace; font-size: 0.55rem; padding: 4px 10px; background: rgba(0,200,255,0.1); border: 1px solid rgba(0,200,255,0.3); color: var(--blue3); letter-spacing: 2px; }
 
   /* SKILLS */
   .skills-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 16px; }
@@ -244,8 +252,14 @@
   }
 
   /* ID CARD in HERO (Version B from contact_visuals_ab.html) */
+  .hero-id-card-appear {
+    animation: fadeLeft 1s 0.9s ease both;
+    max-width: 100%;
+  }
+
   .hero-id-card {
     width: 340px;
+    max-width: 100%;
     background: rgba(2,8,24,0.95);
     border: 1px solid rgba(0,200,255,0.3);
     border-radius: 8px;
@@ -253,7 +267,7 @@
     box-shadow: 0 0 30px rgba(0,200,255,0.1);
     animation: badge-float 4s ease-in-out infinite;
     position: relative;
-    margin-left: 40px;
+    margin-left: 0;
   }
   @keyframes badge-float {
     0%,100% { transform: translateY(0); }
@@ -397,6 +411,111 @@
     letter-spacing: 1px;
   }
 
+  /* Hero prawa kolumna: karta ID + panel statystyk */
+  .hero-sidebar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+    justify-content: center;
+    margin-top: 52px;
+  }
+
+  /* Panel: 3+ / n8n / AI — jeden wiersz pod kartą ID */
+  .stats-row {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: stretch;
+    width: 100%;
+    max-width: 400px;
+    gap: 8px;
+    animation: heroStatsEnter 1s 1s ease both;
+  }
+
+  .stat-item {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    flex: 1;
+    min-width: 0;
+  }
+
+  .stat-item:last-child .stat-rail {
+    display: none;
+  }
+
+  .stat-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    flex: 0 1 auto;
+    min-width: 0;
+  }
+
+  .stat-rail {
+    flex-shrink: 0;
+    width: 2px;
+    align-self: center;
+    min-height: 56px;
+    position: relative;
+    border-radius: 1px;
+    background: linear-gradient(
+      180deg,
+      transparent 0%,
+      rgba(0, 229, 255, 0.25) 12%,
+      rgba(0, 212, 255, 0.95) 50%,
+      rgba(0, 229, 255, 0.25) 88%,
+      transparent 100%
+    );
+    box-shadow:
+      0 0 10px rgba(0, 212, 255, 0.75),
+      0 0 22px rgba(0, 212, 255, 0.35);
+  }
+
+  .stat-rail::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--blue3);
+    box-shadow:
+      0 0 14px var(--blue3),
+      0 0 28px rgba(0, 212, 255, 0.55);
+  }
+
+  .stat-num {
+    font-family: 'Orbitron', monospace;
+    font-size: clamp(1.65rem, 3.4vw, 2.35rem);
+    font-weight: 900;
+    color: #00e8ff;
+    line-height: 1.05;
+    letter-spacing: 0.02em;
+    text-shadow:
+      0 0 20px rgba(0, 232, 255, 0.95),
+      0 0 42px rgba(0, 212, 255, 0.55),
+      0 0 72px rgba(0, 180, 255, 0.25);
+  }
+
+  .stat-label {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.68rem;
+    color: var(--muted);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-top: 10px;
+    line-height: 1.35;
+    opacity: 0.92;
+  }
+
   /* FOOTER */
   footer { position: relative; z-index: 10; padding: 30px 80px; border-top: 1px solid rgba(0,200,255,0.08); display: flex; justify-content: space-between; align-items: center; }
   .footer-text { font-family: 'Share Tech Mono', monospace; font-size: 0.6rem; color: var(--muted); letter-spacing: 2px; text-transform: uppercase; }
@@ -404,6 +523,7 @@
   /* ANIMATIONS */
   @keyframes fadeUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
   @keyframes fadeLeft { from { opacity: 0; transform: translateX(30px); } to { opacity: 1; transform: translateX(0); } }
+  @keyframes heroStatsEnter { from { opacity: 0; transform: translateX(22px); } to { opacity: 1; transform: translateX(0); } }
 
   /* GLOW ORBS */
   .orb { position: fixed; border-radius: 50%; filter: blur(140px); pointer-events: none; z-index: 0; }
@@ -417,7 +537,11 @@
     #hero {
       grid-template-columns: 1fr;
       gap: 60px;
-      padding: 100px 40px 60px;
+      padding: 100px 40px 0;
+    }
+    .stats-row {
+      margin-left: auto;
+      margin-right: auto;
     }
   }
 
@@ -428,8 +552,9 @@
 
   @media (max-width: 768px) {
     nav { padding: 0 20px; }
-    #hero { padding: 100px 20px 60px; grid-template-columns: 1fr; gap: 40px; }
+    #hero { padding: 100px 20px 0; grid-template-columns: 1fr; gap: 40px; }
     section { padding: 80px 20px; }
+    #skills { padding-top: 0; margin-top: -28px; }
     footer { padding: 30px 20px; flex-direction: column; gap: 10px; text-align: center; }
     .projects-grid { grid-template-columns: 1fr; }
     .skills-grid { grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); }
@@ -477,6 +602,8 @@
       <a href="#contact" class="btn-secondary">// KONTAKT</a>
     </div>
   </div>
+  <div class="hero-sidebar">
+  <div class="hero-id-card-appear">
   <div class="hero-id-card">
     <div class="badge-scan"></div>
     <div class="badge-header">
@@ -518,6 +645,31 @@
       <div class="badge-id-num">ID-7224</div>
     </div>
   </div>
+  </div>
+  <aside class="stats-row" aria-label="Najważniejsze liczby portfolio">
+    <div class="stat-item">
+      <div class="stat-body">
+        <div class="stat-num">3+</div>
+        <div class="stat-label">AI projekty</div>
+      </div>
+      <span class="stat-rail" aria-hidden="true"></span>
+    </div>
+    <div class="stat-item">
+      <div class="stat-body">
+        <div class="stat-num">n8n</div>
+        <div class="stat-label">Automatyzacje</div>
+      </div>
+      <span class="stat-rail" aria-hidden="true"></span>
+    </div>
+    <div class="stat-item">
+      <div class="stat-body">
+        <div class="stat-num">AI</div>
+        <div class="stat-label">Specjalizacja</div>
+      </div>
+      <span class="stat-rail" aria-hidden="true"></span>
+    </div>
+  </aside>
+  </div>
 </section>
 
 <!-- SKILLS -->
@@ -552,8 +704,7 @@
   </div>
   <div class="projects-grid">
 
-    <div class="project-card featured">
-      <div class="featured-badge">FEATURED</div>
+    <a href="projects/code-sensei.html" class="project-card featured">
       <div class="project-tag">// Full Stack · AI · Web App</div>
       <div class="project-name">Code Sensei</div>
       <p class="project-desc">Interaktywna aplikacja webowa do analizy i refaktoryzacji kodu z użyciem AI. Integracja OpenAI GPT-4o, TTS, historia analiz i zarządzanie kosztami tokenów. Hosting na Streamlit Cloud.</p>
@@ -564,8 +715,23 @@
         <span class="stack-tag">SQLite</span>
         <span class="stack-tag">TTS</span>
       </div>
-      <a href="projects/code-sensei.html" class="project-link">Zobacz projekt →</a>
-    </div>
+      <span class="project-link">Zobacz projekt →</span>
+    </a>
+
+    <a href="projects/english-buddy.html" class="project-card featured">
+      <div class="project-tag">// Full Stack · AI · Edukacja językowa</div>
+      <div class="project-name">English Buddy</div>
+      <p class="project-desc">English Buddy to aplikacja webowa do nauki angielskiego z AI: poziomy CEFR (A1–C2), czat tekstowy i głosowy, tysiące fiszek z trybem quizu i powtórkami SRS (algorytm SM-2), test poziomujący oraz feedback do pisania i mówienia. Dla uczących się, którzy chcą jednego miejsca na rozmowę z „tutorem”, słownictwo i śledzenie postępu; wdrożenie typowe pod Vercel z backendem w Supabase i modelami OpenAI. Dostępny jest też tryb demo bez rejestracji (z limitami). W repozytorium README może nadal otwierać się od „English Agent” — w UI dominuje marka English Buddy.</p>
+      <div class="project-stack">
+        <span class="stack-tag">Next.js</span>
+        <span class="stack-tag">TypeScript</span>
+        <span class="stack-tag">OpenAI</span>
+        <span class="stack-tag">Supabase</span>
+        <span class="stack-tag">Tailwind</span>
+        <span class="stack-tag">TanStack Query</span>
+      </div>
+      <span class="project-link">Zobacz projekt →</span>
+    </a>
 
   </div>
 </section>
@@ -579,7 +745,7 @@
   </div>
   <div class="projects-grid">
 
-    <div class="project-card">
+    <a href="projects/titanic.html" class="project-card">
       <div class="project-tag">// Data Science · ML · Classification</div>
       <div class="project-name">Titanic Survival Prediction</div>
       <p class="project-desc">Analiza przeżywalności pasażerów Titanica z wykorzystaniem różnych algorytmów Machine Learning. Eksploracyjna analiza danych, wizualizacje i modelowanie predykcyjne.</p>
@@ -590,10 +756,10 @@
         <span class="stack-tag">Matplotlib</span>
         <span class="stack-tag">Seaborn</span>
       </div>
-      <a href="projects/titanic.html" class="project-link">Zobacz projekt →</a>
-    </div>
+      <span class="project-link">Zobacz projekt →</span>
+    </a>
 
-    <div class="project-card">
+    <a href="projects/iris.html" class="project-card">
       <div class="project-tag">// Data Science · ML · EDA</div>
       <div class="project-name">Iris Dataset Analysis</div>
       <p class="project-desc">Klasyfikacja gatunków kwiatów Iris z wykorzystaniem Machine Learning. Kompletna analiza eksploracyjna, wizualizacje rozkładów i macierze korelacji.</p>
@@ -604,10 +770,10 @@
         <span class="stack-tag">Matplotlib</span>
         <span class="stack-tag">Jupyter</span>
       </div>
-      <a href="projects/iris.html" class="project-link">Zobacz projekt →</a>
-    </div>
+      <span class="project-link">Zobacz projekt →</span>
+    </a>
 
-    <div class="project-card">
+    <a href="projects/gen-podsum-ai.html" class="project-card">
       <div class="project-tag">// Full Stack · AI · Audio / Video</div>
       <div class="project-name">Gen Podsum AI</div>
       <p class="project-desc">Aplikacja webowa do wgrywania plików audio lub wideo: transkrypcja przez Whisper, streszczenie z kluczowymi punktami oraz analiza sentymentu (modele GPT). W interfejsie widać orientacyjne koszty API i postęp przetwarzania.</p>
@@ -619,8 +785,8 @@
         <span class="stack-tag">OpenAI API</span>
         <span class="stack-tag">FFmpeg</span>
       </div>
-      <a href="projects/gen-podsum-ai.html" class="project-link">Zobacz projekt →</a>
-    </div>
+      <span class="project-link">Zobacz projekt →</span>
+    </a>
 
   </div>
 </section>
