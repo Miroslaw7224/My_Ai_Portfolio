@@ -6,6 +6,14 @@ alwaysApply: true
 
 # Reguły projektu portfolio
 
+## Inwentarz stacku i sekcja `#skills` — źródło prawdy
+
+- **ADR 0006** (`docs/adr/0006-inwentarz-stacku-i-sekcja-skills.md`) utrwala kontekst, konsekwencje i powiązania z innymi ADR.
+- **Źródłem prawdy** dla kanonicznych nazw technologii, przypisania do projektów oraz liczb **`[ n ]`** w sekcji `#skills` na `index.html` jest plik **`docs/portfolio-tech-inventory.md`**.
+- **Procedura** przy nowym projekcie lub zmianie stacku: (1) zaktualizuj sekcję Stack na **`projects/<slug>.html`**; (2) zaktualizuj **`docs/portfolio-tech-inventory.md`**; (3) zsynchronizuj tagi na kartach **`index.html`** z aliasami z inwentarza; (4) przepisz blok **`#skills`** w `index.html` według inwentarza — kolejność **malejąco po liczbie projektów**, przy remisie **alfabetycznie** po nazwie kanonicznej.
+- **Liczy się tylko tag w sekcji Stack** na stronie projektu — nie wzmianki w tekście. **Normalizacja nazw** i reguły opisane są w inwentarzu.
+- Na stronie głównej **nie** wymieniamy przy technologii nazw projektów ani linków — weryfikacja wyłącznie w `projects/<slug>.html`.
+
 ## Architektura — czego NIE robimy (ADR 0001)
 
 - **Brak bundlera** (Webpack, Vite, Parcel) dla warstwy portfolio.
@@ -50,7 +58,8 @@ docs/command.md             # operacyjny skrót reguł i komend
 2. Utwórz `projects/<slug>.html` (spójny z cyber UI reszty portfolio).
 3. *(Opcjonalnie)* Utwórz `docs/projects/<slug>/` z dłuższym opisem i `docs/images/<slug>/` z grafikami.
 4. Ustaw linki: `index.html` ↔ `projects/<slug>.html`; z `projects/` do `docs/` tylko jeśli krok 3 zrealizowano.
-5. Sprawdź ścieżki względne — muszą działać z korzenia repozytorium (tak jak na GitHub Pages).
+5. Zaktualizuj `docs/portfolio-tech-inventory.md` oraz sekcję `#skills` na `index.html` (patrz: **Inwentarz stacku i sekcja `#skills`** powyżej).
+6. Sprawdź ścieżki względne — muszą działać z korzenia repozytorium (tak jak na GitHub Pages).
 
 ## Deploy — GitHub Pages (ADR 0003)
 

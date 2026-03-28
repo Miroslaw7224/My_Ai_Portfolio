@@ -212,12 +212,25 @@
   .project-card.featured { border-color: rgba(0,200,255,0.25); background: rgba(0,100,200,0.05); }
 
   /* SKILLS */
-  .skills-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 16px; }
-  .skill-item { padding: 20px 24px; border: 1px solid rgba(0,200,255,0.1); background: rgba(4,13,42,0.6); transition: all 0.3s; }
+  .skills-intro {
+    font-size: 0.8rem;
+    line-height: 1.65;
+    color: var(--muted);
+    max-width: 820px;
+    margin: -28px 0 36px;
+    opacity: 0.9;
+  }
+  .skills-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 14px; }
+  .skill-item { padding: 18px 22px; border: 1px solid rgba(0,200,255,0.1); background: rgba(4,13,42,0.6); transition: all 0.3s; }
   .skill-item:hover { border-color: rgba(0,200,255,0.3); box-shadow: 0 0 20px rgba(0,200,255,0.08); }
-  .skill-name { font-family: 'Share Tech Mono', monospace; font-size: 0.75rem; color: var(--blue3); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 10px; }
-  .skill-bar-bg { height: 2px; background: rgba(0,200,255,0.1); overflow: hidden; }
-  .skill-bar { height: 100%; background: linear-gradient(90deg, var(--blue2), var(--blue3)); box-shadow: 0 0 8px var(--blue3); width: 0; transition: width 1.5s cubic-bezier(0.16,1,0.3,1); }
+  .skill-head { display: flex; justify-content: space-between; align-items: baseline; gap: 14px; margin-bottom: 10px; }
+  .skill-name { font-family: 'Share Tech Mono', monospace; font-size: 0.72rem; color: var(--blue3); letter-spacing: 1.5px; text-transform: uppercase; line-height: 1.35; }
+  .skill-count { font-family: 'Share Tech Mono', monospace; font-size: 0.68rem; color: var(--muted); letter-spacing: 1px; flex-shrink: 0; }
+  .skill-bar-bg { height: 3px; background: rgba(0,200,255,0.12); overflow: hidden; border-radius: 1px; }
+  .skill-bar { height: 100%; width: 100%; background: linear-gradient(90deg, var(--blue2), var(--blue3)); box-shadow: 0 0 8px var(--blue3); }
+  .skill-item--stack-clipped { display: none !important; }
+  .skills-toggle-wrap { margin-top: 22px; }
+  .skills-toggle-btn { font: inherit; }
 
   /* CONTACT */
   .contact-wrapper { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; max-width: 1200px; margin: 0 auto; }
@@ -449,7 +462,7 @@
     margin-top: 28px;
   }
 
-  /* Panel: 3+ / n8n / AI — jeden wiersz pod kartą ID */
+  /* Panel: liczby portfolio (projekty / LLM / ML) — jeden wiersz pod kartą ID */
   .stats-row {
     display: flex;
     flex-direction: row;
@@ -588,7 +601,7 @@
     #skills { padding-top: 0; margin-top: 0; }
     footer { padding: 30px 20px; flex-direction: column; gap: 10px; text-align: center; }
     .projects-grid { grid-template-columns: 1fr; }
-    .skills-grid { grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); }
+    .skills-grid { grid-template-columns: 1fr; }
     .nav-links { gap: 20px; }
     .hero-cta { flex-direction: column; width: 100%; }
     .btn-primary, .btn-secondary { width: 100%; text-align: center; }
@@ -633,14 +646,13 @@
     <div class="hero-tag">Portfolio · AI & Data Science Engineer</div>
     <h1 class="hero-name">Mirosław<br><span class="glow-text">Baczkowski</span></h1>
     <div class="hero-title">AI Systems · Data Science · Machine Learning</div>
-    <p class="hero-desc">Projektuję i buduję inteligentne systemy — od analizy danych i wizualizacji, przez modele Machine Learning, po kompletne aplikacje webowe z integracją AI.</p>
+    <p class="hero-desc">Łączę Data Science z produktem: od notebooków EDA i klasyfikacji ML, po aplikacje webowe z LLM — Streamlit, Next.js i React z integracją OpenAI.</p>
     <div class="hero-badges">
       <span class="badge">Python</span>
-      <span class="badge">Pandas / NumPy</span>
-      <span class="badge">Scikit-learn</span>
-      <span class="badge">TensorFlow</span>
       <span class="badge">OpenAI API</span>
-      <span class="badge">Streamlit</span>
+      <span class="badge">Pandas</span>
+      <span class="badge">TypeScript</span>
+      <span class="badge">React</span>
     </div>
     <div class="hero-cta">
       <a href="#projects" class="btn-primary">// PROJEKTY</a>
@@ -673,7 +685,7 @@
       </div>
       <div class="badge-field">
         <span class="badge-field-label">Stack</span>
-        <span class="badge-field-value" style="font-size:0.8rem">AI · n8n · Python</span>
+        <span class="badge-field-value" style="font-size:0.8rem">Python · TS · OpenAI</span>
       </div>
       <div class="badge-field">
         <span class="badge-field-label">GitHub</span>
@@ -694,22 +706,22 @@
   <aside class="stats-row" aria-label="Najważniejsze liczby portfolio">
     <div class="stat-item">
       <div class="stat-body">
-        <div class="stat-num">3+</div>
-        <div class="stat-label">AI projekty</div>
+        <div class="stat-num">5</div>
+        <div class="stat-label">projekty</div>
       </div>
       <span class="stat-rail" aria-hidden="true"></span>
     </div>
     <div class="stat-item">
       <div class="stat-body">
-        <div class="stat-num">n8n</div>
-        <div class="stat-label">Automatyzacje</div>
+        <div class="stat-num">3</div>
+        <div class="stat-label">aplikacje z LLM</div>
       </div>
       <span class="stat-rail" aria-hidden="true"></span>
     </div>
     <div class="stat-item">
       <div class="stat-body">
-        <div class="stat-num">AI</div>
-        <div class="stat-label">Specjalizacja</div>
+        <div class="stat-num">2</div>
+        <div class="stat-label">projekty ML / EDA</div>
       </div>
       <span class="stat-rail" aria-hidden="true"></span>
     </div>
@@ -724,19 +736,51 @@
     <h2 class="section-title">STACK TECHNOLOGICZNY</h2>
     <div class="section-line"></div>
   </div>
-  <div class="skills-grid">
-    <div class="skill-item" data-level="90"><div class="skill-name">Python</div><div class="skill-bar-bg"><div class="skill-bar"></div></div></div>
-    <div class="skill-item" data-level="85"><div class="skill-name">Pandas / NumPy</div><div class="skill-bar-bg"><div class="skill-bar"></div></div></div>
-    <div class="skill-item" data-level="82"><div class="skill-name">Scikit-learn</div><div class="skill-bar-bg"><div class="skill-bar"></div></div></div>
-    <div class="skill-item" data-level="80"><div class="skill-name">Matplotlib / Seaborn</div><div class="skill-bar-bg"><div class="skill-bar"></div></div></div>
-    <div class="skill-item" data-level="75"><div class="skill-name">TensorFlow</div><div class="skill-bar-bg"><div class="skill-bar"></div></div></div>
-    <div class="skill-item" data-level="85"><div class="skill-name">OpenAI API</div><div class="skill-bar-bg"><div class="skill-bar"></div></div></div>
-    <div class="skill-item" data-level="88"><div class="skill-name">Streamlit</div><div class="skill-bar-bg"><div class="skill-bar"></div></div></div>
-    <div class="skill-item" data-level="78"><div class="skill-name">Jupyter Notebooks</div><div class="skill-bar-bg"><div class="skill-bar"></div></div></div>
-    <div class="skill-item" data-level="80"><div class="skill-name">Git / GitHub</div><div class="skill-bar-bg"><div class="skill-bar"></div></div></div>
-    <div class="skill-item" data-level="75"><div class="skill-name">SQLite / Databases</div><div class="skill-bar-bg"><div class="skill-bar"></div></div></div>
-    <div class="skill-item" data-level="83"><div class="skill-name">Data Visualization</div><div class="skill-bar-bg"><div class="skill-bar"></div></div></div>
-    <div class="skill-item" data-level="70"><div class="skill-name">Plotly Interactive</div><div class="skill-bar-bg"><div class="skill-bar"></div></div></div>
+  <p class="skills-intro">Liczba w kwadratowych nawiasach to <strong>liczba projektów</strong>, w których dana technologia występuje jako tag w sekcji stack na podstronie projektu. Źródło listy i kolejności: <code style="color:var(--blue3);font-size:0.85em">docs/portfolio-tech-inventory.md</code>. Domyślnie widać ok. <strong>cztery wiersze</strong> siatki — resztę można rozwinąć.</p>
+  <div class="skills-stack-wrap">
+  <div class="skills-grid" id="skills-panel">
+    <div class="skill-item"><div class="skill-head"><span class="skill-name">OpenAI API</span><span class="skill-count" aria-label="Projektów w portfolio: 3">[ 3 ]</span></div><div class="skill-bar-bg"><div class="skill-bar"></div></div></div>
+    <div class="skill-item"><div class="skill-head"><span class="skill-name">Pandas</span><span class="skill-count" aria-label="Projektów w portfolio: 3">[ 3 ]</span></div><div class="skill-bar-bg"><div class="skill-bar"></div></div></div>
+    <div class="skill-item"><div class="skill-head"><span class="skill-name">Python</span><span class="skill-count" aria-label="Projektów w portfolio: 3">[ 3 ]</span></div><div class="skill-bar-bg"><div class="skill-bar"></div></div></div>
+    <div class="skill-item"><div class="skill-head"><span class="skill-name">Jupyter Notebooks</span><span class="skill-count" aria-label="Projektów w portfolio: 2">[ 2 ]</span></div><div class="skill-bar-bg"><div class="skill-bar"></div></div></div>
+    <div class="skill-item"><div class="skill-head"><span class="skill-name">Matplotlib</span><span class="skill-count" aria-label="Projektów w portfolio: 2">[ 2 ]</span></div><div class="skill-bar-bg"><div class="skill-bar"></div></div></div>
+    <div class="skill-item"><div class="skill-head"><span class="skill-name">NumPy</span><span class="skill-count" aria-label="Projektów w portfolio: 2">[ 2 ]</span></div><div class="skill-bar-bg"><div class="skill-bar"></div></div></div>
+    <div class="skill-item"><div class="skill-head"><span class="skill-name">React</span><span class="skill-count" aria-label="Projektów w portfolio: 2">[ 2 ]</span></div><div class="skill-bar-bg"><div class="skill-bar"></div></div></div>
+    <div class="skill-item"><div class="skill-head"><span class="skill-name">Scikit-learn</span><span class="skill-count" aria-label="Projektów w portfolio: 2">[ 2 ]</span></div><div class="skill-bar-bg"><div class="skill-bar"></div></div></div>
+    <div class="skill-item"><div class="skill-head"><span class="skill-name">Seaborn</span><span class="skill-count" aria-label="Projektów w portfolio: 2">[ 2 ]</span></div><div class="skill-bar-bg"><div class="skill-bar"></div></div></div>
+    <div class="skill-item"><div class="skill-head"><span class="skill-name">TypeScript</span><span class="skill-count" aria-label="Projektów w portfolio: 2">[ 2 ]</span></div><div class="skill-bar-bg"><div class="skill-bar"></div></div></div>
+    <div class="skill-item"><div class="skill-head"><span class="skill-name">@openai/agents</span><span class="skill-count" aria-label="Projektów w portfolio: 1">[ 1 ]</span></div><div class="skill-bar-bg"><div class="skill-bar"></div></div></div>
+    <div class="skill-item"><div class="skill-head"><span class="skill-name">ESLint · Prettier</span><span class="skill-count" aria-label="Projektów w portfolio: 1">[ 1 ]</span></div><div class="skill-bar-bg"><div class="skill-bar"></div></div></div>
+    <div class="skill-item"><div class="skill-head"><span class="skill-name">Express</span><span class="skill-count" aria-label="Projektów w portfolio: 1">[ 1 ]</span></div><div class="skill-bar-bg"><div class="skill-bar"></div></div></div>
+    <div class="skill-item"><div class="skill-head"><span class="skill-name">FFmpeg</span><span class="skill-count" aria-label="Projektów w portfolio: 1">[ 1 ]</span></div><div class="skill-bar-bg"><div class="skill-bar"></div></div></div>
+    <div class="skill-item"><div class="skill-head"><span class="skill-name">Git / GitHub</span><span class="skill-count" aria-label="Projektów w portfolio: 1">[ 1 ]</span></div><div class="skill-bar-bg"><div class="skill-bar"></div></div></div>
+    <div class="skill-item"><div class="skill-head"><span class="skill-name">Husky</span><span class="skill-count" aria-label="Projektów w portfolio: 1">[ 1 ]</span></div><div class="skill-bar-bg"><div class="skill-bar"></div></div></div>
+    <div class="skill-item"><div class="skill-head"><span class="skill-name">Lucide React</span><span class="skill-count" aria-label="Projektów w portfolio: 1">[ 1 ]</span></div><div class="skill-bar-bg"><div class="skill-bar"></div></div></div>
+    <div class="skill-item"><div class="skill-head"><span class="skill-name">Luxon · uuid</span><span class="skill-count" aria-label="Projektów w portfolio: 1">[ 1 ]</span></div><div class="skill-bar-bg"><div class="skill-bar"></div></div></div>
+    <div class="skill-item"><div class="skill-head"><span class="skill-name">Multer</span><span class="skill-count" aria-label="Projektów w portfolio: 1">[ 1 ]</span></div><div class="skill-bar-bg"><div class="skill-bar"></div></div></div>
+    <div class="skill-item"><div class="skill-head"><span class="skill-name">Next.js</span><span class="skill-count" aria-label="Projektów w portfolio: 1">[ 1 ]</span></div><div class="skill-bar-bg"><div class="skill-bar"></div></div></div>
+    <div class="skill-item"><div class="skill-head"><span class="skill-name">next-pwa</span><span class="skill-count" aria-label="Projektów w portfolio: 1">[ 1 ]</span></div><div class="skill-bar-bg"><div class="skill-bar"></div></div></div>
+    <div class="skill-item"><div class="skill-head"><span class="skill-name">Node.js</span><span class="skill-count" aria-label="Projektów w portfolio: 1">[ 1 ]</span></div><div class="skill-bar-bg"><div class="skill-bar"></div></div></div>
+    <div class="skill-item"><div class="skill-head"><span class="skill-name">Plotly</span><span class="skill-count" aria-label="Projektów w portfolio: 1">[ 1 ]</span></div><div class="skill-bar-bg"><div class="skill-bar"></div></div></div>
+    <div class="skill-item"><div class="skill-head"><span class="skill-name">PostgreSQL · RLS</span><span class="skill-count" aria-label="Projektów w portfolio: 1">[ 1 ]</span></div><div class="skill-bar-bg"><div class="skill-bar"></div></div></div>
+    <div class="skill-item"><div class="skill-head"><span class="skill-name">react-hook-form · Zod</span><span class="skill-count" aria-label="Projektów w portfolio: 1">[ 1 ]</span></div><div class="skill-bar-bg"><div class="skill-bar"></div></div></div>
+    <div class="skill-item"><div class="skill-head"><span class="skill-name">REST API</span><span class="skill-count" aria-label="Projektów w portfolio: 1">[ 1 ]</span></div><div class="skill-bar-bg"><div class="skill-bar"></div></div></div>
+    <div class="skill-item"><div class="skill-head"><span class="skill-name">Sentry</span><span class="skill-count" aria-label="Projektów w portfolio: 1">[ 1 ]</span></div><div class="skill-bar-bg"><div class="skill-bar"></div></div></div>
+    <div class="skill-item"><div class="skill-head"><span class="skill-name">shadcn/ui · Radix</span><span class="skill-count" aria-label="Projektów w portfolio: 1">[ 1 ]</span></div><div class="skill-bar-bg"><div class="skill-bar"></div></div></div>
+    <div class="skill-item"><div class="skill-head"><span class="skill-name">SQLite</span><span class="skill-count" aria-label="Projektów w portfolio: 1">[ 1 ]</span></div><div class="skill-bar-bg"><div class="skill-bar"></div></div></div>
+    <div class="skill-item"><div class="skill-head"><span class="skill-name">Storybook</span><span class="skill-count" aria-label="Projektów w portfolio: 1">[ 1 ]</span></div><div class="skill-bar-bg"><div class="skill-bar"></div></div></div>
+    <div class="skill-item"><div class="skill-head"><span class="skill-name">Streamlit</span><span class="skill-count" aria-label="Projektów w portfolio: 1">[ 1 ]</span></div><div class="skill-bar-bg"><div class="skill-bar"></div></div></div>
+    <div class="skill-item"><div class="skill-head"><span class="skill-name">Streamlit Cloud</span><span class="skill-count" aria-label="Projektów w portfolio: 1">[ 1 ]</span></div><div class="skill-bar-bg"><div class="skill-bar"></div></div></div>
+    <div class="skill-item"><div class="skill-head"><span class="skill-name">Supabase Auth</span><span class="skill-count" aria-label="Projektów w portfolio: 1">[ 1 ]</span></div><div class="skill-bar-bg"><div class="skill-bar"></div></div></div>
+    <div class="skill-item"><div class="skill-head"><span class="skill-name">Tailwind CSS</span><span class="skill-count" aria-label="Projektów w portfolio: 1">[ 1 ]</span></div><div class="skill-bar-bg"><div class="skill-bar"></div></div></div>
+    <div class="skill-item"><div class="skill-head"><span class="skill-name">TanStack Query</span><span class="skill-count" aria-label="Projektów w portfolio: 1">[ 1 ]</span></div><div class="skill-bar-bg"><div class="skill-bar"></div></div></div>
+    <div class="skill-item"><div class="skill-head"><span class="skill-name">TTS</span><span class="skill-count" aria-label="Projektów w portfolio: 1">[ 1 ]</span></div><div class="skill-bar-bg"><div class="skill-bar"></div></div></div>
+    <div class="skill-item"><div class="skill-head"><span class="skill-name">Vitest · Playwright</span><span class="skill-count" aria-label="Projektów w portfolio: 1">[ 1 ]</span></div><div class="skill-bar-bg"><div class="skill-bar"></div></div></div>
+    <div class="skill-item"><div class="skill-head"><span class="skill-name">Zustand</span><span class="skill-count" aria-label="Projektów w portfolio: 1">[ 1 ]</span></div><div class="skill-bar-bg"><div class="skill-bar"></div></div></div>
+  </div>
+  <div class="skills-toggle-wrap">
+    <button type="button" class="btn-secondary skills-toggle-btn" id="skills-toggle" hidden aria-expanded="false" aria-controls="skills-panel">// ROZWIŃ CAŁY STACK</button>
+  </div>
   </div>
 </section>
 
@@ -757,6 +801,7 @@
         <span class="stack-tag">Python</span>
         <span class="stack-tag">Streamlit</span>
         <span class="stack-tag">OpenAI API</span>
+        <span class="stack-tag">Pandas</span>
         <span class="stack-tag">SQLite</span>
         <span class="stack-tag">TTS</span>
       </div>
@@ -766,13 +811,14 @@
     <a href="projects/english-buddy.html" class="project-card featured">
       <div class="project-tag">// Full Stack · AI · Edukacja językowa</div>
       <div class="project-name">English Buddy</div>
-      <p class="project-desc">English Buddy to aplikacja webowa do nauki angielskiego z AI: poziomy CEFR (A1–C2), czat tekstowy i głosowy, tysiące fiszek z trybem quizu i powtórkami SRS (algorytm SM-2), test poziomujący oraz feedback do pisania i mówienia. Dla uczących się, którzy chcą jednego miejsca na rozmowę z „tutorem”, słownictwo i śledzenie postępu; wdrożenie typowe pod Vercel z backendem w Supabase i modelami OpenAI. Dostępny jest też tryb demo bez rejestracji (z limitami). W repozytorium README może nadal otwierać się od „English Agent” — w UI dominuje marka English Buddy.</p>
+      <p class="project-desc">Aplikacja do nauki angielskiego z AI: poziomy CEFR (A1–C2), czat tekstowy i głosowy, fiszki z quizem i SRS (SM-2), test poziomujący oraz feedback do pisania i mówienia. Stack Next.js 15, Supabase i OpenAI; tryb demo bez rejestracji (z limitami).</p>
       <div class="project-stack">
         <span class="stack-tag">Next.js</span>
         <span class="stack-tag">TypeScript</span>
-        <span class="stack-tag">OpenAI</span>
-        <span class="stack-tag">Supabase</span>
-        <span class="stack-tag">Tailwind</span>
+        <span class="stack-tag">OpenAI API</span>
+        <span class="stack-tag">Supabase Auth</span>
+        <span class="stack-tag">PostgreSQL · RLS</span>
+        <span class="stack-tag">Tailwind CSS</span>
         <span class="stack-tag">TanStack Query</span>
       </div>
       <span class="project-link">Zobacz projekt →</span>
@@ -797,9 +843,12 @@
       <div class="project-stack">
         <span class="stack-tag">Python</span>
         <span class="stack-tag">Pandas</span>
+        <span class="stack-tag">NumPy</span>
         <span class="stack-tag">Scikit-learn</span>
         <span class="stack-tag">Matplotlib</span>
         <span class="stack-tag">Seaborn</span>
+        <span class="stack-tag">Plotly</span>
+        <span class="stack-tag">Jupyter</span>
       </div>
       <span class="project-link">Zobacz projekt →</span>
     </a>
@@ -812,7 +861,9 @@
         <span class="stack-tag">Python</span>
         <span class="stack-tag">Pandas</span>
         <span class="stack-tag">NumPy</span>
+        <span class="stack-tag">Scikit-learn</span>
         <span class="stack-tag">Matplotlib</span>
+        <span class="stack-tag">Seaborn</span>
         <span class="stack-tag">Jupyter</span>
       </div>
       <span class="project-link">Zobacz projekt →</span>
@@ -829,6 +880,9 @@
         <span class="stack-tag">Express</span>
         <span class="stack-tag">OpenAI API</span>
         <span class="stack-tag">FFmpeg</span>
+        <span class="stack-tag">REST API</span>
+        <span class="stack-tag">Multer</span>
+        <span class="stack-tag">Lucide React</span>
       </div>
       <span class="project-link">Zobacz projekt →</span>
     </a>
@@ -846,9 +900,9 @@
   <div class="contact-wrapper">
     <div class="contact-content">
       <p class="contact-text">
-        Pasjonat Data Science i AI, poszukujący możliwości rozwoju w branży IT/AI. 
-        Buduję inteligentne systemy, modele ML i aplikacje oparte na analizie danych.<br><br>
-        Jeśli pracujesz nad czymś interesującym w obszarze AI lub Data Science — chętnie porozmawiam.
+        Pasjonat Data Science i sztucznej inteligencji — szukam ról, w których mogę łączyć dane, modele ML i produkt cyfrowy.
+        W portfolio są aplikacje full-stack z LLM (Streamlit, Next.js, React), integracje OpenAI oraz klasyczne projekty ML z pełną EDA i klasyfikacją.<br><br>
+        Jeśli budujecie coś w obszarze AI lub analityki danych — chętnie porozmawiam.
       </p>
       <div class="contact-links">
         <a href="https://github.com/Miroslaw7224" class="contact-link" target="_blank">
@@ -1077,20 +1131,52 @@ function draw() {
 }
 requestAnimationFrame(draw);
 
-// Skill bars on scroll
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.querySelectorAll('.skill-item').forEach(item => {
-        const bar = item.querySelector('.skill-bar');
-        setTimeout(() => { bar.style.width = item.dataset.level + '%'; }, 100);
-      });
-    }
-  });
-}, { threshold: 0.3 });
+// Stack technologiczny: po 4 wierszach siatki — zwijanie / rozwijanie (liczba kolumn z layoutu)
+(function skillsStackCollapse() {
+  const grid = document.getElementById('skills-panel');
+  const btn = document.getElementById('skills-toggle');
+  if (!grid || !btn) return;
+  const items = Array.from(grid.querySelectorAll('.skill-item'));
+  const ROWS = 4;
+  let expanded = false;
 
-const skillsSection = document.querySelector('#skills');
-if (skillsSection) observer.observe(skillsSection);
+  function columnCount() {
+    const t = getComputedStyle(grid).gridTemplateColumns;
+    if (!t || t === 'none') return 1;
+    return t.trim().split(/\s+/).filter(Boolean).length;
+  }
+
+  function apply() {
+    const cols = columnCount();
+    const maxVisible = Math.max(1, cols * ROWS);
+    const needToggle = items.length > maxVisible;
+    if (!needToggle) {
+      expanded = false;
+      items.forEach((el) => el.classList.remove('skill-item--stack-clipped'));
+      btn.hidden = true;
+      return;
+    }
+    btn.hidden = false;
+    items.forEach((el, i) => {
+      if (expanded || i < maxVisible) el.classList.remove('skill-item--stack-clipped');
+      else el.classList.add('skill-item--stack-clipped');
+    });
+    btn.setAttribute('aria-expanded', expanded ? 'true' : 'false');
+    btn.textContent = expanded ? '// ZWIŃ STACK' : '// ROZWIŃ CAŁY STACK';
+  }
+
+  btn.addEventListener('click', () => {
+    expanded = !expanded;
+    apply();
+  });
+
+  if (typeof ResizeObserver !== 'undefined') {
+    const ro = new ResizeObserver(() => apply());
+    ro.observe(grid);
+  }
+  window.addEventListener('resize', apply);
+  requestAnimationFrame(() => requestAnimationFrame(apply));
+})();
 
 // Smooth scroll
 document.querySelectorAll('a[href^="#"]').forEach(a => {
