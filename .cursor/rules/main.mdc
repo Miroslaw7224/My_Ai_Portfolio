@@ -1,0 +1,76 @@
+---
+description: Główne reguły projektu portfolio — obowiązują przy każdej zmianie plików HTML, CSS, JS, docs/ oraz struktury katalogów.
+globs: ["**/*.html", "**/*.css", "**/*.js", "docs/**/*", "projects/**/*"]
+alwaysApply: true
+---
+
+# Reguły projektu portfolio
+
+## Architektura — czego NIE robimy (ADR 0001)
+
+- **Brak bundlera** (Webpack, Vite, Parcel) dla warstwy portfolio.
+- **Brak frameworku SPA** (React, Vue, Svelte).
+- **Brak SSG** (Astro, Eleventy, Next.js).
+- **Brak kroku `npm run build`** dla plików HTML/CSS/JS portfolio. `npm start` służy wyłącznie lokalnemu serwerowi statycznemu — nie generuje outputu.
+- Nie dodawaj `package.json` dependencies służących do budowania UI. Dodanie bundlera lub generatora wymaga najpierw nowego ADR.
+
+## Struktura plików — co gdzie trafia (ADR 0001, 0002)
+
+```
+index.html                  # strona główna — zwięzły pitch, karty projektów
+projects/<slug>.html        # podstrona projektu — kluczowe info, linki, grafiki
+docs/images/                # JEDYNE miejsce na grafiki projektów (zrzuty, diagramy)
+docs/images/<slug>/         # opcjonalny podkatalog per projekt
+docs/projects/<slug>/       # długa forma: analizy, notebooki, Markdown
+docs/adr/                   # rekordy decyzji architektonicznych (ADR 0001–…)
+docs/command.md             # operacyjny skrót reguł i komend
+.github/workflows/deploy.yml
+```
+
+- `Development/` — materiały robocze / podglądy UI; pliki w tym katalogu są publicznie dostępne po deployu, więc nie wrzucaj tu niczego poufnego.
+
+## Ścieżki plików — jedna wersja prawdy (ADR 0004)
+
+- Grafiki projektów (zrzuty, diagramy, referencje): **wyłącznie `docs/images/`** lub `docs/images/<slug>/`.
+- **Nie twórz** osobnego `images/` w korzeniu repozytorium ani lokalnych `images/` przy `projects/*.html` dla treści współdzielonych z dokumentacją.
+- Długa forma projektu: **wyłącznie `docs/projects/<slug>/`**.
+- `<slug>` musi być **identyczny** w `projects/<slug>.html` i `docs/projects/<slug>/`.
+- Wyjątek: zasoby ściśle layoutowe (tło, ikona używana tylko przez jeden plik HTML) mogą leżeć przy tej stronie, jeśli nie są współdzielone z `docs/`.
+- W atrybutach `src`/`href` używaj ścieżek względnych od korzenia witryny (np. `docs/images/foo.png`), nie ścieżek bezwzględnych.
+
+## Linkowanie między warstwami (ADR 0002)
+
+- Link z `projects/<slug>.html` do `docs/` **tylko wtedy**, gdy plik faktycznie istnieje w repozytorium — bez „martwych obietnic".
+- Link zwrotny z `docs/` do `projects/<slug>.html` zawsze gdy materiał dotyczy konkretnego projektu.
+- Fakty twarde (URL repo, URL demo, główny stack) — **źródło prawdy to `projects/<slug>.html`**. W `docs/` powtarzaj je tylko gdy narracja tego wymaga; przy rozbieżności aktualizuj od strony projektu.
+
+## Dodawanie nowego projektu — checklist (ADR 0002)
+
+1. Dodaj kartę / wpis na `index.html`.
+2. Utwórz `projects/<slug>.html` (spójny z cyber UI reszty portfolio).
+3. *(Opcjonalnie)* Utwórz `docs/projects/<slug>/` z dłuższym opisem i `docs/images/<slug>/` z grafikami.
+4. Ustaw linki: `index.html` ↔ `projects/<slug>.html`; z `projects/` do `docs/` tylko jeśli krok 3 zrealizowano.
+5. Sprawdź ścieżki względne — muszą działać z korzenia repozytorium (tak jak na GitHub Pages).
+
+## Deploy — GitHub Pages (ADR 0003)
+
+- Workflow publikuje **całe drzewo repozytorium** (`path: '.'`) — nie tylko `site/` ani osobną gałąź `gh-pages`.
+- Wszystko co jest w commicie (i nie jest w `.gitignore`) będzie publicznie dostępne. Nie commituj danych wrażliwych.
+- Pliki z `docs/` i `Development/` są dostępne pod bezpośrednimi URL-ami po deployu — miej to na uwadze.
+- Workflow odpala się na push do `main` oraz `master` (oba triggery są w `deploy.yml`). Docelowa gałąź robocza to `main`; jeśli repo używa wyłącznie `main`, trigger `master` jest nieszkodliwy, ale można go usunąć osobnym commitem.
+
+## Lokalny podgląd (ADR 0005)
+
+- Zalecany sposób: `npm start` z katalogu głównego repozytorium → serwer na `http://127.0.0.1:8000`.
+- Alternatywy (gdy Node/npm niedostępne): `python -m http.server 8000`, Live Server w edytorze.
+- **Nie otwieraj `index.html` przez `file://`** jako podstawowy tryb pracy — psuje ścieżki względne i może powodować problemy CORS przy ładowaniu zasobów lokalnych.
+
+## Decyzje wymagające nowego ADR
+
+Przed wprowadzeniem którejkolwiek z poniższych zmian utwórz i zatwierdź nowy ADR:
+
+- Dodanie bundlera, SSG lub frameworku SPA do warstwy portfolio.
+- Zmiana modelu deploy (np. osobny `site/`, gałąź `gh-pages`).
+- Wprowadzenie generatora dokumentacji nad `docs/`.
+- Zmiana centralnego miejsca przechowywania assetów (np. CDN).
+- Zawężenie artefaktu GitHub Pages do podzbioru repo.

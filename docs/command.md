@@ -35,20 +35,9 @@ Na Windows w **PowerShell** do otwarcia pliku bez serwera: `Start-Process .\inde
 
 ## Konwencja plików (jedna wersja)
 
-- **Zrzuty ekranu i grafiki projektów** — wyłącznie w **`docs/images/`** (strony w `projects/*.html` i MkDocs odwołują się stamtąd).
-- **Treści projektów (MkDocs + HTML, notebooki)** — w **`docs/projects/<nazwa>/`** (np. `Titanic`, `Iris`, `Code_sensei`). Dzięki temu przy większej liczbie projektów w `docs/` nie mieszają się z `images/`, `javascripts/`, `stylesheets/`.
+- **Zrzuty ekranu i grafiki projektów** — wyłącznie w **`docs/images/`** (strony w `projects/*.html` odwołują się stamtąd).
+- **Pełne analizy HTML i notebooki** — w **`docs/projects/<nazwa>/`** (np. `Titanic`, `Iris`), linkowane z kart projektów w `projects/*.html`.
 - Nie duplikuj folderu `images/` w katalogu głównym repozytorium.
-
----
-
-## MkDocs (opcjonalnie)
-
-```bash
-pip install mkdocs-material
-mkdocs serve
-```
-
-Źródła dokumentacji: katalog **`docs/`**.
 
 ---
 
@@ -60,26 +49,21 @@ Push do `main`/`master` uruchamia workflow `.github/workflows/deploy.yml` (całe
 
 ## Struktura projektu
 
+Rekordy decyzji architektonicznych (ADR): **`docs/adr/`** (numeracja plików `0001-…`).
+
 ```
 Portfolio/
 ├── index.html
 ├── package.json
-├── mkdocs.yml
 ├── projects/                 # Podstrony projektów (cyberpunk UI)
 │   ├── code-sensei.html
 │   ├── gen-podsum-ai.html
 │   ├── titanic.html
 │   └── iris.html
-├── docs/                     # MkDocs (docs_dir)
-│   ├── images/               # Wspólne grafiki (jedno miejsce)
-│   ├── projects/             # Wszystkie projekty dokumentacji (analizy, opisy)
-│   │   ├── Titanic/
-│   │   ├── Iris/
-│   │   └── Code_sensei/
-│   ├── javascripts/
-│   ├── stylesheets/
-│   ├── overrides/
-│   ├── index.md
+├── docs/
+│   ├── adr/                  # ADR (decyzje architektoniczne)
+│   ├── images/               # Wspólne grafiki projektów
+│   ├── projects/             # Analizy HTML + notebooki (np. Titanic, Iris)
 │   └── command.md            # Ten plik
 └── .github/workflows/deploy.yml
 ```

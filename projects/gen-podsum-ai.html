@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Gen Podsum AI — transkrypcja i podsumowania — Mirosław Baczkowski</title>
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Share+Tech+Mono&family=Exo+2:wght@300;400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Oxanium:wght@700;800&family=Share+Tech+Mono&family=Exo+2:wght@300;400;600&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
   :root {
@@ -48,6 +48,7 @@
   .orb1 { width: 700px; height: 700px; background: radial-gradient(circle, rgba(0,80,180,0.1), transparent 70%); top: -200px; right: -200px; animation: orb-float 20s ease-in-out infinite; }
   .orb2 { width: 500px; height: 500px; background: radial-gradient(circle, rgba(0,180,255,0.07), transparent 70%); bottom: 100px; left: -100px; animation: orb-float 15s ease-in-out infinite reverse; }
   @keyframes orb-float { 0%,100% { transform: translate(0,0); } 33% { transform: translate(30px,-20px); } 66% { transform: translate(-20px,30px); } }
+  @keyframes hex-logo-glow { 0%, 100% { opacity: 0.5; } 50% { opacity: 1; } }
 
   nav {
     position: fixed;
@@ -62,8 +63,29 @@
     backdrop-filter: blur(20px);
     border-bottom: 1px solid rgba(0,200,255,0.12);
   }
-  .nav-logo { font-family: 'Orbitron', monospace; font-size: 1rem; font-weight: 700; color: var(--blue3); letter-spacing: 3px; text-shadow: 0 0 20px var(--blue3); text-decoration: none; }
-  .nav-logo span { color: #fff; }
+  .nav-logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    text-decoration: none;
+    transition: opacity 0.3s;
+  }
+  .nav-logo:hover { opacity: 0.95; }
+  .nav-logo:hover .nav-logo-type span { text-shadow: 0 0 12px rgba(0,212,255,0.65); }
+  .nav-logo-icon { flex-shrink: 0; display: block; }
+  .nav-logo-type {
+    font-family: 'Oxanium', sans-serif;
+    font-weight: 800;
+    font-size: 0.75rem;
+    color: #fff;
+    letter-spacing: 2px;
+    line-height: 1;
+  }
+  .nav-logo-type span {
+    color: #00d4ff;
+    text-shadow: 0 0 8px rgba(0,212,255,0.5);
+  }
+  .nav-logo .hex-logo-glow { animation: hex-logo-glow 3s ease-in-out infinite; }
   .nav-back { font-family: 'Share Tech Mono', monospace; font-size: 0.75rem; color: var(--muted); text-decoration: none; letter-spacing: 2px; text-transform: uppercase; transition: color 0.3s, text-shadow 0.3s; }
   .nav-back:hover { color: var(--blue); text-shadow: 0 0 15px var(--blue); }
 
@@ -265,6 +287,7 @@
     border: 1px solid rgba(0,200,255,0.12);
     padding: 16px;
     transition: all 0.4s;
+    cursor: pointer;
   }
 
   .screenshot-card:hover {
@@ -278,6 +301,68 @@
     height: auto;
     display: block;
     border: 1px solid rgba(0,200,255,0.1);
+    cursor: zoom-in;
+  }
+
+  /* Lightbox — powiększenie zrzutu */
+  .lightbox {
+    position: fixed;
+    inset: 0;
+    z-index: 200;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    box-sizing: border-box;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 0.28s ease, visibility 0.28s ease;
+  }
+  .lightbox.is-open {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+  }
+  .lightbox__backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(2, 8, 24, 0.92);
+    backdrop-filter: blur(10px);
+    cursor: zoom-out;
+  }
+  .lightbox__img {
+    position: relative;
+    z-index: 1;
+    max-width: min(96vw, 1400px);
+    max-height: 92vh;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    border: 1px solid rgba(0, 200, 255, 0.28);
+    box-shadow: 0 24px 80px rgba(0, 0, 0, 0.55), 0 0 48px rgba(0, 212, 255, 0.1);
+  }
+  .lightbox__close {
+    position: absolute;
+    top: 16px;
+    right: 20px;
+    z-index: 2;
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    border: 1px solid rgba(0, 212, 255, 0.45);
+    background: rgba(4, 13, 42, 0.95);
+    color: var(--blue3);
+    font-size: 1.6rem;
+    line-height: 1;
+    cursor: pointer;
+    font-family: 'Orbitron', monospace;
+    transition: border-color 0.2s, box-shadow 0.2s, color 0.2s;
+  }
+  .lightbox__close:hover {
+    border-color: var(--blue3);
+    color: #fff;
+    box-shadow: 0 0 22px rgba(0, 212, 255, 0.35);
   }
 
   .screenshot-caption {
@@ -386,7 +471,21 @@
 <div class="orb orb2"></div>
 
 <nav>
-  <a href="../index.html" class="nav-logo">MB<span>.</span>AI</a>
+  <a href="../index.html" class="nav-logo" aria-label="Portfolio — strona główna">
+    <svg class="nav-logo-icon" width="28" height="28" viewBox="0 0 38 38" fill="none" aria-hidden="true">
+      <polygon points="19,1 35,10 35,28 19,37 3,28 3,10" fill="rgba(0,200,255,0.05)" stroke="rgba(0,200,255,0.5)" stroke-width="1.2"/>
+      <polygon points="19,8 28,13 28,25 19,30 10,25 10,13" fill="none" stroke="rgba(0,200,255,0.15)" stroke-width="0.8"/>
+      <line x1="19" y1="1" x2="19" y2="8" stroke="rgba(0,212,255,0.6)" stroke-width="1"/>
+      <line x1="35" y1="10" x2="28" y2="13" stroke="rgba(0,212,255,0.6)" stroke-width="1"/>
+      <line x1="35" y1="28" x2="28" y2="25" stroke="rgba(0,212,255,0.3)" stroke-width="1"/>
+      <circle cx="19" cy="19" r="4" fill="rgba(0,50,100,0.6)" stroke="#00d4ff" stroke-width="1"/>
+      <circle cx="19" cy="19" r="2" fill="#00d4ff" class="hex-logo-glow"/>
+      <circle cx="19" cy="8" r="1.5" fill="#00d4ff" opacity="0.6"/>
+      <circle cx="28" cy="13" r="1.5" fill="#00d4ff" opacity="0.6"/>
+      <circle cx="28" cy="25" r="1.5" fill="#00d4ff" opacity="0.3"/>
+    </svg>
+    <span class="nav-logo-type">PORT<span>FOLIO</span></span>
+  </a>
   <a href="../index.html" class="nav-back">← Powrót do portfolio</a>
 </nav>
 
@@ -485,6 +584,48 @@
   <div class="footer-text">© 2026 Mirosław Baczkowski</div>
   <div class="footer-text"><a href="../index.html" style="color: var(--blue3); text-decoration: none;">← Powrót do portfolio</a></div>
 </footer>
+
+<div id="screenshot-lightbox" class="lightbox" role="dialog" aria-modal="true" aria-label="Powiększony zrzut ekranu">
+  <div class="lightbox__backdrop" aria-hidden="true"></div>
+  <button type="button" class="lightbox__close" aria-label="Zamknij powiększenie">×</button>
+  <img class="lightbox__img" src="" alt="">
+</div>
+
+<script>
+(function () {
+  const lb = document.getElementById('screenshot-lightbox');
+  if (!lb) return;
+  const lbImg = lb.querySelector('.lightbox__img');
+  const backdrop = lb.querySelector('.lightbox__backdrop');
+  const closeBtn = lb.querySelector('.lightbox__close');
+
+  function closeLb() {
+    lb.classList.remove('is-open');
+    lbImg.removeAttribute('src');
+    lbImg.alt = '';
+    document.body.style.overflow = '';
+  }
+
+  function openLb(img) {
+    lbImg.src = img.currentSrc || img.src;
+    lbImg.alt = img.getAttribute('alt') || '';
+    lb.classList.add('is-open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  document.querySelectorAll('.screenshots .screenshot-card').forEach((card) => {
+    const img = card.querySelector('img');
+    if (!img) return;
+    card.addEventListener('click', () => openLb(img));
+  });
+
+  backdrop.addEventListener('click', closeLb);
+  closeBtn.addEventListener('click', closeLb);
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && lb.classList.contains('is-open')) closeLb();
+  });
+})();
+</script>
 
 <script>
 const canvas = document.getElementById('canvas');
