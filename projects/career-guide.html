@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Career Guide — Mirosław Baczkowski</title>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Oxanium:wght@700;800&family=Share+Tech+Mono&family=Exo+2:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  :root { --navy:#020818; --blue3:#00d4ff; --text:#c8e6f5; --muted:#4a6f8a; }
+  body { background: var(--navy); color: var(--text); font-family: 'Exo 2', sans-serif; overflow-x: hidden; }
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; justify-content: space-between; align-items: center; padding: 0 60px; height: 70px; background: rgba(2,8,24,0.85); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(0,200,255,0.12); }
+  .nav-logo { display: inline-flex; align-items: center; gap: 7px; text-decoration: none; }
+  .nav-logo-type { font-family: 'Oxanium', sans-serif; font-weight: 800; font-size: 0.75rem; color: #fff; letter-spacing: 2px; line-height: 1; }
+  .nav-logo-type span { color: var(--blue3); }
+  .nav-back { font-family: 'Share Tech Mono', monospace; font-size: 0.75rem; color: var(--muted); text-decoration: none; letter-spacing: 2px; text-transform: uppercase; }
+  .container { position: relative; z-index: 10; max-width: 1200px; margin: 0 auto; padding: 120px 40px 80px; }
+  .back-link { font-family: 'Share Tech Mono', monospace; font-size: 0.7rem; color: var(--blue3); text-decoration: none; letter-spacing: 2px; text-transform: uppercase; display: inline-flex; align-items: center; gap: 8px; margin-bottom: 40px; }
+  .project-header { margin-bottom: 60px; }
+  .project-tag { font-family: 'Share Tech Mono', monospace; font-size: 0.7rem; color: var(--blue3); letter-spacing: 4px; text-transform: uppercase; margin-bottom: 24px; }
+  h1 { font-family: 'Orbitron', monospace; font-size: clamp(2rem, 4vw, 3.5rem); font-weight: 900; color: #fff; margin-bottom: 24px; line-height: 1.2; }
+  .project-title-row { display: flex; align-items: center; gap: 16px; margin-bottom: 24px; }
+  .project-title-row h1 { margin-bottom: 0; }
+  .project-title-logo { height: clamp(2.2rem, 4.2vw, 3.6rem); width: auto; display: block; }
+  .project-subtitle { font-size: 1.05rem; line-height: 1.8; color: var(--text); opacity: 0.82; max-width: 900px; margin-bottom: 18px; }
+  .project-status { font-family: 'Share Tech Mono', monospace; font-size: 0.65rem; color: #8dff9f; letter-spacing: 1.6px; text-transform: uppercase; border: 1px solid rgba(141,255,159,0.35); background: rgba(141,255,159,0.08); display: inline-block; padding: 8px 12px; }
+  .section { margin-bottom: 80px; }
+  h2 { font-family: 'Orbitron', monospace; font-size: clamp(1.4rem, 2.5vw, 2rem); font-weight: 700; color: #fff; letter-spacing: 2px; margin-bottom: 28px; display: flex; align-items: center; gap: 20px; }
+  h2::before { content: '//'; font-size: 0.65rem; color: var(--blue3); letter-spacing: 3px; opacity: 0.6; }
+  h2::after { content: ''; flex: 1; height: 1px; background: linear-gradient(90deg, rgba(0,200,255,0.4), transparent); }
+  p { font-size: 1rem; line-height: 1.8; color: var(--text); opacity: 0.82; margin-bottom: 16px; }
+  .stack-grid { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 40px; }
+  .stack-tag { font-family: 'Share Tech Mono', monospace; font-size: 0.65rem; padding: 8px 16px; border: 1px solid rgba(0,200,255,0.3); color: var(--blue3); letter-spacing: 1.5px; background: rgba(0,200,255,0.05); text-transform: uppercase; }
+  .metrics-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 14px; }
+  .metric-card { background: rgba(4,13,42,0.6); border: 1px solid rgba(0,200,255,0.1); padding: 20px; }
+  .metric-value { font-family: 'Orbitron', monospace; font-size: 1.35rem; color: var(--blue3); margin-bottom: 8px; }
+  .metric-label { font-family: 'Share Tech Mono', monospace; font-size: 0.62rem; color: var(--muted); letter-spacing: 1.2px; text-transform: uppercase; line-height: 1.5; }
+  .screenshots { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px; margin-bottom: 40px; }
+  .screenshots--diagrams { grid-template-columns: 1fr; }
+  .screenshot-card { background: rgba(4,13,42,0.8); border: 1px solid rgba(0,200,255,0.12); padding: 16px; }
+  .screenshot-placeholder { aspect-ratio: 16 / 10; display: flex; align-items: center; justify-content: center; background: rgba(0,40,80,0.15); border: 1px dashed rgba(0,200,255,0.22); color: var(--muted); font-family: 'Share Tech Mono', monospace; font-size: 0.68rem; letter-spacing: 1.5px; line-height: 1.5; text-transform: uppercase; text-align: center; padding: 22px; }
+  .diagram-preview { background: rgba(2,8,24,0.75); border: 1px solid rgba(0,200,255,0.16); padding: 12px; overflow-x: auto; }
+  .diagram-preview .mermaid { min-width: 640px; }
+  .diagram-preview svg { max-width: 100%; height: auto; display: block; }
+  .screenshot-caption { font-family: 'Share Tech Mono', monospace; font-size: 0.65rem; color: var(--muted); letter-spacing: 1px; margin-top: 12px; text-transform: uppercase; }
+  .features-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; }
+  .feature-card { background: rgba(4,13,42,0.6); border: 1px solid rgba(0,200,255,0.1); padding: 24px; }
+  .feature-title { font-family: 'Orbitron', monospace; font-size: 0.9rem; color: var(--blue3); letter-spacing: 1px; margin-bottom: 12px; }
+  .feature-desc { font-size: 0.85rem; line-height: 1.7; color: var(--text); opacity: 0.75; }
+  .challenges { background: rgba(2,8,24,0.9); border: 1px solid rgba(0,200,255,0.2); padding: 32px; margin-bottom: 40px; }
+  .challenges ul { list-style: none; padding: 0; }
+  .challenges li { font-size: 0.9rem; line-height: 1.8; color: var(--text); opacity: 0.82; padding-left: 24px; position: relative; margin-bottom: 12px; }
+  .challenges li::before { content: '→'; position: absolute; left: 0; color: var(--blue3); }
+  footer { position: relative; z-index: 10; padding: 30px 80px; border-top: 1px solid rgba(0,200,255,0.08); display: flex; justify-content: space-between; align-items: center; }
+  .footer-text { font-family: 'Share Tech Mono', monospace; font-size: 0.6rem; color: var(--muted); letter-spacing: 2px; text-transform: uppercase; }
+  @media (max-width: 768px) {
+    .container { padding: 100px 20px 60px; }
+    nav { padding: 0 20px; }
+    footer { padding: 20px; flex-direction: column; gap: 10px; text-align: center; }
+    .screenshots { grid-template-columns: 1fr; }
+    .features-grid { grid-template-columns: 1fr; }
+    .project-title-row { gap: 10px; }
+    .project-title-logo { height: clamp(2rem, 7vw, 2.6rem); }
+    .diagram-preview .mermaid { min-width: 520px; }
+  }
+</style>
+</head>
+<body>
+<nav>
+  <a href="../index.html" class="nav-logo" aria-label="Portfolio — strona główna">
+    <span class="nav-logo-type">PORT<span>FOLIO</span></span>
+  </a>
+  <a href="../index.html" class="nav-back">← Powrót do portfolio</a>
+</nav>
+
+<div class="container">
+  <a href="../index.html" class="back-link">← Wszystkie projekty</a>
+
+  <div class="project-header">
+    <div class="project-tag">Automatyzacja testów · Python/FastAPI · Infrastruktura QA</div>
+    <div class="project-title-row">
+      <h1>Career Guide</h1>
+      <img class="project-title-logo" src="../docs/images/career-guide/logo-career-guide.png" alt="Logo Career Guide">
+    </div>
+    <p class="project-subtitle">
+      Kompleksowa infrastruktura testów automatycznych dla aplikacji Career Guide (FastAPI + React), zaprojektowana i wdrożona od podstaw. Projekt obejmuje 745 testów, pokrycie 13 modułów API, CI/CD w GitHub Actions oraz mechanizmy bezpieczeństwa chroniące przed użyciem produkcyjnej bazy danych.
+    </p>
+    <span class="project-status">Status: Aktywny rozwój (Rozpoczęty: 2025 | W trakcie)</span>
+    <p class="project-subtitle" style="margin-top: 12px; margin-bottom: 0;">Rola: Inżynier automatyzacji testów (główny wkład w implementację testów, praca zespołowa)</p>
+  </div>
+
+  <div class="section">
+    <h2>O aplikacji Career Guide</h2>
+    <p>
+      Career Guide to platforma doradztwa zawodowego wspierająca użytkownika od diagnozy profilu po proces aplikowania i rozwoju kariery.
+    </p>
+    <p>
+      <strong style="color: var(--blue3);">Dla kogo:</strong> osoby planujące zmianę ścieżki zawodowej, kandydaci aktywnie szukający pracy oraz użytkownicy rozwijający kompetencje pod konkretne role.
+    </p>
+    <p>
+      <strong style="color: var(--blue3);">Kluczowe moduły produktu:</strong> profilowanie użytkowników (skills/experience/preferences), algorytmy dopasowania user ↔ job offers, generator CV wspierany AI, moduł psychometryczny, śledzenie aplikacji i analityka postępów oraz obsługa płatności funkcji premium.
+    </p>
+    <p>
+      <strong style="color: var(--blue3);">Architektura:</strong> backend FastAPI (17 routerów API), PostgreSQL, MinIO storage, frontend React + Vite, integracja Supabase i CI/CD w GitHub Actions.
+    </p>
+    <p>
+      <strong style="color: var(--blue3);">Kontekst realizacji:</strong> projekt rozwijany zespołowo, a moim zakresem było zaprojektowanie i wdrożenie całej infrastruktury testów automatycznych od zera.
+    </p>
+  </div>
+
+  <div class="section">
+    <h2>Problem → Rozwiązanie</h2>
+    <p><strong style="color: var(--blue3);">Problem:</strong> Rosnący backend wymagał powtarzalnego i bezpiecznego testowania wielu modułów API, bez ryzyka przypadkowego wpływu testów na środowisko produkcyjne.</p>
+    <p><strong style="color: var(--blue3);">Rozwiązanie:</strong> Type-first architektura testów (unit/integration/e2e/security), izolowane środowisko Docker Compose, schema reset z guardami bezpieczeństwa oraz pipeline CI/CD uruchamiany automatycznie dla PR i main.</p>
+    <p><strong style="color: var(--blue3);">Wpływ biznesowy:</strong> 0 incydentów produkcyjnych, ~40% redukcja czasu CI dzięki wykrywaniu zmian oraz łatwiejszy onboarding nowych testerów dzięki standaryzacji i dokumentacji workflow.</p>
+  </div>
+
+  <div class="section">
+    <h2>Stack Technologiczny</h2>
+    <div class="stack-grid">
+      <span class="stack-tag">Python 3.11</span>
+      <span class="stack-tag">FastAPI</span>
+      <span class="stack-tag">SQLAlchemy 2.0</span>
+      <span class="stack-tag">PostgreSQL</span>
+      <span class="stack-tag">React</span>
+      <span class="stack-tag">Vite</span>
+      <span class="stack-tag">Docker Compose</span>
+      <span class="stack-tag">MinIO</span>
+      <span class="stack-tag">Supabase Storage</span>
+      <span class="stack-tag">GitHub Actions</span>
+      <span class="stack-tag">pytest (+ pytest-asyncio, pytest-mock, pytest-cov)</span>
+      <span class="stack-tag">coverage.py</span>
+      <span class="stack-tag">Git / GitHub</span>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Kluczowe Metryki</h2>
+    <div class="metrics-grid">
+      <div class="metric-card"><div class="metric-value">745</div><div class="metric-label">przypadków testowych (5 kategorii)</div></div>
+      <div class="metric-card"><div class="metric-value">42%</div><div class="metric-label">pokrycia kodu backendu</div></div>
+      <div class="metric-card"><div class="metric-value">13</div><div class="metric-label">modułów API pokrytych testami</div></div>
+      <div class="metric-card"><div class="metric-value">0</div><div class="metric-label">incydentów zanieczyszczenia produkcji testami</div></div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Workflow testów</h2>
+    <div class="screenshots screenshots--diagrams">
+      <div class="screenshot-card">
+        <div class="diagram-preview">
+          <div class="mermaid">
+flowchart LR
+    A[Tester] --> B[Docker Compose&lt;br/&gt;compose.test.yml]
+    B --> C[(PostgreSQL&lt;br/&gt;career_guide_test)]
+    B --> D[(MinIO Storage)]
+    B --> E[Kontener test-runnera]
+    E --> F[pytest tests]
+    F --> G[Zbieranie pokrycia&lt;br/&gt;pytest cov]
+    G --> H[Raport HTML&lt;br/&gt;htmlcov]
+    C --> F
+    D --> F
+    I[Factories: 11 custom generators] --> F
+    J[Helpers: api_get/post, reset_schema] --> F
+
+    subgraph Safety_Guards
+        S1[conftest.py&lt;br/&gt;DB URL validation]
+        S2[reset schema&lt;br/&gt;DROP SCHEMA guard]
+    end
+    S1 --> F
+    S2 --> F
+    H --> K[Deweloper&lt;br/&gt;analiza pokrycia]
+
+    style I fill:#1f4d2e,stroke:#2e8b57,color:#d7f5e2
+    style J fill:#1f4d2e,stroke:#2e8b57,color:#d7f5e2
+    style S1 fill:#4d1f1f,stroke:#b85454,color:#ffe3e3
+    style S2 fill:#4d1f1f,stroke:#b85454,color:#ffe3e3
+          </div>
+        </div>
+        <p class="screenshot-caption">Workflow lokalnych testów</p>
+      </div>
+      <div class="screenshot-card">
+        <div class="diagram-preview">
+          <div class="mermaid">
+flowchart TD
+    A[PR / Push] --> B[GitHub Actions&lt;br/&gt;ci-pr.yml]
+    B --> C[Wykrywanie zmian]
+    C --> D{Backend&lt;br/&gt;changed?}
+    D -- Tak --> E[Przygotowanie środowiska testowego]
+    E --> F[Stack Docker&lt;br/&gt;compose.test.yml]
+    F --> G[(PostgreSQL)]
+    F --> H[(MinIO)]
+    F --> I[Test runner]
+    I --> J[pytest suite&lt;br/&gt;745 tests]
+    J --> K{Wyniki}
+    K -- Pass/Skip/XFail --> L[Raport pokrycia]
+    L --> M[✅ Bramka merge: PASS]
+    K -- Fail --> N[❌ Bramka merge: BLOCK]
+    N --> O[Deweloper poprawia]
+    O --> A
+    D -- Nie --> P[Pominięcie testów]
+    P --> M
+
+    subgraph "Safety Guards"
+        S1[Walidacja URL bazy]
+        S2[Guard reset_schema]
+    end
+    S1 --> J
+    S2 --> J
+
+    style M fill:#1f4d2e,stroke:#2e8b57,color:#d7f5e2
+    style N fill:#4d1f1f,stroke:#b85454,color:#ffe3e3
+    style S1 fill:#4d3b1f,stroke:#b38b2a,color:#fff0c9
+    style S2 fill:#4d3b1f,stroke:#b38b2a,color:#fff0c9
+          </div>
+        </div>
+        <p class="screenshot-caption">Workflow CI/CD</p>
+      </div>
+      <div class="screenshot-card">
+        <div class="diagram-preview">
+          <div class="mermaid">
+graph TD
+    subgraph "Rozkład testów (745 łącznie)"
+        A[Testy Unit&lt;br/&gt;436 testów&lt;br/&gt;60%]
+        B[Testy Integracyjne&lt;br/&gt;123 testy&lt;br/&gt;17%]
+        C[Testy E2E&lt;br/&gt;107 testów&lt;br/&gt;14%]
+        D[Testy Bezpieczeństwa&lt;br/&gt;44 testy&lt;br/&gt;6%]
+        E[Testy Smoke&lt;br/&gt;8 testów&lt;br/&gt;1%]
+    end
+
+    A -.szybkie, izolowane.-> F[Strategia]
+    B -.średnia prędkość.-> F
+    C -.wolne, kompleksowe.-> F
+    D -.auth i exploity.-> F
+    E -.krytyczne ścieżki.-> F
+
+    style A fill:#1f4d2e,stroke:#2e8b57,color:#d7f5e2
+    style B fill:#4d3b1f,stroke:#b38b2a,color:#fff0c9
+    style C fill:#4d2f1f,stroke:#c57a2a,color:#ffe7c9
+    style D fill:#4d1f1f,stroke:#b85454,color:#ffe3e3
+    style E fill:#1f3f4d,stroke:#3a9bb3,color:#d9f5ff
+          </div>
+        </div>
+        <p class="screenshot-caption">Workflow rozkładu testów</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Kluczowe Funkcje</h2>
+    <div class="features-grid">
+      <div class="feature-card"><div class="feature-title">Architektura testów type-first</div><div class="feature-desc">Rozdział testów na warstwy unit/integration/e2e/security dla lepszej skalowalności i czytelności zestawu testów.</div></div>
+      <div class="feature-card"><div class="feature-title">Ekosystem factories + fixtures</div><div class="feature-desc">11 własnych factories i 43 pliki conftest z fixtures per moduł API.</div></div>
+      <div class="feature-card"><div class="feature-title">Guardy bezpieczeństwa bazy</div><div class="feature-desc">Walidacja URL, blokada hostów produkcyjnych i reset schematu z hard-guardem dla non-test DB.</div></div>
+      <div class="feature-card"><div class="feature-title">Kompleksowe testy E2E</div><div class="feature-desc">E2E łączące asercje HTTP z weryfikacją realnych zmian w PostgreSQL.</div></div>
+      <div class="feature-card"><div class="feature-title">Obsługa znanych regresji</div><div class="feature-desc">Markery `xfail(strict=True)` do zarządzania known regressions przy zachowaniu integralności test suite.</div></div>
+      <div class="feature-card"><div class="feature-title">Automatyczne bramki jakości</div><div class="feature-desc">Workflow GitHub Actions blokujący merge przy failing tests i zbierający raport pokrycia.</div></div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Kluczowe Wyzwania Techniczne</h2>
+    <div class="challenges">
+      <ul>
+        <li><strong>Zanieczyszczenie `sys.modules`:</strong> przejście z globalnych mocków na fixtures per-test z czyszczeniem modułów i fresh import app.</li>
+        <li><strong>Konflikty ENUM w PostgreSQL:</strong> zastąpienie `drop_all()` przez reset całego schematu (`DROP SCHEMA CASCADE` → recreate).</li>
+        <li><strong>Precyzja ścieżek importu:</strong> standaryzacja patchowania na pełnych ścieżkach `backend.*`.</li>
+        <li><strong>Niestabilne testy zależne od kolejności:</strong> separacja known regressions markerami `xfail(strict=True)`.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Jak to działa?</h2>
+    <p><strong style="color: var(--blue3);">WORKFLOW LOKALNY:</strong></p>
+    <p><strong>1.</strong> Deweloper uruchamia stack testowy przez Docker Compose z odseparowaną bazą `career_guide_test` i usługami pomocniczymi.</p>
+    <p><strong>2.</strong> Test runner wykonuje pełny pytest suite (unit, integration, e2e, security, smoke) z kontekstowymi fixtures i factories.</p>
+    <p><strong>3.</strong> Safety guards walidują środowisko przed `reset_schema`, żeby wykluczyć ryzyko operacji na środowisku nietestowym.</p>
+    <p><strong>4.</strong> Coverage report generowany jest w `htmlcov/` do szybkiej analizy jakości pokrycia.</p>
+    <p><strong style="color: var(--blue3);">WORKFLOW CI/CD:</strong></p>
+    <p><strong>1.</strong> PR/Push trigger uruchamia GitHub Actions (`ci-pr.yml`).</p>
+    <p><strong>2.</strong> Wykrywanie zmian optymalizuje zakres testów i czas wykonania pipeline.</p>
+    <p><strong>3.</strong> Docker stack z testową bazą i usługami pomocniczymi startuje automatycznie w jobie CI.</p>
+    <p><strong>4.</strong> pytest suite wykonuje się jako merge gate; wynik pass/fail decyduje o możliwości mergowania.</p>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-text">© 2026 Mirosław Baczkowski</div>
+  <div class="footer-text"><a href="../index.html" style="color: var(--blue3); text-decoration: none;">← Powrót do portfolio</a></div>
+</footer>
+<script type="module">
+  import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs";
+  mermaid.initialize({
+    startOnLoad: true,
+    theme: "dark",
+    securityLevel: "loose"
+  });
+</script>
+</body>
+</html>

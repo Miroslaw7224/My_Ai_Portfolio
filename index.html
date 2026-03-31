@@ -225,7 +225,7 @@
   .skill-item:hover { border-color: rgba(0,200,255,0.3); box-shadow: 0 0 20px rgba(0,200,255,0.08); }
   .skill-head { display: flex; justify-content: space-between; align-items: baseline; gap: 14px; margin-bottom: 10px; }
   .skill-name { font-family: 'Share Tech Mono', monospace; font-size: 0.72rem; color: var(--blue3); letter-spacing: 1.5px; text-transform: uppercase; line-height: 1.35; }
-  .skill-count { font-family: 'Share Tech Mono', monospace; font-size: 0.68rem; color: var(--muted); letter-spacing: 1px; flex-shrink: 0; }
+  .skill-count { font-family: 'Share Tech Mono', monospace; font-size: 0.74rem; color: var(--blue3); letter-spacing: 1px; flex-shrink: 0; opacity: 0.9; }
   .skill-bar-bg { height: 3px; background: rgba(0,200,255,0.12); overflow: hidden; border-radius: 1px; }
   .skill-bar { height: 100%; width: 100%; background: linear-gradient(90deg, var(--blue2), var(--blue3)); box-shadow: 0 0 8px var(--blue3); }
   .skill-item--stack-clipped { display: none !important; }
@@ -643,10 +643,10 @@
 <!-- HERO -->
 <section id="hero">
   <div class="hero-content">
-    <div class="hero-tag">Portfolio · AI & Data Science Engineer</div>
+    <div class="hero-tag">Portfolio · AI Application Developer</div>
     <h1 class="hero-name">Mirosław<br><span class="glow-text">Baczkowski</span></h1>
     <div class="hero-title">AI Systems · Data Science · Machine Learning</div>
-    <p class="hero-desc">Łączę Data Science z produktem: od notebooków EDA i klasyfikacji ML, po aplikacje webowe z LLM — Streamlit, Next.js i React z integracją OpenAI.</p>
+    <p class="hero-desc">Buduję aplikacje AI z różnorodnymi technologiami: FastAPI + LLM, Next.js z OpenAI, n8n multi-agent pipelines — od backendów po pełne interfejsy użytkownika.</p>
     <div class="hero-badges">
       <span class="badge">Python</span>
       <span class="badge">OpenAI API</span>
@@ -673,22 +673,22 @@
     <div class="badge-avatar">MB</div>
     <div class="badge-body">
       <div class="badge-name">MIROSŁAW BACZKOWSKI</div>
-      <div class="badge-role">Data Scientist</div>
+      <div class="badge-role">AI Application Developer</div>
       <div class="badge-divider"></div>
       <div class="badge-field">
-        <span class="badge-field-label">Status</span>
+        <span class="badge-field-label">Status:</span>
         <span class="badge-field-value" style="color:#28c840;font-size:0.8rem">Open to work</span>
       </div>
       <div class="badge-field">
-        <span class="badge-field-label">Location</span>
+        <span class="badge-field-label">Location:</span>
         <span class="badge-field-value" style="font-size:0.8rem">Warsaw, PL</span>
       </div>
       <div class="badge-field">
-        <span class="badge-field-label">Stack</span>
-        <span class="badge-field-value" style="font-size:0.8rem">Python · TS · OpenAI</span>
+        <span class="badge-field-label">Stack:</span>
+        <span class="badge-field-value" style="font-size:0.8rem">Python · TypeScript · FastAPI · Next.js · OpenAI</span>
       </div>
       <div class="badge-field">
-        <span class="badge-field-label">GitHub</span>
+        <span class="badge-field-label">GitHub:</span>
         <span class="badge-field-value" style="color:#00d4ff;font-size:0.8rem">Miroslaw7224</span>
       </div>
     </div>
@@ -706,14 +706,14 @@
   <aside class="stats-row" aria-label="Najważniejsze liczby portfolio">
     <div class="stat-item">
       <div class="stat-body">
-        <div class="stat-num">6</div>
+        <div class="stat-num">7</div>
         <div class="stat-label">projekty</div>
       </div>
       <span class="stat-rail" aria-hidden="true"></span>
     </div>
     <div class="stat-item">
       <div class="stat-body">
-        <div class="stat-num">4</div>
+        <div class="stat-num">5</div>
         <div class="stat-label">aplikacje z LLM</div>
       </div>
       <span class="stat-rail" aria-hidden="true"></span>
@@ -736,15 +736,16 @@
     <h2 class="section-title">STACK TECHNOLOGICZNY</h2>
     <div class="section-line"></div>
   </div>
-  <p class="skills-intro">Liczba w kwadratowych nawiasach to <strong>liczba projektów</strong>, w których dana technologia występuje jako tag w sekcji stack na podstronie projektu. Źródło listy i kolejności: <code style="color:var(--blue3);font-size:0.85em">docs/portfolio-tech-inventory.md</code>. Domyślnie widać ok. <strong>cztery wiersze</strong> siatki — resztę można rozwinąć.</p>
+  <p class="skills-intro">Liczba w kwadratowych nawiasach to <strong>liczba projektów</strong>, w których dana technologia występuje jako tag w sekcji stack na podstronie projektu.</p>
   <div class="skills-stack-wrap">
   <div class="skills-grid" id="skills-panel">
+    <div class="skill-item"><div class="skill-head"><span class="skill-name">Python</span><span class="skill-count" aria-label="Projektów w portfolio: 4">[ 4 ]</span></div><div class="skill-bar-bg"><div class="skill-bar"></div></div></div>
+    <div class="skill-item"><div class="skill-head"><span class="skill-name">React</span><span class="skill-count" aria-label="Projektów w portfolio: 4">[ 4 ]</span></div><div class="skill-bar-bg"><div class="skill-bar"></div></div></div>
     <div class="skill-item"><div class="skill-head"><span class="skill-name">OpenAI API</span><span class="skill-count" aria-label="Projektów w portfolio: 3">[ 3 ]</span></div><div class="skill-bar-bg"><div class="skill-bar"></div></div></div>
     <div class="skill-item"><div class="skill-head"><span class="skill-name">Pandas</span><span class="skill-count" aria-label="Projektów w portfolio: 3">[ 3 ]</span></div><div class="skill-bar-bg"><div class="skill-bar"></div></div></div>
-    <div class="skill-item"><div class="skill-head"><span class="skill-name">Python</span><span class="skill-count" aria-label="Projektów w portfolio: 3">[ 3 ]</span></div><div class="skill-bar-bg"><div class="skill-bar"></div></div></div>
-    <div class="skill-item"><div class="skill-head"><span class="skill-name">React</span><span class="skill-count" aria-label="Projektów w portfolio: 3">[ 3 ]</span></div><div class="skill-bar-bg"><div class="skill-bar"></div></div></div>
     <div class="skill-item"><div class="skill-head"><span class="skill-name">TypeScript</span><span class="skill-count" aria-label="Projektów w portfolio: 3">[ 3 ]</span></div><div class="skill-bar-bg"><div class="skill-bar"></div></div></div>
     <div class="skill-item"><div class="skill-head"><span class="skill-name">ESLint · Prettier</span><span class="skill-count" aria-label="Projektów w portfolio: 2">[ 2 ]</span></div><div class="skill-bar-bg"><div class="skill-bar"></div></div></div>
+    <div class="skill-item"><div class="skill-head"><span class="skill-name">Git / GitHub</span><span class="skill-count" aria-label="Projektów w portfolio: 2">[ 2 ]</span></div><div class="skill-bar-bg"><div class="skill-bar"></div></div></div>
     <div class="skill-item"><div class="skill-head"><span class="skill-name">Husky</span><span class="skill-count" aria-label="Projektów w portfolio: 2">[ 2 ]</span></div><div class="skill-bar-bg"><div class="skill-bar"></div></div></div>
     <div class="skill-item"><div class="skill-head"><span class="skill-name">Jupyter Notebooks</span><span class="skill-count" aria-label="Projektów w portfolio: 2">[ 2 ]</span></div><div class="skill-bar-bg"><div class="skill-bar"></div></div></div>
     <div class="skill-item"><div class="skill-head"><span class="skill-name">Lucide React</span><span class="skill-count" aria-label="Projektów w portfolio: 2">[ 2 ]</span></div><div class="skill-bar-bg"><div class="skill-bar"></div></div></div>
@@ -756,31 +757,40 @@
     <div class="skill-item"><div class="skill-head"><span class="skill-name">Tailwind CSS</span><span class="skill-count" aria-label="Projektów w portfolio: 2">[ 2 ]</span></div><div class="skill-bar-bg"><div class="skill-bar"></div></div></div>
     <div class="skill-item"><div class="skill-head"><span class="skill-name">Vitest · Playwright</span><span class="skill-count" aria-label="Projektów w portfolio: 2">[ 2 ]</span></div><div class="skill-bar-bg"><div class="skill-bar"></div></div></div>
     <div class="skill-item"><div class="skill-head"><span class="skill-name">@openai/agents</span><span class="skill-count" aria-label="Projektów w portfolio: 1">[ 1 ]</span></div><div class="skill-bar-bg"><div class="skill-bar"></div></div></div>
+    <div class="skill-item"><div class="skill-head"><span class="skill-name">coverage.py</span><span class="skill-count" aria-label="Projektów w portfolio: 1">[ 1 ]</span></div><div class="skill-bar-bg"><div class="skill-bar"></div></div></div>
+    <div class="skill-item"><div class="skill-head"><span class="skill-name">Docker Compose</span><span class="skill-count" aria-label="Projektów w portfolio: 1">[ 1 ]</span></div><div class="skill-bar-bg"><div class="skill-bar"></div></div></div>
     <div class="skill-item"><div class="skill-head"><span class="skill-name">Express</span><span class="skill-count" aria-label="Projektów w portfolio: 1">[ 1 ]</span></div><div class="skill-bar-bg"><div class="skill-bar"></div></div></div>
+    <div class="skill-item"><div class="skill-head"><span class="skill-name">FastAPI</span><span class="skill-count" aria-label="Projektów w portfolio: 1">[ 1 ]</span></div><div class="skill-bar-bg"><div class="skill-bar"></div></div></div>
     <div class="skill-item"><div class="skill-head"><span class="skill-name">FFmpeg</span><span class="skill-count" aria-label="Projektów w portfolio: 1">[ 1 ]</span></div><div class="skill-bar-bg"><div class="skill-bar"></div></div></div>
     <div class="skill-item"><div class="skill-head"><span class="skill-name">Firebase Admin</span><span class="skill-count" aria-label="Projektów w portfolio: 1">[ 1 ]</span></div><div class="skill-bar-bg"><div class="skill-bar"></div></div></div>
     <div class="skill-item"><div class="skill-head"><span class="skill-name">Firebase Auth</span><span class="skill-count" aria-label="Projektów w portfolio: 1">[ 1 ]</span></div><div class="skill-bar-bg"><div class="skill-bar"></div></div></div>
     <div class="skill-item"><div class="skill-head"><span class="skill-name">Firestore</span><span class="skill-count" aria-label="Projektów w portfolio: 1">[ 1 ]</span></div><div class="skill-bar-bg"><div class="skill-bar"></div></div></div>
     <div class="skill-item"><div class="skill-head"><span class="skill-name">Gemini API</span><span class="skill-count" aria-label="Projektów w portfolio: 1">[ 1 ]</span></div><div class="skill-bar-bg"><div class="skill-bar"></div></div></div>
-    <div class="skill-item"><div class="skill-head"><span class="skill-name">Git / GitHub</span><span class="skill-count" aria-label="Projektów w portfolio: 1">[ 1 ]</span></div><div class="skill-bar-bg"><div class="skill-bar"></div></div></div>
+    <div class="skill-item"><div class="skill-head"><span class="skill-name">GitHub Actions</span><span class="skill-count" aria-label="Projektów w portfolio: 1">[ 1 ]</span></div><div class="skill-bar-bg"><div class="skill-bar"></div></div></div>
     <div class="skill-item"><div class="skill-head"><span class="skill-name">Luxon · uuid</span><span class="skill-count" aria-label="Projektów w portfolio: 1">[ 1 ]</span></div><div class="skill-bar-bg"><div class="skill-bar"></div></div></div>
+    <div class="skill-item"><div class="skill-head"><span class="skill-name">MinIO</span><span class="skill-count" aria-label="Projektów w portfolio: 1">[ 1 ]</span></div><div class="skill-bar-bg"><div class="skill-bar"></div></div></div>
     <div class="skill-item"><div class="skill-head"><span class="skill-name">Multer</span><span class="skill-count" aria-label="Projektów w portfolio: 1">[ 1 ]</span></div><div class="skill-bar-bg"><div class="skill-bar"></div></div></div>
     <div class="skill-item"><div class="skill-head"><span class="skill-name">next-pwa</span><span class="skill-count" aria-label="Projektów w portfolio: 1">[ 1 ]</span></div><div class="skill-bar-bg"><div class="skill-bar"></div></div></div>
     <div class="skill-item"><div class="skill-head"><span class="skill-name">Node.js</span><span class="skill-count" aria-label="Projektów w portfolio: 1">[ 1 ]</span></div><div class="skill-bar-bg"><div class="skill-bar"></div></div></div>
     <div class="skill-item"><div class="skill-head"><span class="skill-name">Plotly</span><span class="skill-count" aria-label="Projektów w portfolio: 1">[ 1 ]</span></div><div class="skill-bar-bg"><div class="skill-bar"></div></div></div>
+    <div class="skill-item"><div class="skill-head"><span class="skill-name">PostgreSQL</span><span class="skill-count" aria-label="Projektów w portfolio: 1">[ 1 ]</span></div><div class="skill-bar-bg"><div class="skill-bar"></div></div></div>
     <div class="skill-item"><div class="skill-head"><span class="skill-name">PostgreSQL · RLS</span><span class="skill-count" aria-label="Projektów w portfolio: 1">[ 1 ]</span></div><div class="skill-bar-bg"><div class="skill-bar"></div></div></div>
+    <div class="skill-item"><div class="skill-head"><span class="skill-name">pytest</span><span class="skill-count" aria-label="Projektów w portfolio: 1">[ 1 ]</span></div><div class="skill-bar-bg"><div class="skill-bar"></div></div></div>
     <div class="skill-item"><div class="skill-head"><span class="skill-name">react-hook-form · Zod</span><span class="skill-count" aria-label="Projektów w portfolio: 1">[ 1 ]</span></div><div class="skill-bar-bg"><div class="skill-bar"></div></div></div>
     <div class="skill-item"><div class="skill-head"><span class="skill-name">REST API</span><span class="skill-count" aria-label="Projektów w portfolio: 1">[ 1 ]</span></div><div class="skill-bar-bg"><div class="skill-bar"></div></div></div>
     <div class="skill-item"><div class="skill-head"><span class="skill-name">Sentry</span><span class="skill-count" aria-label="Projektów w portfolio: 1">[ 1 ]</span></div><div class="skill-bar-bg"><div class="skill-bar"></div></div></div>
     <div class="skill-item"><div class="skill-head"><span class="skill-name">shadcn/ui · Radix</span><span class="skill-count" aria-label="Projektów w portfolio: 1">[ 1 ]</span></div><div class="skill-bar-bg"><div class="skill-bar"></div></div></div>
+    <div class="skill-item"><div class="skill-head"><span class="skill-name">SQLAlchemy 2.0</span><span class="skill-count" aria-label="Projektów w portfolio: 1">[ 1 ]</span></div><div class="skill-bar-bg"><div class="skill-bar"></div></div></div>
     <div class="skill-item"><div class="skill-head"><span class="skill-name">SQLite</span><span class="skill-count" aria-label="Projektów w portfolio: 1">[ 1 ]</span></div><div class="skill-bar-bg"><div class="skill-bar"></div></div></div>
     <div class="skill-item"><div class="skill-head"><span class="skill-name">Storybook</span><span class="skill-count" aria-label="Projektów w portfolio: 1">[ 1 ]</span></div><div class="skill-bar-bg"><div class="skill-bar"></div></div></div>
     <div class="skill-item"><div class="skill-head"><span class="skill-name">Streamlit</span><span class="skill-count" aria-label="Projektów w portfolio: 1">[ 1 ]</span></div><div class="skill-bar-bg"><div class="skill-bar"></div></div></div>
     <div class="skill-item"><div class="skill-head"><span class="skill-name">Streamlit Cloud</span><span class="skill-count" aria-label="Projektów w portfolio: 1">[ 1 ]</span></div><div class="skill-bar-bg"><div class="skill-bar"></div></div></div>
     <div class="skill-item"><div class="skill-head"><span class="skill-name">Supabase Auth</span><span class="skill-count" aria-label="Projektów w portfolio: 1">[ 1 ]</span></div><div class="skill-bar-bg"><div class="skill-bar"></div></div></div>
+    <div class="skill-item"><div class="skill-head"><span class="skill-name">Supabase Storage</span><span class="skill-count" aria-label="Projektów w portfolio: 1">[ 1 ]</span></div><div class="skill-bar-bg"><div class="skill-bar"></div></div></div>
     <div class="skill-item"><div class="skill-head"><span class="skill-name">TanStack Query</span><span class="skill-count" aria-label="Projektów w portfolio: 1">[ 1 ]</span></div><div class="skill-bar-bg"><div class="skill-bar"></div></div></div>
     <div class="skill-item"><div class="skill-head"><span class="skill-name">TTS</span><span class="skill-count" aria-label="Projektów w portfolio: 1">[ 1 ]</span></div><div class="skill-bar-bg"><div class="skill-bar"></div></div></div>
     <div class="skill-item"><div class="skill-head"><span class="skill-name">TipTap</span><span class="skill-count" aria-label="Projektów w portfolio: 1">[ 1 ]</span></div><div class="skill-bar-bg"><div class="skill-bar"></div></div></div>
+    <div class="skill-item"><div class="skill-head"><span class="skill-name">Vite</span><span class="skill-count" aria-label="Projektów w portfolio: 1">[ 1 ]</span></div><div class="skill-bar-bg"><div class="skill-bar"></div></div></div>
     <div class="skill-item"><div class="skill-head"><span class="skill-name">Zustand</span><span class="skill-count" aria-label="Projektów w portfolio: 1">[ 1 ]</span></div><div class="skill-bar-bg"><div class="skill-bar"></div></div></div>
   </div>
   <div class="skills-toggle-wrap">
@@ -797,21 +807,6 @@
     <div class="section-line"></div>
   </div>
   <div class="projects-grid">
-
-    <a href="projects/code-sensei.html" class="project-card featured">
-      <div class="project-tag">// Full Stack · AI · Web App</div>
-      <div class="project-name">Code Sensei</div>
-      <p class="project-desc">Interaktywna aplikacja webowa do analizy i refaktoryzacji kodu z użyciem AI. Integracja OpenAI GPT-4o, TTS, historia analiz i zarządzanie kosztami tokenów. Hosting na Streamlit Cloud.</p>
-      <div class="project-stack">
-        <span class="stack-tag">Python</span>
-        <span class="stack-tag">Streamlit</span>
-        <span class="stack-tag">OpenAI API</span>
-        <span class="stack-tag">Pandas</span>
-        <span class="stack-tag">SQLite</span>
-        <span class="stack-tag">TTS</span>
-      </div>
-      <span class="project-link">Zobacz projekt →</span>
-    </a>
 
     <a href="projects/english-buddy.html" class="project-card featured">
       <div class="project-tag">// Full Stack · AI · Edukacja językowa</div>
@@ -832,7 +827,7 @@
     <a href="projects/second-brain.html" class="project-card featured">
       <div class="project-tag">// Full Stack · AI · Wiedza i planowanie</div>
       <div class="project-name">Second Brain</div>
-      <p class="project-desc">Freelancer Edition: RAG na dokumentach, notatki TipTap, mapy myśli z importem, zasoby w Firestore, kalendarz, zadania i Plan AI. Next.js 14, Firebase (Auth, Firestore, Admin) i Gemini; live demo na Vercel.</p>
+      <p class="project-desc">Freelancer Edition: notatki TipTap, mapy myśli z importem, zasoby w Firestore, kalendarz, zadania i Plan AI; moduł RAG na dokumentach użytkownika w roadmapie. Next.js 14, Firebase (Auth, Firestore, Admin) i Gemini; live demo na Vercel.</p>
       <div class="project-stack">
         <span class="stack-tag">Next.js</span>
         <span class="stack-tag">TypeScript</span>
@@ -841,6 +836,21 @@
         <span class="stack-tag">Firestore</span>
         <span class="stack-tag">Gemini API</span>
         <span class="stack-tag">Tailwind CSS</span>
+      </div>
+      <span class="project-link">Zobacz projekt →</span>
+    </a>
+
+    <a href="projects/career-guide.html" class="project-card featured">
+      <div class="project-tag">// Automatyzacja testów · Python/FastAPI · Infrastruktura QA</div>
+      <div class="project-name">Career Guide</div>
+      <p class="project-desc">Infrastruktura testów automatycznych dla platformy doradztwa zawodowego (FastAPI + React), wdrożona od zera. 745 testów, pokrycie 13 modułów API, 42% pokrycia backendu, guardy bezpieczeństwa bazy i bramki jakości CI/CD.</p>
+      <div class="project-stack">
+        <span class="stack-tag">Python</span>
+        <span class="stack-tag">FastAPI</span>
+        <span class="stack-tag">React</span>
+        <span class="stack-tag">PostgreSQL</span>
+        <span class="stack-tag">Docker Compose</span>
+        <span class="stack-tag">pytest</span>
       </div>
       <span class="project-link">Zobacz projekt →</span>
     </a>
@@ -856,6 +866,21 @@
     <div class="section-line"></div>
   </div>
   <div class="projects-grid">
+
+    <a href="projects/code-sensei.html" class="project-card">
+      <div class="project-tag">// Full Stack · AI · Web App</div>
+      <div class="project-name">Code Sensei</div>
+      <p class="project-desc">Interaktywna aplikacja webowa do analizy i refaktoryzacji kodu z użyciem AI. Integracja OpenAI GPT-4o, TTS, historia analiz i zarządzanie kosztami tokenów. Hosting na Streamlit Cloud.</p>
+      <div class="project-stack">
+        <span class="stack-tag">Python</span>
+        <span class="stack-tag">Streamlit</span>
+        <span class="stack-tag">OpenAI API</span>
+        <span class="stack-tag">Pandas</span>
+        <span class="stack-tag">SQLite</span>
+        <span class="stack-tag">TTS</span>
+      </div>
+      <span class="project-link">Zobacz projekt →</span>
+    </a>
 
     <a href="projects/titanic.html" class="project-card">
       <div class="project-tag">// Data Science · ML · Classification</div>
@@ -921,8 +946,9 @@
   <div class="contact-wrapper">
     <div class="contact-content">
       <p class="contact-text">
-        Pasjonat Data Science i sztucznej inteligencji — szukam ról, w których mogę łączyć dane, modele ML i produkt cyfrowy.
-        W portfolio są aplikacje full-stack z LLM (Streamlit, Next.js, React), integracje OpenAI oraz klasyczne projekty ML z pełną EDA i klasyfikacją.<br><br>
+        Aktualnie tworzę testy automatyczne + buduję portfolio AI applications: FastAPI backendy z LLM, Next.js interfejsy z OpenAI, n8n multi-agent automation.
+        Projekty: chatbot karierowy, language learning platform, audio transcription pipeline, automatyzacja dokumentów z Gemini.
+        Szukam ról Junior QA Engineer, AI Engineer, gdzie mogę łączyć testowanie z rozwojem produktów AI.<br><br>
         Jeśli budujecie coś w obszarze AI lub analityki danych — chętnie porozmawiam.
       </p>
       <div class="contact-links">
@@ -1003,8 +1029,8 @@
 
 <!-- FOOTER -->
 <footer>
-  <div class="footer-text">© 2026 Mirosław Baczkowski · AI & Data Science Portfolio</div>
-  <div class="footer-text">Built with AI & Data Science</div>
+  <div class="footer-text">© 2026 Mirosław Baczkowski · AI Engineering Portfolio</div>
+  <div class="footer-text">AI-Powered Applications</div>
 </footer>
 
 <script>
