@@ -10,7 +10,7 @@ Repozytorium udostępnia publiczną warstwę portfolio jako zwykłe pliki w repo
 
 - strona główna: `index.html` w katalogu głównym;
 - podstrony projektów: `projects/*.html` (np. `code-sensei.html`, `english-buddy.html`);
-- materiały robocze / wariant podglądu UI: `Development/portfolio_cyber_preview.html` (oraz inne pliki w `Development/`, jeśli się pojawią).
+- równoległa warstwa EN: `en/index.html` oraz `en/projects/*.html`.
 
 Styl i zachowanie opierają się na wbudowanych arkuszach CSS i skryptach JS w tych plikach (np. czcionki z Google Fonts), bez narzutu frameworka aplikacji ani generatora stron.
 

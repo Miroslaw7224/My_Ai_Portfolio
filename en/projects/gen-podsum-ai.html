@@ -1,14 +1,14 @@
 <!DOCTYPE html>
-<html lang="pl">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<link rel="canonical" href="https://miroslaw7224.github.io/My_Ai_Portfolio/projects/second-brain.html">
-<link rel="alternate" hreflang="pl" href="https://miroslaw7224.github.io/My_Ai_Portfolio/projects/second-brain.html">
-<link rel="alternate" hreflang="en" href="https://miroslaw7224.github.io/My_Ai_Portfolio/en/projects/second-brain.html">
+<link rel="canonical" href="https://miroslaw7224.github.io/My_Ai_Portfolio/en/projects/gen-podsum-ai.html">
+<link rel="alternate" hreflang="pl" href="https://miroslaw7224.github.io/My_Ai_Portfolio/projects/gen-podsum-ai.html">
+<link rel="alternate" hreflang="en" href="https://miroslaw7224.github.io/My_Ai_Portfolio/en/projects/gen-podsum-ai.html">
 <link rel="alternate" hreflang="x-default" href="https://miroslaw7224.github.io/My_Ai_Portfolio/">
-<title>Second Brain (Freelancer Edition) — Mirosław Baczkowski</title>
+<title>Gen Podsum AI - transcription and summaries - Mirosław Baczkowski</title>
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Oxanium:wght@700;800&family=Share+Tech+Mono&family=Exo+2:wght@300;400;600&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
@@ -55,7 +55,6 @@
   @keyframes orb-float { 0%,100% { transform: translate(0,0); } 33% { transform: translate(30px,-20px); } 66% { transform: translate(-20px,30px); } }
   @keyframes hex-logo-glow { 0%, 100% { opacity: 0.5; } 50% { opacity: 1; } }
 
-  /* NAV */
   nav {
     position: fixed;
     top: 0; left: 0; right: 0;
@@ -96,7 +95,6 @@
   .nav-back:hover { color: var(--blue); text-shadow: 0 0 15px var(--blue); }
   .lang-switch { font-family: "Share Tech Mono", monospace; font-size: 0.75rem; color: var(--blue3); text-decoration: none; letter-spacing: 2px; text-transform: uppercase; border: 1px solid rgba(0,212,255,0.35); padding: 4px 8px; }
 
-  /* CONTENT */
   .container {
     position: relative;
     z-index: 10;
@@ -168,7 +166,6 @@
     flex-wrap: wrap;
   }
 
-  /* Primary button - wypełniony */
   .btn-primary {
     font-family: 'Share Tech Mono', monospace;
     font-size: 0.75rem;
@@ -189,7 +186,6 @@
     background: #fff;
   }
 
-  /* Secondary button - obrys */
   .btn-secondary {
     font-family: 'Share Tech Mono', monospace;
     font-size: 0.75rem;
@@ -314,30 +310,65 @@
     cursor: zoom-in;
   }
 
-  .screenshot-card--placeholder,
-  .screenshot-card--placeholder img {
-    cursor: default;
-  }
-  .screenshot-card--placeholder:hover {
-    transform: none;
-    box-shadow: none;
-    border-color: rgba(0,200,255,0.12);
-  }
-  .screenshot-placeholder {
-    aspect-ratio: 16 / 10;
+  /* Lightbox - enlarged screenshot */
+  .lightbox {
+    position: fixed;
+    inset: 0;
+    z-index: 200;
     display: flex;
     align-items: center;
     justify-content: center;
-    background: rgba(0,40,80,0.15);
-    border: 1px dashed rgba(0,200,255,0.22);
-    color: var(--muted);
-    font-family: 'Share Tech Mono', monospace;
-    font-size: 0.68rem;
-    letter-spacing: 1.5px;
-    line-height: 1.5;
-    text-transform: uppercase;
-    text-align: center;
-    padding: 28px 20px;
+    padding: 24px;
+    box-sizing: border-box;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 0.28s ease, visibility 0.28s ease;
+  }
+  .lightbox.is-open {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+  }
+  .lightbox__backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(2, 8, 24, 0.92);
+    backdrop-filter: blur(10px);
+    cursor: zoom-out;
+  }
+  .lightbox__img {
+    position: relative;
+    z-index: 1;
+    max-width: min(96vw, 1400px);
+    max-height: 92vh;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    border: 1px solid rgba(0, 200, 255, 0.28);
+    box-shadow: 0 24px 80px rgba(0, 0, 0, 0.55), 0 0 48px rgba(0, 212, 255, 0.1);
+  }
+  .lightbox__close {
+    position: absolute;
+    top: 16px;
+    right: 20px;
+    z-index: 2;
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    border: 1px solid rgba(0, 212, 255, 0.45);
+    background: rgba(4, 13, 42, 0.95);
+    color: var(--blue3);
+    font-size: 1.6rem;
+    line-height: 1;
+    cursor: pointer;
+    font-family: 'Orbitron', monospace;
+    transition: border-color 0.2s, box-shadow 0.2s, color 0.2s;
+  }
+  .lightbox__close:hover {
+    border-color: var(--blue3);
+    color: #fff;
+    box-shadow: 0 0 22px rgba(0, 212, 255, 0.35);
   }
 
   .screenshot-caption {
@@ -348,8 +379,6 @@
     margin-top: 12px;
     text-transform: uppercase;
   }
-
-  .project-header .project-links { margin-bottom: 0; }
 
   .features-grid {
     display: grid;
@@ -430,67 +459,6 @@
     text-transform: uppercase;
   }
 
-  /* Lightbox — powiększenie zrzutu */
-  .lightbox {
-    position: fixed;
-    inset: 0;
-    z-index: 200;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 24px;
-    box-sizing: border-box;
-    opacity: 0;
-    visibility: hidden;
-    pointer-events: none;
-    transition: opacity 0.28s ease, visibility 0.28s ease;
-  }
-  .lightbox.is-open {
-    opacity: 1;
-    visibility: visible;
-    pointer-events: auto;
-  }
-  .lightbox__backdrop {
-    position: absolute;
-    inset: 0;
-    background: rgba(2, 8, 24, 0.92);
-    backdrop-filter: blur(10px);
-    cursor: zoom-out;
-  }
-  .lightbox__img {
-    position: relative;
-    z-index: 1;
-    max-width: min(96vw, 1400px);
-    max-height: 92vh;
-    width: auto;
-    height: auto;
-    object-fit: contain;
-    border: 1px solid rgba(0, 200, 255, 0.28);
-    box-shadow: 0 24px 80px rgba(0, 0, 0, 0.55), 0 0 48px rgba(0, 212, 255, 0.1);
-  }
-  .lightbox__close {
-    position: absolute;
-    top: 16px;
-    right: 20px;
-    z-index: 2;
-    width: 44px;
-    height: 44px;
-    padding: 0;
-    border: 1px solid rgba(0, 212, 255, 0.45);
-    background: rgba(4, 13, 42, 0.95);
-    color: var(--blue3);
-    font-size: 1.6rem;
-    line-height: 1;
-    cursor: pointer;
-    font-family: 'Orbitron', monospace;
-    transition: border-color 0.2s, box-shadow 0.2s, color 0.2s;
-  }
-  .lightbox__close:hover {
-    border-color: var(--blue3);
-    color: #fff;
-    box-shadow: 0 0 22px rgba(0, 212, 255, 0.35);
-  }
-
   @media (max-width: 768px) {
     .container { padding: 100px 20px 60px; }
     nav { padding: 0 20px; }
@@ -508,9 +476,8 @@
 <div class="orb orb1"></div>
 <div class="orb orb2"></div>
 
-<!-- NAV -->
 <nav>
-  <a href="../index.html" class="nav-logo" aria-label="Portfolio — strona główna">
+  <a href="../../en/index.html" class="nav-logo" aria-label="Portfolio - home page">
     <svg class="nav-logo-icon" width="28" height="28" viewBox="0 0 38 38" fill="none" aria-hidden="true">
       <polygon points="19,1 35,10 35,28 19,37 3,28 3,10" fill="rgba(0,200,255,0.05)" stroke="rgba(0,200,255,0.5)" stroke-width="1.2"/>
       <polygon points="19,8 28,13 28,25 19,30 10,25 10,13" fill="none" stroke="rgba(0,200,255,0.15)" stroke-width="0.8"/>
@@ -525,161 +492,110 @@
     </svg>
     <span class="nav-logo-type">PORT<span>FOLIO</span></span>
   </a>
-  <div style="display:flex;align-items:center;gap:14px"><a href="../index.html" class="nav-back">← Powrót do portfolio</a><a href="../en/projects/second-brain.html" class="lang-switch" lang="en" hreflang="en">EN</a></div>
+  <div style="display:flex;align-items:center;gap:14px"><a href="../../en/index.html" class="nav-back">← Back to portfolio</a><a href="../../projects/gen-podsum-ai.html" class="lang-switch" lang="pl" hreflang="pl">PL</a></div>
 </nav>
 
-<!-- CONTENT -->
 <div class="container">
-  <a href="../index.html" class="back-link">← Wszystkie projekty</a>
+  <a href="../../en/index.html" class="back-link">← All projects</a>
 
   <div class="project-header">
-    <div class="project-tag">Full Stack · AI · Wiedza i planowanie</div>
-    <h1>Second Brain</h1>
+    <div class="project-tag">Full Stack · AI · Audio / Video</div>
+    <h1>Gen Podsum AI</h1>
     <p class="project-subtitle">
-      Aplikacja do zarządzania wiedzą i planowaniem z AI: ( RAG na dokumentach użytkownika- w przyszłości), notatki (TipTap), mapy myśli z importem i eksportem, zasoby z Firestore, kalendarz i zadania oraz panel Plan AI. Stack: Next.js 14 (App Router), Firebase (Auth, Firestore, Admin), Google Gemini. Hosting: Vercel.
+      Web app for uploading audio or video files: transcription (Whisper), summary with key points, and sentiment analysis (GPT).
+      The interface shows estimated API call costs and processing progress.
     </p>
     <div class="project-links">
-      <a href="https://second-brain-neon-pi.vercel.app/" class="btn-primary" target="_blank" rel="noopener">// LIVE DEMO ↗</a>
-      <a href="https://github.com/Miroslaw7224/Second_brain" class="btn-secondary" target="_blank" rel="noopener">// GITHUB REPO ↗</a>
+      <a href="https://github.com/Miroslaw7224/Gen_Podsum_AI" class="btn-primary" target="_blank" rel="noopener noreferrer">// GITHUB REPOSITORY ↗</a>
+      <a href="https://github.com/Miroslaw7224/Gen_Podsum_AI/blob/main/docs/README.md" class="btn-secondary" target="_blank" rel="noopener noreferrer">// DOCUMENTATION (DOCS) ↗</a>
     </div>
   </div>
 
-  <!-- PROBLEM → ROZWIĄZANIE -->
   <div class="section">
-    <h2>Problem → Rozwiązanie</h2>
+    <h2>Problem -> Solution</h2>
     <p>
-      <strong style="color: var(--blue3);">Problem:</strong> Notatki, linki, dokumenty i plan działania często rozjeżdżają się między narzędziami; trudno w jednym miejscu łączyć własną bazę wiedzy z rozmową z modelem i realnym kalendarzem zadań bez spójnej warstwy danych i auth.
+      <strong style="color: var(--blue3);">Problem:</strong> You need to quickly answer the question "what was in the recording?" without manually transcribing long audio or video files.
     </p>
     <p>
-      <strong style="color: var(--blue3);">Rozwiązanie:</strong> Jedna aplikacja Next.js 14 (App Router) z Firebase (logowanie, Firestore, Admin po stronie API) i Gemini do RAG oraz asysty w planowaniu. Moduły Wiedza i Planowanie dzielą ten sam model użytkownika i persystencję w chmurze.
+      <strong style="color: var(--blue3);">Solution:</strong> A single pipeline: file -> transcription -> summary, key points, and sentiment. The frontend is built in React (landing page + panel with upload, GPT model selection, cost preview, and progress). The Node/Express backend accepts files (Multer), prepares audio from video via FFmpeg, and calls OpenAI (Whisper + GPT). The API key can be configured in server-side <code style="color: var(--blue3);">.env</code> or in the UI, according to the repository and <code style="color: var(--blue3);">.env.example</code>.
     </p>
   </div>
 
-  <!-- STACK TECHNOLOGICZNY -->
   <div class="section">
-    <h2>Stack Technologiczny</h2>
+    <h2>Tech Stack</h2>
     <div class="stack-grid">
-      <span class="stack-tag">Next.js 14</span>
-      <span class="stack-tag">React 19</span>
-      <span class="stack-tag">TypeScript (strict)</span>
-      <span class="stack-tag">Tailwind CSS</span>
-      <span class="stack-tag">Firebase Auth</span>
-      <span class="stack-tag">Firestore</span>
-      <span class="stack-tag">Firebase Admin</span>
-      <span class="stack-tag">Gemini API</span>
-      <span class="stack-tag">TipTap</span>
+      <span class="stack-tag">React</span>
+      <span class="stack-tag">TypeScript</span>
+      <span class="stack-tag">Node.js</span>
+      <span class="stack-tag">Express</span>
+      <span class="stack-tag">OpenAI API (Whisper + GPT)</span>
+      <span class="stack-tag">FFmpeg</span>
+      <span class="stack-tag">REST API</span>
+      <span class="stack-tag">Multer</span>
       <span class="stack-tag">Lucide React</span>
-      <span class="stack-tag">Vitest · Playwright</span>
-      <span class="stack-tag">ESLint · Prettier</span>
-      <span class="stack-tag">Husky</span>
     </div>
   </div>
 
-  <!-- SCREENSHOTY -->
   <div class="section">
-    <h2>Screenshoty</h2>
+    <h2>Screenshots</h2>
     <div class="screenshots">
       <div class="screenshot-card">
-        <img src="../docs/images/Baza_wiedzy_1.png" alt="Second Brain — moduł Zasoby: filtry tagów, ulubione strony, lista linków w Firestore">
-        <p class="screenshot-caption">Wiedza — Zasoby (tagi, ulubione, lista)</p>
+        <img src="../../docs/images/Gen_Podsum_AI_1.png" alt="Gen Podsum AI - configuration, upload, model selection">
+        <p class="screenshot-caption">Configuration, upload, model</p>
       </div>
       <div class="screenshot-card">
-        <img src="../docs/images/Baza_wiedzy_2.png" alt="Second Brain — Mapy myśli: drzewo węzłów, toolbar, panel notatek węzła">
-        <p class="screenshot-caption">Wiedza — Mapy myśli</p>
-      </div>
-      <div class="screenshot-card">
-        <img src="../docs/images/Kalendarz_1.png" alt="Second Brain — Planowanie: kalendarz tygodniowy z blokami czasu i tagami">
-        <p class="screenshot-caption">Planowanie — Kalendarz</p>
-      </div>
-      <div class="screenshot-card">
-        <img src="../docs/images/Kalendarz_2.png" alt="Second Brain — Moja Praca: log czasu i wykres rozłożenia godzin po tagach">
-        <p class="screenshot-caption">Planowanie — Moja Praca (log + wykres)</p>
+        <img src="../../docs/images/Gen_Podsum_AI_2.png" alt="Gen Podsum AI - results: key points, sentiment">
+        <p class="screenshot-caption">Results: key points, sentiment</p>
       </div>
     </div>
   </div>
 
-  <!-- FUNKCJE -->
   <div class="section">
-    <h2>Kluczowe Funkcje</h2>
+    <h2>Key Features</h2>
     <div class="features-grid">
       <div class="feature-card">
-        <div class="feature-title">Wiedza — RAG i czat</div>
-        <div class="feature-desc">Czat z własną bazą dokumentów użytkownika (embeddingi + odpowiedzi z kontekstem) w module Wiedza. (RAG na dokumentach użytkownika- w przyszłości)</div>
+        <div class="feature-title">Upload and processing</div>
+        <div class="feature-desc">Support for audio or video files; audio track extraction from video using FFmpeg.</div>
       </div>
       <div class="feature-card">
-        <div class="feature-title">Notatki TipTap</div>
-        <div class="feature-desc">Edycja notatek bogatego tekstu z rozszerzeniami TipTap, spójna z resztą UI.</div>
+        <div class="feature-title">Whisper transcription</div>
+        <div class="feature-desc">Speech-to-text conversion through the OpenAI API according to the server implementation.</div>
       </div>
       <div class="feature-card">
-        <div class="feature-title">Mapy myśli</div>
-        <div class="feature-desc">Drzewo poziome, notatki per węzeł, akcje AI (węzeł / poddrzewo), import tekstu lub obrazu przez API, eksport do HTML, zagnieżdżanie węzłów przeciągnięciem.</div>
+        <div class="feature-title">GPT: summary and sentiment</div>
+        <div class="feature-desc">Summary, key points, and sentiment analysis - with model selection in UI.</div>
       </div>
       <div class="feature-card">
-        <div class="feature-title">Zasoby i ulubione</div>
-        <div class="feature-desc">Lista linków w Firestore z tagami i wyszukiwarką; pasek ulubionych z faviconami oraz akcje edycji i kopiowania URL.</div>
-      </div>
-      <div class="feature-card">
-        <div class="feature-title">Kalendarz i zadania</div>
-        <div class="feature-desc">Widok kalendarza z segmentacją zdarzeń przez północ; zadania z terminem, statusem i notatką w modalu szczegółów; tagi i log aktywności.</div>
-      </div>
-      <div class="feature-card">
-        <div class="feature-title">Plan AI</div>
-        <div class="feature-desc">Pasek rozmowy z modelem w kontekście planowania (historia wiadomości), zgodnie z architekturą modułu Planowanie w repozytorium.</div>
+        <div class="feature-title">Costs and progress</div>
+        <div class="feature-desc">Estimated API call costs and visible operation progress in the interface.</div>
       </div>
     </div>
   </div>
 
-  <!-- WYZWANIA TECHNICZNE -->
   <div class="section">
-    <h2>Kluczowe Wyzwania Techniczne</h2>
+    <h2>How it works (backend)</h2>
     <div class="challenges">
       <ul>
-        <li><strong>RAG i koszty / jakość:</strong> Dobór fragmentów kontekstu, limity tokenów i spójność odpowiedzi Gemini względem dokumentów użytkownika.</li>
-        <li><strong>Firebase + Next.js:</strong> Rozdział klienta (SDK web) i serwera (Admin), bezpieczne reguły Firestore oraz zmienne środowiskowe na Vercel.</li>
-        <li><strong>Import map myśli:</strong> Obsługa tekstu i obrazu w API importu, stabilność formatu i UX edycji drzewa.</li>
-        <li><strong>Kalendarz:</strong> Poprawne dzielenie wielodniowych zdarzeń na segmenty siatki godzin (<code style="color:var(--blue3);">expandEventToSegments</code>).</li>
-        <li><strong>Testy:</strong> Vitest (jednostkowe / integracyjne z emulatorem) oraz Playwright E2E — utrzymanie przy zmianach w API i UI.</li>
-        <li><strong>Deploy:</strong> Konfiguracja domeny Vercel w Firebase Authorized domains oraz pełny zestaw sekretów zgodnie z <code style="color:var(--blue3);">.env.example</code>.</li>
+        <li><strong>Express:</strong> API endpoints under paths such as <code style="color: var(--blue3);">/api/...</code>, including costs, progress, and API key handling according to the server code.</li>
+        <li><strong>Port:</strong> default includes <code style="color: var(--blue3);">5001</code> (value from <code style="color: var(--blue3);">.env.example</code>).</li>
+        <li><strong>State:</strong> no classic SQL database; cost and status tracking follow the API implementation.</li>
+        <li><strong>Local run:</strong> frontend <code style="color: var(--blue3);">npm start</code> / static build; backend <code style="color: var(--blue3);">cd server && npm start</code>. Public demo after deployment (e.g., Vercel + Render, VPS); until then the app runs as a local demo project.</li>
       </ul>
     </div>
   </div>
 
-  <!-- JAK DZIAŁA -->
-  <div class="section">
-    <h2>Jak to działa?</h2>
-    <p>
-      <strong>1. Logowanie</strong> → Użytkownik uwierzytelnia się przez Firebase Auth; chronione trasy w grupie <code style="color:var(--blue3);">(protected)</code>.
-    </p>
-    <p>
-      <strong>2. Wiedza</strong> → Dokumenty i notatki trafiają do magazynu użytkownika; czat RAG woła API Next.js, które korzysta z Gemini i embeddingów.
-    </p>
-    <p>
-      <strong>3. Mapy i zasoby</strong> → Stan map myśli i kolekcja zasobów są zapisywane w Firestore; import i eksport przechodzą przez dedykowane endpointy API.
-    </p>
-    <p>
-      <strong>4. Planowanie</strong> → Zdarzenia kalendarza, zadania i log aktywności synchronizują się z backendem; Plan AI uzupełnia przepływ rozmową z modelem.
-    </p>
-    <p>
-      <strong>5. Admin i serwer</strong> → Operacje wymagające podniesionych uprawnień używają Firebase Admin w Route Handlers (<code style="color:var(--blue3);">app/api/</code>).
-    </p>
-    <p>
-      <strong>6. Build i hosting</strong> → <code style="color:var(--blue3);">npm run build</code> / Vercel; lokalnie dev na porcie 3100 (<code style="color:var(--blue3);">npm run dev</code>).
-    </p>
-  </div>
-
 </div>
 
-<!-- FOOTER -->
 <footer>
   <div class="footer-text">© 2026 Mirosław Baczkowski</div>
-  <div class="footer-text"><a href="../index.html" style="color: var(--blue3); text-decoration: none;">← Powrót do portfolio</a></div>
+  <div class="footer-text"><a href="../../en/index.html" style="color: var(--blue3); text-decoration: none;">← Back to portfolio</a></div>
 </footer>
 
-<script src="../scripts/i18n-nav.js"></script>
+<script src="../../scripts/i18n-nav.js"></script>
 
-<div id="screenshot-lightbox" class="lightbox" role="dialog" aria-modal="true" aria-label="Powiększony zrzut ekranu">
+<div id="screenshot-lightbox" class="lightbox" role="dialog" aria-modal="true" aria-label="Enlarged screenshot">
   <div class="lightbox__backdrop" aria-hidden="true"></div>
-  <button type="button" class="lightbox__close" aria-label="Zamknij powiększenie">×</button>
+  <button type="button" class="lightbox__close" aria-label="Close enlarged view">×</button>
   <img class="lightbox__img" src="" alt="">
 </div>
 
@@ -706,7 +622,6 @@
   }
 
   document.querySelectorAll('.screenshots .screenshot-card').forEach((card) => {
-    if (card.classList.contains('screenshot-card--placeholder')) return;
     const img = card.querySelector('img');
     if (!img) return;
     card.addEventListener('click', () => openLb(img));

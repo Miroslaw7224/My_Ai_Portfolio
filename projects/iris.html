@@ -3,6 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="canonical" href="https://miroslaw7224.github.io/My_Ai_Portfolio/projects/iris.html">
+<link rel="alternate" hreflang="pl" href="https://miroslaw7224.github.io/My_Ai_Portfolio/projects/iris.html">
+<link rel="alternate" hreflang="en" href="https://miroslaw7224.github.io/My_Ai_Portfolio/en/projects/iris.html">
+<link rel="alternate" hreflang="x-default" href="https://miroslaw7224.github.io/My_Ai_Portfolio/">
 <title>Iris Dataset Analysis — Mirosław Baczkowski</title>
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Oxanium:wght@700;800&family=Share+Tech+Mono&family=Exo+2:wght@300;400;600&display=swap" rel="stylesheet">
 <style>
@@ -88,6 +93,7 @@
   .nav-logo .hex-logo-glow { animation: hex-logo-glow 3s ease-in-out infinite; }
   .nav-back { font-family: 'Share Tech Mono', monospace; font-size: 0.75rem; color: var(--muted); text-decoration: none; letter-spacing: 2px; text-transform: uppercase; transition: color 0.3s, text-shadow 0.3s; }
   .nav-back:hover { color: var(--blue); text-shadow: 0 0 15px var(--blue); }
+  .lang-switch { font-family: "Share Tech Mono", monospace; font-size: 0.75rem; color: var(--blue3); text-decoration: none; letter-spacing: 2px; text-transform: uppercase; border: 1px solid rgba(0,212,255,0.35); padding: 4px 8px; }
 
   .container {
     position: relative;
@@ -387,7 +393,7 @@
     </svg>
     <span class="nav-logo-type">PORT<span>FOLIO</span></span>
   </a>
-  <a href="../index.html" class="nav-back">← Powrót do portfolio</a>
+  <div style="display:flex;align-items:center;gap:14px"><a href="../index.html" class="nav-back">← Powrót do portfolio</a><a href="../en/projects/iris.html" class="lang-switch" lang="en" hreflang="en">EN</a></div>
 </nav>
 
 <div class="container">
@@ -535,6 +541,8 @@
   <div class="footer-text">© 2026 Mirosław Baczkowski</div>
   <div class="footer-text"><a href="../index.html" style="color: var(--blue3); text-decoration: none;">← Powrót do portfolio</a></div>
 </footer>
+
+<script src="../scripts/i18n-nav.js"></script>
 
 <script>
 const canvas = document.getElementById('canvas');

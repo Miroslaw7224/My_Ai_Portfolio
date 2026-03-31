@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="pl">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<link rel="canonical" href="https://miroslaw7224.github.io/My_Ai_Portfolio/projects/career-guide.html">
+<link rel="canonical" href="https://miroslaw7224.github.io/My_Ai_Portfolio/en/projects/career-guide.html">
 <link rel="alternate" hreflang="pl" href="https://miroslaw7224.github.io/My_Ai_Portfolio/projects/career-guide.html">
 <link rel="alternate" hreflang="en" href="https://miroslaw7224.github.io/My_Ai_Portfolio/en/projects/career-guide.html">
 <link rel="alternate" hreflang="x-default" href="https://miroslaw7224.github.io/My_Ai_Portfolio/">
@@ -73,56 +73,56 @@
 </head>
 <body>
 <nav>
-  <a href="../index.html" class="nav-logo" aria-label="Portfolio — strona główna">
+  <a href="../../en/index.html" class="nav-logo" aria-label="Portfolio - home page">
     <span class="nav-logo-type">PORT<span>FOLIO</span></span>
   </a>
-  <div style="display:flex;align-items:center;gap:14px"><a href="../index.html" class="nav-back">← Powrót do portfolio</a><a href="../en/projects/career-guide.html" class="lang-switch" lang="en" hreflang="en">EN</a></div>
+  <div style="display:flex;align-items:center;gap:14px"><a href="../../en/index.html" class="nav-back">← Back to portfolio</a><a href="../../projects/career-guide.html" class="lang-switch" lang="pl" hreflang="pl">PL</a></div>
 </nav>
 
 <div class="container">
-  <a href="../index.html" class="back-link">← Wszystkie projekty</a>
+  <a href="../../en/index.html" class="back-link">← All projects</a>
 
   <div class="project-header">
-    <div class="project-tag">Automatyzacja testów · Python/FastAPI · Infrastruktura QA</div>
+    <div class="project-tag">Test automation · Python/FastAPI · QA infrastructure</div>
     <div class="project-title-row">
       <h1>Career Guide</h1>
-      <img class="project-title-logo" src="../docs/images/career-guide/logo-career-guide.png" alt="Logo Career Guide">
+      <img class="project-title-logo" src="../../docs/images/career-guide/logo-career-guide.png" alt="Logo Career Guide">
     </div>
     <p class="project-subtitle">
-      Kompleksowa infrastruktura testów automatycznych dla aplikacji Career Guide (FastAPI + React), zaprojektowana i wdrożona od podstaw. Projekt obejmuje 745 testów, pokrycie 13 modułów API, CI/CD w GitHub Actions oraz mechanizmy bezpieczeństwa chroniące przed użyciem produkcyjnej bazy danych.
+      Comprehensive automated testing infrastructure for the Career Guide app (FastAPI + React), designed and implemented from scratch. The project includes 745 tests, coverage across 13 API modules, CI/CD in GitHub Actions, and safety mechanisms preventing accidental use of production DB.
     </p>
-    <span class="project-status">Status: Aktywny rozwój (Rozpoczęty: 2025 | W trakcie)</span>
-    <p class="project-subtitle" style="margin-top: 12px; margin-bottom: 0;">Rola: Inżynier automatyzacji testów (główny wkład w implementację testów, praca zespołowa)</p>
+    <span class="project-status">Status: Active development (Started: 2025 | In progress)</span>
+    <p class="project-subtitle" style="margin-top: 12px; margin-bottom: 0;">Role: Test automation engineer (primary contribution to test implementation, team collaboration)</p>
   </div>
 
   <div class="section">
-    <h2>O aplikacji Career Guide</h2>
+    <h2>About Career Guide</h2>
     <p>
-      Career Guide to platforma doradztwa zawodowego wspierająca użytkownika od diagnozy profilu po proces aplikowania i rozwoju kariery.
+      Career Guide is a career guidance platform that supports users from profile diagnosis through job applications and career growth.
     </p>
     <p>
-      <strong style="color: var(--blue3);">Dla kogo:</strong> osoby planujące zmianę ścieżki zawodowej, kandydaci aktywnie szukający pracy oraz użytkownicy rozwijający kompetencje pod konkretne role.
+      <strong style="color: var(--blue3);">For whom:</strong> people planning a career change, active job seekers, and users developing skills for specific roles.
     </p>
     <p>
-      <strong style="color: var(--blue3);">Kluczowe moduły produktu:</strong> profilowanie użytkowników (skills/experience/preferences), algorytmy dopasowania user ↔ job offers, generator CV wspierany AI, moduł psychometryczny, śledzenie aplikacji i analityka postępów oraz obsługa płatności funkcji premium.
+      <strong style="color: var(--blue3);">Key product modules:</strong> user profiling (skills/experience/preferences), user-job matching algorithms, AI-assisted CV generator, psychometric module, application tracking and progress analytics, and premium feature payments.
     </p>
     <p>
-      <strong style="color: var(--blue3);">Architektura:</strong> backend FastAPI (17 routerów API), PostgreSQL, MinIO storage, frontend React + Vite, integracja Supabase i CI/CD w GitHub Actions.
+      <strong style="color: var(--blue3);">Architecture:</strong> FastAPI backend (17 API routers), PostgreSQL, MinIO storage, React + Vite frontend, Supabase integration, and CI/CD in GitHub Actions.
     </p>
     <p>
-      <strong style="color: var(--blue3);">Kontekst realizacji:</strong> projekt rozwijany zespołowo, a moim zakresem było zaprojektowanie i wdrożenie całej infrastruktury testów automatycznych od zera.
+      <strong style="color: var(--blue3);">Delivery context:</strong> team-developed project where my scope was designing and implementing the full automated testing infrastructure from scratch.
     </p>
   </div>
 
   <div class="section">
-    <h2>Problem → Rozwiązanie</h2>
-    <p><strong style="color: var(--blue3);">Problem:</strong> Rosnący backend wymagał powtarzalnego i bezpiecznego testowania wielu modułów API, bez ryzyka przypadkowego wpływu testów na środowisko produkcyjne.</p>
-    <p><strong style="color: var(--blue3);">Rozwiązanie:</strong> Type-first architektura testów (unit/integration/e2e/security), izolowane środowisko Docker Compose, schema reset z guardami bezpieczeństwa oraz pipeline CI/CD uruchamiany automatycznie dla PR i main.</p>
-    <p><strong style="color: var(--blue3);">Wpływ biznesowy:</strong> 0 incydentów produkcyjnych, ~40% redukcja czasu CI dzięki wykrywaniu zmian oraz łatwiejszy onboarding nowych testerów dzięki standaryzacji i dokumentacji workflow.</p>
+    <h2>Problem -> Solution</h2>
+    <p><strong style="color: var(--blue3);">Problem:</strong> The growing backend required repeatable and safe testing across many API modules, without risk of accidental impact on production.</p>
+    <p><strong style="color: var(--blue3);">Solution:</strong> Type-first test architecture (unit/integration/e2e/security), isolated Docker Compose environment, schema reset with safety guards, and CI/CD pipeline automatically triggered for PR and main.</p>
+    <p><strong style="color: var(--blue3);">Business impact:</strong> 0 production incidents, ~40% CI time reduction thanks to change detection, and easier onboarding for new testers through standardized workflow documentation.</p>
   </div>
 
   <div class="section">
-    <h2>Stack Technologiczny</h2>
+    <h2>Tech Stack</h2>
     <div class="stack-grid">
       <span class="stack-tag">Python 3.11</span>
       <span class="stack-tag">FastAPI</span>
@@ -141,17 +141,17 @@
   </div>
 
   <div class="section">
-    <h2>Kluczowe Metryki</h2>
+    <h2>Key Metrics</h2>
     <div class="metrics-grid">
-      <div class="metric-card"><div class="metric-value">745</div><div class="metric-label">przypadków testowych (5 kategorii)</div></div>
-      <div class="metric-card"><div class="metric-value">42%</div><div class="metric-label">pokrycia kodu backendu</div></div>
-      <div class="metric-card"><div class="metric-value">13</div><div class="metric-label">modułów API pokrytych testami</div></div>
-      <div class="metric-card"><div class="metric-value">0</div><div class="metric-label">incydentów zanieczyszczenia produkcji testami</div></div>
+      <div class="metric-card"><div class="metric-value">745</div><div class="metric-label">test cases (5 categories)</div></div>
+      <div class="metric-card"><div class="metric-value">42%</div><div class="metric-label">backend code coverage</div></div>
+      <div class="metric-card"><div class="metric-value">13</div><div class="metric-label">API modules covered by tests</div></div>
+      <div class="metric-card"><div class="metric-value">0</div><div class="metric-label">production contamination incidents from tests</div></div>
     </div>
   </div>
 
   <div class="section">
-    <h2>Workflow testów</h2>
+    <h2>Testing workflow</h2>
     <div class="screenshots screenshots--diagrams">
       <div class="screenshot-card">
         <div class="diagram-preview">
@@ -160,10 +160,10 @@ flowchart LR
     A[Tester] --> B[Docker Compose&lt;br/&gt;compose.test.yml]
     B --> C[(PostgreSQL&lt;br/&gt;career_guide_test)]
     B --> D[(MinIO Storage)]
-    B --> E[Kontener test-runnera]
+    B --> E[Test runner container]
     E --> F[pytest tests]
-    F --> G[Zbieranie pokrycia&lt;br/&gt;pytest cov]
-    G --> H[Raport HTML&lt;br/&gt;htmlcov]
+    F --> G[Coverage collection&lt;br/&gt;pytest cov]
+    G --> H[HTML report&lt;br/&gt;htmlcov]
     C --> F
     D --> F
     I[Factories: 11 custom generators] --> F
@@ -175,7 +175,7 @@ flowchart LR
     end
     S1 --> F
     S2 --> F
-    H --> K[Deweloper&lt;br/&gt;analiza pokrycia]
+    H --> K[Developer&lt;br/&gt;coverage analysis]
 
     style I fill:#1f4d2e,stroke:#2e8b57,color:#d7f5e2
     style J fill:#1f4d2e,stroke:#2e8b57,color:#d7f5e2
@@ -183,33 +183,33 @@ flowchart LR
     style S2 fill:#4d1f1f,stroke:#b85454,color:#ffe3e3
           </div>
         </div>
-        <p class="screenshot-caption">Workflow lokalnych testów</p>
+        <p class="screenshot-caption">Local testing workflow</p>
       </div>
       <div class="screenshot-card">
         <div class="diagram-preview">
           <div class="mermaid">
 flowchart TD
     A[PR / Push] --> B[GitHub Actions&lt;br/&gt;ci-pr.yml]
-    B --> C[Wykrywanie zmian]
+    B --> C[Change detection]
     C --> D{Backend&lt;br/&gt;changed?}
-    D -- Tak --> E[Przygotowanie środowiska testowego]
+    D -- Yes --> E[Test environment preparation]
     E --> F[Stack Docker&lt;br/&gt;compose.test.yml]
     F --> G[(PostgreSQL)]
     F --> H[(MinIO)]
     F --> I[Test runner]
     I --> J[pytest suite&lt;br/&gt;745 tests]
-    J --> K{Wyniki}
-    K -- Pass/Skip/XFail --> L[Raport pokrycia]
-    L --> M[✅ Bramka merge: PASS]
-    K -- Fail --> N[❌ Bramka merge: BLOCK]
-    N --> O[Deweloper poprawia]
+    J --> K{Results}
+    K -- Pass/Skip/XFail --> L[Coverage report]
+    L --> M[✅ Merge gate: PASS]
+    K -- Fail --> N[❌ Merge gate: BLOCK]
+    N --> O[Developer fixes issues]
     O --> A
-    D -- Nie --> P[Pominięcie testów]
+    D -- No --> P[Skip tests]
     P --> M
 
     subgraph "Safety Guards"
-        S1[Walidacja URL bazy]
-        S2[Guard reset_schema]
+        S1[Database URL validation]
+        S2[reset_schema guard]
     end
     S1 --> J
     S2 --> J
@@ -226,19 +226,19 @@ flowchart TD
         <div class="diagram-preview">
           <div class="mermaid">
 graph TD
-    subgraph "Rozkład testów (745 łącznie)"
-        A[Testy Unit&lt;br/&gt;436 testów&lt;br/&gt;60%]
-        B[Testy Integracyjne&lt;br/&gt;123 testy&lt;br/&gt;17%]
-        C[Testy E2E&lt;br/&gt;107 testów&lt;br/&gt;14%]
-        D[Testy Bezpieczeństwa&lt;br/&gt;44 testy&lt;br/&gt;6%]
-        E[Testy Smoke&lt;br/&gt;8 testów&lt;br/&gt;1%]
+    subgraph "Test distribution (745 total)"
+        A[Unit Tests&lt;br/&gt;436 tests&lt;br/&gt;60%]
+        B[Integration Tests&lt;br/&gt;123 tests&lt;br/&gt;17%]
+        C[E2E Tests&lt;br/&gt;107 tests&lt;br/&gt;14%]
+        D[Security Tests&lt;br/&gt;44 tests&lt;br/&gt;6%]
+        E[Smoke Tests&lt;br/&gt;8 tests&lt;br/&gt;1%]
     end
 
-    A -.szybkie, izolowane.-> F[Strategia]
-    B -.średnia prędkość.-> F
-    C -.wolne, kompleksowe.-> F
-    D -.auth i exploity.-> F
-    E -.krytyczne ścieżki.-> F
+    A -.fast, isolated.-> F[Strategy]
+    B -.average speed.-> F
+    C -.slow, comprehensive.-> F
+    D -.auth and exploits.-> F
+    E -.critical paths.-> F
 
     style A fill:#1f4d2e,stroke:#2e8b57,color:#d7f5e2
     style B fill:#4d3b1f,stroke:#b38b2a,color:#fff0c9
@@ -247,55 +247,55 @@ graph TD
     style E fill:#1f3f4d,stroke:#3a9bb3,color:#d9f5ff
           </div>
         </div>
-        <p class="screenshot-caption">Workflow rozkładu testów</p>
+        <p class="screenshot-caption">Test distribution workflow</p>
       </div>
     </div>
   </div>
 
   <div class="section">
-    <h2>Kluczowe Funkcje</h2>
+    <h2>Key Features</h2>
     <div class="features-grid">
-      <div class="feature-card"><div class="feature-title">Architektura testów type-first</div><div class="feature-desc">Rozdział testów na warstwy unit/integration/e2e/security dla lepszej skalowalności i czytelności zestawu testów.</div></div>
-      <div class="feature-card"><div class="feature-title">Ekosystem factories + fixtures</div><div class="feature-desc">11 własnych factories i 43 pliki conftest z fixtures per moduł API.</div></div>
-      <div class="feature-card"><div class="feature-title">Guardy bezpieczeństwa bazy</div><div class="feature-desc">Walidacja URL, blokada hostów produkcyjnych i reset schematu z hard-guardem dla non-test DB.</div></div>
-      <div class="feature-card"><div class="feature-title">Kompleksowe testy E2E</div><div class="feature-desc">E2E łączące asercje HTTP z weryfikacją realnych zmian w PostgreSQL.</div></div>
-      <div class="feature-card"><div class="feature-title">Obsługa znanych regresji</div><div class="feature-desc">Markery `xfail(strict=True)` do zarządzania known regressions przy zachowaniu integralności test suite.</div></div>
-      <div class="feature-card"><div class="feature-title">Automatyczne bramki jakości</div><div class="feature-desc">Workflow GitHub Actions blokujący merge przy failing tests i zbierający raport pokrycia.</div></div>
+      <div class="feature-card"><div class="feature-title">Type-first testing architecture</div><div class="feature-desc">Test split into unit/integration/e2e/security layers for better scalability and suite readability.</div></div>
+      <div class="feature-card"><div class="feature-title">Factories + fixtures ecosystem</div><div class="feature-desc">11 custom factories and 43 conftest files with fixtures per API module.</div></div>
+      <div class="feature-card"><div class="feature-title">Database safety guards</div><div class="feature-desc">URL validation, production-host blocking, and schema reset with a hard guard for non-test DB.</div></div>
+      <div class="feature-card"><div class="feature-title">Comprehensive E2E tests</div><div class="feature-desc">E2E tests combining HTTP assertions with verification of real PostgreSQL changes.</div></div>
+      <div class="feature-card"><div class="feature-title">Known regression handling</div><div class="feature-desc">`xfail(strict=True)` markers to manage known regressions while preserving test suite integrity.</div></div>
+      <div class="feature-card"><div class="feature-title">Automatic quality gates</div><div class="feature-desc">GitHub Actions workflow blocking merges on failing tests and collecting coverage reports.</div></div>
     </div>
   </div>
 
   <div class="section">
-    <h2>Kluczowe Wyzwania Techniczne</h2>
+    <h2>Key Technical Challenges</h2>
     <div class="challenges">
       <ul>
-        <li><strong>Zanieczyszczenie `sys.modules`:</strong> przejście z globalnych mocków na fixtures per-test z czyszczeniem modułów i fresh import app.</li>
-        <li><strong>Konflikty ENUM w PostgreSQL:</strong> zastąpienie `drop_all()` przez reset całego schematu (`DROP SCHEMA CASCADE` → recreate).</li>
-        <li><strong>Precyzja ścieżek importu:</strong> standaryzacja patchowania na pełnych ścieżkach `backend.*`.</li>
-        <li><strong>Niestabilne testy zależne od kolejności:</strong> separacja known regressions markerami `xfail(strict=True)`.</li>
+        <li><strong>`sys.modules` contamination:</strong> moved from global mocks to per-test fixtures with module cleanup and fresh app imports.</li>
+        <li><strong>PostgreSQL ENUM conflicts:</strong> replaced `drop_all()` with full schema reset (`DROP SCHEMA CASCADE` -> recreate).</li>
+        <li><strong>Import path precision:</strong> standardized patching on full `backend.*` paths.</li>
+        <li><strong>Order-dependent unstable tests:</strong> isolated known regressions with `xfail(strict=True)` markers.</li>
       </ul>
     </div>
   </div>
 
   <div class="section">
-    <h2>Jak to działa?</h2>
-    <p><strong style="color: var(--blue3);">WORKFLOW LOKALNY:</strong></p>
-    <p><strong>1.</strong> Deweloper uruchamia stack testowy przez Docker Compose z odseparowaną bazą `career_guide_test` i usługami pomocniczymi.</p>
-    <p><strong>2.</strong> Test runner wykonuje pełny pytest suite (unit, integration, e2e, security, smoke) z kontekstowymi fixtures i factories.</p>
-    <p><strong>3.</strong> Safety guards walidują środowisko przed `reset_schema`, żeby wykluczyć ryzyko operacji na środowisku nietestowym.</p>
-    <p><strong>4.</strong> Coverage report generowany jest w `htmlcov/` do szybkiej analizy jakości pokrycia.</p>
-    <p><strong style="color: var(--blue3);">WORKFLOW CI/CD:</strong></p>
-    <p><strong>1.</strong> PR/Push trigger uruchamia GitHub Actions (`ci-pr.yml`).</p>
-    <p><strong>2.</strong> Wykrywanie zmian optymalizuje zakres testów i czas wykonania pipeline.</p>
-    <p><strong>3.</strong> Docker stack z testową bazą i usługami pomocniczymi startuje automatycznie w jobie CI.</p>
-    <p><strong>4.</strong> pytest suite wykonuje się jako merge gate; wynik pass/fail decyduje o możliwości mergowania.</p>
+    <h2>How it works</h2>
+    <p><strong style="color: var(--blue3);">LOCAL WORKFLOW:</strong></p>
+    <p><strong>1.</strong> Developer starts the test stack via Docker Compose with isolated `career_guide_test` DB and helper services.</p>
+    <p><strong>2.</strong> The test runner executes the full pytest suite (unit, integration, e2e, security, smoke) with contextual fixtures and factories.</p>
+    <p><strong>3.</strong> Safety guards validate the environment before `reset_schema` to eliminate risk of operations on non-test environments.</p>
+    <p><strong>4.</strong> Coverage report is generated in `htmlcov/` for quick coverage-quality analysis.</p>
+    <p><strong style="color: var(--blue3);">CI/CD WORKFLOW:</strong></p>
+    <p><strong>1.</strong> PR/Push trigger starts GitHub Actions (`ci-pr.yml`).</p>
+    <p><strong>2.</strong> Change detection optimizes test scope and pipeline runtime.</p>
+    <p><strong>3.</strong> Docker stack with test DB and helper services starts automatically in CI job.</p>
+    <p><strong>4.</strong> pytest suite runs as merge gate; pass/fail determines merge eligibility.</p>
   </div>
 </div>
 
 <footer>
   <div class="footer-text">© 2026 Mirosław Baczkowski</div>
-  <div class="footer-text"><a href="../index.html" style="color: var(--blue3); text-decoration: none;">← Powrót do portfolio</a></div>
+  <div class="footer-text"><a href="../../en/index.html" style="color: var(--blue3); text-decoration: none;">← Back to portfolio</a></div>
 </footer>
-<script src="../scripts/i18n-nav.js"></script>
+<script src="../../scripts/i18n-nav.js"></script>
 <script type="module">
   import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs";
   mermaid.initialize({
