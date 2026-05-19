@@ -1,0 +1,805 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="canonical" href="https://miroslaw7224.github.io/My_Ai_Portfolio/projects/tester-ai.html">
+<link rel="alternate" hreflang="pl" href="https://miroslaw7224.github.io/My_Ai_Portfolio/projects/tester-ai.html">
+<link rel="alternate" hreflang="en" href="https://miroslaw7224.github.io/My_Ai_Portfolio/en/projects/tester-ai.html">
+<link rel="alternate" hreflang="x-default" href="https://miroslaw7224.github.io/My_Ai_Portfolio/">
+<title>Tester AI — dashboard testów i AI runner — Mirosław Baczkowski</title>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Oxanium:wght@700;800&family=Share+Tech+Mono&family=Exo+2:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    --navy: #020818;
+    --deep: #040d2a;
+    --blue: #0ff;
+    --blue2: #007fff;
+    --blue3: #00d4ff;
+    --text: #c8e6f5;
+    --muted: #4a6f8a;
+  }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--navy);
+    color: var(--text);
+    font-family: 'Exo 2', sans-serif;
+    overflow-x: hidden;
+  }
+
+  #canvas {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(0,200,255,0.025) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0,200,255,0.025) 1px, transparent 1px);
+    background-size: 60px 60px;
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  .orb { position: fixed; border-radius: 50%; filter: blur(140px); pointer-events: none; z-index: 0; }
+  .orb1 { width: 700px; height: 700px; background: radial-gradient(circle, rgba(0,80,180,0.1), transparent 70%); top: -200px; right: -200px; animation: orb-float 20s ease-in-out infinite; }
+  .orb2 { width: 500px; height: 500px; background: radial-gradient(circle, rgba(0,180,255,0.07), transparent 70%); bottom: 100px; left: -100px; animation: orb-float 15s ease-in-out infinite reverse; }
+  @keyframes orb-float { 0%,100% { transform: translate(0,0); } 33% { transform: translate(30px,-20px); } 66% { transform: translate(-20px,30px); } }
+  @keyframes hex-logo-glow { 0%, 100% { opacity: 0.5; } 50% { opacity: 1; } }
+
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 60px;
+    height: 70px;
+    background: rgba(2,8,24,0.85);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(0,200,255,0.12);
+  }
+  .nav-logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    text-decoration: none;
+    transition: opacity 0.3s;
+  }
+  .nav-logo:hover { opacity: 0.95; }
+  .nav-logo:hover .nav-logo-type span { text-shadow: 0 0 12px rgba(0,212,255,0.65); }
+  .nav-logo-icon { flex-shrink: 0; display: block; }
+  .nav-logo-type {
+    font-family: 'Oxanium', sans-serif;
+    font-weight: 800;
+    font-size: 0.75rem;
+    color: #fff;
+    letter-spacing: 2px;
+    line-height: 1;
+  }
+  .nav-logo-type span {
+    color: #00d4ff;
+    text-shadow: 0 0 8px rgba(0,212,255,0.5);
+  }
+  .nav-logo .hex-logo-glow { animation: hex-logo-glow 3s ease-in-out infinite; }
+  .nav-back { font-family: 'Share Tech Mono', monospace; font-size: 0.75rem; color: var(--muted); text-decoration: none; letter-spacing: 2px; text-transform: uppercase; transition: color 0.3s, text-shadow 0.3s; }
+  .nav-back:hover { color: var(--blue); text-shadow: 0 0 15px var(--blue); }
+  .lang-switch { font-family: "Share Tech Mono", monospace; font-size: 0.75rem; color: var(--blue3); text-decoration: none; letter-spacing: 2px; text-transform: uppercase; border: 1px solid rgba(0,212,255,0.35); padding: 4px 8px; }
+
+  .container {
+    position: relative;
+    z-index: 10;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 120px 40px 80px;
+  }
+
+  .back-link {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--blue3);
+    text-decoration: none;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 40px;
+    transition: gap 0.3s;
+  }
+  .back-link:hover { gap: 14px; }
+
+  .project-header {
+    margin-bottom: 60px;
+  }
+
+  .project-tag {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--blue3);
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .project-tag::before {
+    content: '';
+    width: 40px;
+    height: 1px;
+    background: var(--blue3);
+    box-shadow: 0 0 8px var(--blue3);
+  }
+
+  h1 {
+    font-family: 'Orbitron', monospace;
+    font-size: clamp(2rem, 4vw, 3.5rem);
+    font-weight: 900;
+    color: #fff;
+    margin-bottom: 24px;
+    line-height: 1.2;
+  }
+
+  .project-subtitle {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: var(--text);
+    opacity: 0.8;
+    max-width: 800px;
+    margin-bottom: 40px;
+  }
+
+  .project-links {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 60px;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.75rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    padding: 14px 36px;
+    background: var(--blue3);
+    color: #020818;
+    border: 1px solid var(--blue3);
+    text-decoration: none;
+    transition: all 0.3s;
+    cursor: pointer;
+    display: inline-block;
+    box-shadow: 0 0 20px rgba(0,212,255,0.4);
+  }
+  .btn-primary:hover {
+    box-shadow: 0 0 40px rgba(0,212,255,0.7);
+    background: #fff;
+  }
+
+  .btn-secondary {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.75rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    padding: 14px 36px;
+    background: transparent;
+    border: 1px solid var(--blue3);
+    color: var(--blue3);
+    text-decoration: none;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s;
+    cursor: pointer;
+    display: inline-block;
+  }
+  .btn-secondary::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--blue3);
+    transform: translateX(-100%);
+    transition: transform 0.3s;
+    z-index: -1;
+  }
+  .btn-secondary:hover {
+    color: var(--navy);
+    box-shadow: 0 0 30px rgba(0,212,255,0.5);
+  }
+  .btn-secondary:hover::before { transform: translateX(0); }
+
+  .section {
+    margin-bottom: 80px;
+  }
+
+  h2 {
+    font-family: 'Orbitron', monospace;
+    font-size: clamp(1.4rem, 2.5vw, 2rem);
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: 2px;
+    margin-bottom: 32px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+
+  h2::before {
+    content: '//';
+    font-size: 0.65rem;
+    color: var(--blue3);
+    letter-spacing: 3px;
+    opacity: 0.6;
+  }
+
+  h2::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, rgba(0,200,255,0.4), transparent);
+  }
+
+  p {
+    font-size: 1rem;
+    line-height: 1.8;
+    color: var(--text);
+    opacity: 0.8;
+    margin-bottom: 20px;
+  }
+
+  .stack-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 40px;
+  }
+
+  .stack-tag {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.65rem;
+    padding: 8px 16px;
+    border: 1px solid rgba(0,200,255,0.3);
+    color: var(--blue3);
+    letter-spacing: 1.5px;
+    background: rgba(0,200,255,0.05);
+    text-transform: uppercase;
+    transition: all 0.3s;
+  }
+  .stack-tag:hover {
+    background: rgba(0,200,255,0.15);
+    border-color: var(--blue3);
+    box-shadow: 0 0 20px rgba(0,200,255,0.2);
+  }
+
+  .screenshots {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 24px;
+    margin-bottom: 40px;
+  }
+
+  .screenshot-card {
+    position: relative;
+    background: rgba(4,13,42,0.8);
+    border: 1px solid rgba(0,200,255,0.12);
+    padding: 16px;
+    transition: all 0.4s;
+    cursor: pointer;
+  }
+
+  .screenshot-card:hover {
+    border-color: rgba(0,200,255,0.35);
+    transform: translateY(-4px);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.5), 0 0 40px rgba(0,200,255,0.08);
+  }
+
+  .screenshot-card img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border: 1px solid rgba(0,200,255,0.1);
+    cursor: zoom-in;
+  }
+
+  /* Lightbox — powiększenie zrzutu */
+  .lightbox {
+    position: fixed;
+    inset: 0;
+    z-index: 200;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    box-sizing: border-box;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 0.28s ease, visibility 0.28s ease;
+  }
+  .lightbox.is-open {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+  }
+  .lightbox__backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(2, 8, 24, 0.92);
+    backdrop-filter: blur(10px);
+    cursor: zoom-out;
+  }
+  .lightbox__img {
+    position: relative;
+    z-index: 1;
+    max-width: min(96vw, 1400px);
+    max-height: 92vh;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    border: 1px solid rgba(0, 200, 255, 0.28);
+    box-shadow: 0 24px 80px rgba(0, 0, 0, 0.55), 0 0 48px rgba(0, 212, 255, 0.1);
+  }
+  .lightbox__close {
+    position: absolute;
+    top: 16px;
+    right: 20px;
+    z-index: 2;
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    border: 1px solid rgba(0, 212, 255, 0.45);
+    background: rgba(4, 13, 42, 0.95);
+    color: var(--blue3);
+    font-size: 1.6rem;
+    line-height: 1;
+    cursor: pointer;
+    font-family: 'Orbitron', monospace;
+    transition: border-color 0.2s, box-shadow 0.2s, color 0.2s;
+  }
+  .lightbox__close:hover {
+    border-color: var(--blue3);
+    color: #fff;
+    box-shadow: 0 0 22px rgba(0, 212, 255, 0.35);
+  }
+
+  .screenshot-caption {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.65rem;
+    color: var(--muted);
+    letter-spacing: 1px;
+    margin-top: 12px;
+    text-transform: uppercase;
+  }
+
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+  }
+
+  .feature-card {
+    background: rgba(4,13,42,0.6);
+    border: 1px solid rgba(0,200,255,0.1);
+    padding: 24px;
+    transition: all 0.3s;
+  }
+
+  .feature-card:hover {
+    border-color: rgba(0,200,255,0.3);
+    box-shadow: 0 0 20px rgba(0,200,255,0.08);
+  }
+
+  .feature-title {
+    font-family: 'Orbitron', monospace;
+    font-size: 0.9rem;
+    color: var(--blue3);
+    letter-spacing: 1px;
+    margin-bottom: 12px;
+  }
+
+  .feature-desc {
+    font-size: 0.85rem;
+    line-height: 1.7;
+    color: var(--text);
+    opacity: 0.7;
+  }
+
+  .challenges {
+    background: rgba(2,8,24,0.9);
+    border: 1px solid rgba(0,200,255,0.2);
+    padding: 32px;
+    margin-bottom: 40px;
+  }
+
+  .challenges ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .challenges li {
+    font-size: 0.9rem;
+    line-height: 1.8;
+    color: var(--text);
+    opacity: 0.8;
+    padding-left: 24px;
+    position: relative;
+    margin-bottom: 12px;
+  }
+
+  .challenges li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--blue3);
+  }
+
+  footer {
+    position: relative;
+    z-index: 10;
+    padding: 30px 80px;
+    border-top: 1px solid rgba(0,200,255,0.08);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .footer-text {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.6rem;
+    color: var(--muted);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+
+  @media (max-width: 768px) {
+    .container { padding: 100px 20px 60px; }
+    nav { padding: 0 20px; }
+    footer { padding: 20px; flex-direction: column; gap: 10px; text-align: center; }
+    .screenshots { grid-template-columns: 1fr; }
+    .features-grid { grid-template-columns: 1fr; }
+    .project-links { flex-direction: column; width: 100%; }
+    .btn-primary, .btn-secondary { width: 100%; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<canvas id="canvas"></canvas>
+<div class="orb orb1"></div>
+<div class="orb orb2"></div>
+
+<nav>
+  <a href="../index.html" class="nav-logo" aria-label="Portfolio — strona główna">
+    <svg class="nav-logo-icon" width="28" height="28" viewBox="0 0 38 38" fill="none" aria-hidden="true">
+      <polygon points="19,1 35,10 35,28 19,37 3,28 3,10" fill="rgba(0,200,255,0.05)" stroke="rgba(0,200,255,0.5)" stroke-width="1.2"/>
+      <polygon points="19,8 28,13 28,25 19,30 10,25 10,13" fill="none" stroke="rgba(0,200,255,0.15)" stroke-width="0.8"/>
+      <line x1="19" y1="1" x2="19" y2="8" stroke="rgba(0,212,255,0.6)" stroke-width="1"/>
+      <line x1="35" y1="10" x2="28" y2="13" stroke="rgba(0,212,255,0.6)" stroke-width="1"/>
+      <line x1="35" y1="28" x2="28" y2="25" stroke="rgba(0,212,255,0.3)" stroke-width="1"/>
+      <circle cx="19" cy="19" r="4" fill="rgba(0,50,100,0.6)" stroke="#00d4ff" stroke-width="1"/>
+      <circle cx="19" cy="19" r="2" fill="#00d4ff" class="hex-logo-glow"/>
+      <circle cx="19" cy="8" r="1.5" fill="#00d4ff" opacity="0.6"/>
+      <circle cx="28" cy="13" r="1.5" fill="#00d4ff" opacity="0.6"/>
+      <circle cx="28" cy="25" r="1.5" fill="#00d4ff" opacity="0.3"/>
+    </svg>
+    <span class="nav-logo-type">PORT<span>FOLIO</span></span>
+  </a>
+  <div style="display:flex;align-items:center;gap:14px"><a href="../index.html" class="nav-back">← Powrót do portfolio</a><a href="../en/projects/tester-ai.html" class="lang-switch" lang="en" hreflang="en">EN</a></div>
+</nav>
+
+<div class="container">
+  <a href="../index.html" class="back-link">← Wszystkie projekty</a>
+
+  <div class="project-header">
+    <div class="project-tag">Automatyzacja testów · QA · AI</div>
+    <h1>Tester AI</h1>
+    <p class="project-subtitle">
+      Standalone dashboard i runner testów dla zewnętrznej aplikacji Career Guide. Backend FastAPI uruchamia pytest, Vitest i Playwright (Docker),
+      zapisuje wyniki w SQLite; panel Vite + React (JSX) odpytuje API. Konfiguracja w <code style="color:var(--blue3);">config.yaml</code> — testowany projekt jest tylko do odczytu.
+      Knowledge profiles, pamięć agenta, AI review testów, klasyfikator bugów i eksport Markdown.
+    </p>
+    <div class="project-links">
+      <a href="https://github.com/Miroslaw7224/Tester_AI" class="btn-primary" target="_blank" rel="noopener noreferrer">// GITHUB REPO ↗</a>
+    </div>
+    <p style="font-family:'Share Tech Mono',monospace;font-size:0.65rem;color:var(--muted);letter-spacing:1.5px;text-transform:uppercase;margin-top:16px;">Uruchomienie: lokalnie (<code style="color:var(--blue3);">npm run dev</code>) lub Docker Compose — brak publicznego demo</p>
+  </div>
+
+  <div class="section">
+    <h2>Problem → Rozwiązanie</h2>
+    <p>
+      <strong style="color: var(--blue3);">Problem:</strong> Zewnętrzna aplikacja (Career Guide) ma rozbudowany backend i frontend — ręczne uruchamianie pytest, Vitest i Playwright oraz analiza wyników są czasochłonne i trudne do powtarzalnego śledzenia w czasie.
+    </p>
+    <p>
+      <strong style="color: var(--blue3);">Rozwiązanie:</strong> Jedna aplikacja sterująca: FastAPI z sześcioma routerami API uruchamia testy w Dockerze według <code style="color: var(--blue3);">config.yaml</code>, parsuje wyniki, zapisuje historię w SQLite i serwuje panel React. Career Guide pozostaje read-only — zapis tylko w <code style="color: var(--blue3);">reports/</code> i <code style="color: var(--blue3);">agent_memory.db</code>. Opcjonalnie OpenAI wspiera review testów i profile wiedzy (stabilność / flakiness).
+    </p>
+  </div>
+
+  <div class="section">
+    <h2>Stack technologiczny</h2>
+    <div class="stack-grid">
+      <span class="stack-tag">Python</span>
+      <span class="stack-tag">FastAPI</span>
+      <span class="stack-tag">SQLite</span>
+      <span class="stack-tag">Vite</span>
+      <span class="stack-tag">React (JSX)</span>
+      <span class="stack-tag">TanStack Query</span>
+      <span class="stack-tag">pytest</span>
+      <span class="stack-tag">Vitest</span>
+      <span class="stack-tag">Playwright</span>
+      <span class="stack-tag">Docker Compose</span>
+      <span class="stack-tag">OpenAI API</span>
+      <span class="stack-tag">GitHub Actions</span>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Zrzuty ekranu</h2>
+    <div class="screenshots">
+      <div class="screenshot-card">
+        <div style="aspect-ratio:16/10;display:flex;align-items:center;justify-content:center;background:rgba(0,40,80,0.15);border:1px dashed rgba(0,200,255,0.22);color:var(--muted);font-family:'Share Tech Mono',monospace;font-size:0.68rem;letter-spacing:1.5px;text-transform:uppercase;text-align:center;padding:22px;">Dashboard backend / frontend<br>(placeholder — docs/images/)</div>
+        <p class="screenshot-caption">Panel uruchamiania testów</p>
+      </div>
+      <div class="screenshot-card">
+        <div style="aspect-ratio:16/10;display:flex;align-items:center;justify-content:center;background:rgba(0,40,80,0.15);border:1px dashed rgba(0,200,255,0.22);color:var(--muted);font-family:'Share Tech Mono',monospace;font-size:0.68rem;letter-spacing:1.5px;text-transform:uppercase;text-align:center;padding:22px;">Diff / bug panel / AI review<br>(placeholder — docs/images/)</div>
+        <p class="screenshot-caption">Analiza wyników i bugów</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Kluczowe funkcje</h2>
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-title">Uruchamianie testów CG</div>
+        <div class="feature-desc">Backend pytest oraz frontend Vitest/Playwright — ścieżki z config.yaml.</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-title">Knowledge profiles</div>
+        <div class="feature-desc">Historia przebiegów → stabilność testu (flaky gdy 10 &lt; stability &lt; 90).</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-title">AI test review</div>
+        <div class="feature-desc">OpenAI analizuje wyniki backendu i frontendu.</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-title">Klasyfikator bugów</div>
+        <div class="feature-desc">Parsery wyników + śledzenie regresji w czasie.</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-title">Historia i eksport</div>
+        <div class="feature-desc">Run logi, raporty oraz eksport do Markdown.</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-title">Endpoint scanner</div>
+        <div class="feature-desc">Skanowanie API Career Guide.</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-title">Ochrona read-only</div>
+        <div class="feature-desc">config.py blokuje zapis do katalogu Career Guide.</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-title">CI</div>
+        <div class="feature-desc">GitHub Actions: pytest, coverage, Pyright.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Wyzwania techniczne</h2>
+    <div class="challenges">
+      <ul>
+        <li><strong>Izolacja CG:</strong> Career Guide tylko do odczytu; zapis w <code style="color: var(--blue3);">reports/</code> i <code style="color: var(--blue3);">agent_memory.db</code>.</li>
+        <li><strong>Środowisko:</strong> <code style="color: var(--blue3);">micromamba activate tester_ai</code> — osobne env od aplikacji docelowej.</li>
+        <li><strong>API:</strong> 6 routerów FastAPI (backend, frontend, history, knowledge, review, workspace).</li>
+        <li><strong>Frontend JSX:</strong> komponenty <code style="color: var(--blue3);">.jsx</code> + type-check przez jsconfig.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Jak to działa</h2>
+    <div class="challenges">
+      <ul>
+        <li><strong>Dev:</strong> <code style="color: var(--blue3);">npm run dev</code> — backend <code style="color: var(--blue3);">:8001</code>, frontend Vite <code style="color: var(--blue3);">:5173</code>.</li>
+        <li><strong>Docker:</strong> <code style="color: var(--blue3);">docker compose up --build</code>.</li>
+        <li><strong>Przepływ:</strong> UI → FastAPI → runner → parser → SQLite → dashboard.</li>
+        <li><strong>Testy agenta:</strong> katalog <code style="color: var(--blue3);">tests/</code> — unit i integracja API.</li>
+      </ul>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <div class="footer-text">© 2026 Mirosław Baczkowski</div>
+  <div class="footer-text"><a href="../index.html" style="color: var(--blue3); text-decoration: none;">← Powrót do portfolio</a></div>
+</footer>
+
+<script src="../scripts/i18n-nav.js"></script>
+
+<div id="screenshot-lightbox" class="lightbox" role="dialog" aria-modal="true" aria-label="Powiększony zrzut ekranu">
+  <div class="lightbox__backdrop" aria-hidden="true"></div>
+  <button type="button" class="lightbox__close" aria-label="Zamknij powiększenie">×</button>
+  <img class="lightbox__img" src="" alt="">
+</div>
+
+<script>
+(function () {
+  const lb = document.getElementById('screenshot-lightbox');
+  if (!lb) return;
+  const lbImg = lb.querySelector('.lightbox__img');
+  const backdrop = lb.querySelector('.lightbox__backdrop');
+  const closeBtn = lb.querySelector('.lightbox__close');
+
+  function closeLb() {
+    lb.classList.remove('is-open');
+    lbImg.removeAttribute('src');
+    lbImg.alt = '';
+    document.body.style.overflow = '';
+  }
+
+  function openLb(img) {
+    lbImg.src = img.currentSrc || img.src;
+    lbImg.alt = img.getAttribute('alt') || '';
+    lb.classList.add('is-open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  document.querySelectorAll('.screenshots .screenshot-card').forEach((card) => {
+    const img = card.querySelector('img');
+    if (!img) return;
+    card.addEventListener('click', () => openLb(img));
+  });
+
+  backdrop.addEventListener('click', closeLb);
+  closeBtn.addEventListener('click', closeLb);
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && lb.classList.contains('is-open')) closeLb();
+  });
+})();
+</script>
+
+<script>
+const canvas = document.getElementById('canvas');
+const ctx = canvas.getContext('2d');
+
+function resize() {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+}
+resize();
+window.addEventListener('resize', resize);
+
+const NODE_COUNT = 55;
+const MAX_DIST = 180;
+
+const nodes = Array.from({ length: NODE_COUNT }, () => ({
+  x: Math.random() * canvas.width,
+  y: Math.random() * canvas.height,
+  vx: (Math.random() - 0.5) * 0.45,
+  vy: (Math.random() - 0.5) * 0.45,
+  r: Math.random() * 2.2 + 1.2,
+  pulse: Math.random() * Math.PI * 2,
+  pulseSpeed: 0.012 + Math.random() * 0.018,
+  active: Math.random() < 0.2,
+}));
+
+const signals = [];
+let signalTimer = 0;
+
+function spawnSignal() {
+  for (let attempt = 0; attempt < 20; attempt++) {
+    const a = nodes[Math.floor(Math.random() * nodes.length)];
+    const b = nodes[Math.floor(Math.random() * nodes.length)];
+    const dx = a.x - b.x, dy = a.y - b.y;
+    if (Math.sqrt(dx * dx + dy * dy) < MAX_DIST) {
+      signals.push({ from: a, to: b, t: 0, speed: 0.008 + Math.random() * 0.006 });
+      break;
+    }
+  }
+}
+
+function draw() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+  nodes.forEach(n => {
+    n.x += n.vx;
+    n.y += n.vy;
+    n.pulse += n.pulseSpeed;
+    if (n.x < 0) { n.x = 0; n.vx *= -1; }
+    if (n.x > canvas.width) { n.x = canvas.width; n.vx *= -1; }
+    if (n.y < 0) { n.y = 0; n.vy *= -1; }
+    if (n.y > canvas.height) { n.y = canvas.height; n.vy *= -1; }
+  });
+
+  for (let i = 0; i < nodes.length; i++) {
+    for (let j = i + 1; j < nodes.length; j++) {
+      const a = nodes[i], b = nodes[j];
+      const dx = a.x - b.x, dy = a.y - b.y;
+      const dist = Math.sqrt(dx * dx + dy * dy);
+      if (dist < MAX_DIST) {
+        const fade = 1 - dist / MAX_DIST;
+        ctx.beginPath();
+        ctx.moveTo(a.x, a.y);
+        ctx.lineTo(b.x, b.y);
+        ctx.strokeStyle = `rgba(0,160,220,${0.09 * fade})`;
+        ctx.lineWidth = 0.7;
+        ctx.stroke();
+      }
+    }
+  }
+
+  signalTimer++;
+  if (signalTimer > 40) { spawnSignal(); signalTimer = 0; }
+
+  for (let i = signals.length - 1; i >= 0; i--) {
+    const s = signals[i];
+    s.t += s.speed;
+    if (s.t >= 1) { signals.splice(i, 1); continue; }
+
+    const sx = s.from.x + (s.to.x - s.from.x) * s.t;
+    const sy = s.from.y + (s.to.y - s.from.y) * s.t;
+
+    const trailLen = 0.12;
+    const t0 = Math.max(0, s.t - trailLen);
+    const tx = s.from.x + (s.to.x - s.from.x) * t0;
+    const ty = s.from.y + (s.to.y - s.from.y) * t0;
+    const grad = ctx.createLinearGradient(tx, ty, sx, sy);
+    grad.addColorStop(0, 'rgba(0,220,255,0)');
+    grad.addColorStop(1, 'rgba(0,220,255,0.7)');
+    ctx.beginPath();
+    ctx.moveTo(tx, ty);
+    ctx.lineTo(sx, sy);
+    ctx.strokeStyle = grad;
+    ctx.lineWidth = 1.5;
+    ctx.stroke();
+
+    ctx.beginPath();
+    ctx.arc(sx, sy, 2.5, 0, Math.PI * 2);
+    ctx.fillStyle = 'rgba(0,240,255,0.85)';
+    ctx.fill();
+
+    const glowGrad = ctx.createRadialGradient(sx, sy, 0, sx, sy, 10);
+    glowGrad.addColorStop(0, 'rgba(0,220,255,0.25)');
+    glowGrad.addColorStop(1, 'rgba(0,220,255,0)');
+    ctx.beginPath();
+    ctx.arc(sx, sy, 10, 0, Math.PI * 2);
+    ctx.fillStyle = glowGrad;
+    ctx.fill();
+  }
+
+  nodes.forEach(n => {
+    const pulseFactor = 0.7 + 0.3 * Math.sin(n.pulse);
+    const alpha = n.active ? 0.85 * pulseFactor : 0.35 * pulseFactor;
+    const radius = n.active ? n.r * 1.8 : n.r;
+
+    if (n.active) {
+      const glow = ctx.createRadialGradient(n.x, n.y, 0, n.x, n.y, radius * 5);
+      glow.addColorStop(0, `rgba(0,220,255,${0.18 * pulseFactor})`);
+      glow.addColorStop(1, 'rgba(0,220,255,0)');
+      ctx.beginPath();
+      ctx.arc(n.x, n.y, radius * 5, 0, Math.PI * 2);
+      ctx.fillStyle = glow;
+      ctx.fill();
+    }
+
+    ctx.beginPath();
+    ctx.arc(n.x, n.y, radius, 0, Math.PI * 2);
+    ctx.fillStyle = `rgba(0,210,255,${alpha})`;
+    ctx.fill();
+  });
+
+  requestAnimationFrame(draw);
+}
+requestAnimationFrame(draw);
+</script>
+</body>
+</html>
