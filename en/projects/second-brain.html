@@ -8,7 +8,7 @@
 <link rel="alternate" hreflang="pl" href="https://miroslaw7224.github.io/My_Ai_Portfolio/projects/second-brain.html">
 <link rel="alternate" hreflang="en" href="https://miroslaw7224.github.io/My_Ai_Portfolio/en/projects/second-brain.html">
 <link rel="alternate" hreflang="x-default" href="https://miroslaw7224.github.io/My_Ai_Portfolio/">
-<title>Second Brain (Freelancer Edition) — Mirosław Baczkowski</title>
+<title>Nexus (Freelancer Edition) — Mirosław Baczkowski</title>
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Oxanium:wght@700;800&family=Share+Tech+Mono&family=Exo+2:wght@300;400;600&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
@@ -534,9 +534,9 @@
 
   <div class="project-header">
     <div class="project-tag">Full Stack · AI · Knowledge & planning</div>
-    <h1>Second Brain</h1>
+    <h1>Nexus</h1>
     <p class="project-subtitle">
-      AI-powered knowledge management and planning app: notes (TipTap), mind maps with import/export, Firestore resources, calendar, tasks, and an AI Planning panel. User-document RAG is planned in the roadmap. Stack: Next.js 14 (App Router), Firebase (Auth, Firestore, Admin), Google Gemini. Hosting: Vercel.
+      Freelancer Edition — AI-powered knowledge management and planning app: Home, Knowledge, and Planning modules. TipTap notes, @xyflow/react mind maps, knowledge graph, Firestore resources, calendar, tasks, and AI Planning panel. User-document RAG is on the roadmap. Waitlist access control, EN/PL UI. Stack: Next.js 14 (App Router), Firebase (Auth, Firestore, Admin), Gemini and OpenAI. Live demo on Vercel.
     </p>
     <div class="project-links">
       <a href="https://second-brain-neon-pi.vercel.app/" class="btn-primary" target="_blank" rel="noopener">// LIVE DEMO ↗</a>
@@ -551,7 +551,7 @@
       <strong style="color: var(--blue3);">Problem:</strong> Notes, links, documents, and planning often get fragmented across tools; it is hard to combine a personal knowledge base, model chat, and a real task calendar in one place without a consistent data/auth layer.
     </p>
     <p>
-      <strong style="color: var(--blue3);">Solution:</strong> One Next.js 14 app (App Router) with Firebase (auth, Firestore, Admin on API side) and Gemini for planning support. Knowledge and Planning modules share one user model and cloud persistence.
+      <strong style="color: var(--blue3);">Solution:</strong> One Next.js 14 app (App Router) with Firebase (auth, Firestore, Admin in Route Handlers), Gemini and OpenAI, plus a waitlist gate. Three modules — Home, Knowledge, and Planning — share one user model and cloud persistence; local SQLite (<code style="color:var(--blue3);">brain.db</code>) is supported.
     </p>
   </div>
 
@@ -561,17 +561,19 @@
     <div class="stack-grid">
       <span class="stack-tag">Next.js 14</span>
       <span class="stack-tag">React 19</span>
-      <span class="stack-tag">TypeScript (strict)</span>
+      <span class="stack-tag">TypeScript</span>
       <span class="stack-tag">Tailwind CSS</span>
       <span class="stack-tag">Firebase Auth</span>
       <span class="stack-tag">Firestore</span>
       <span class="stack-tag">Firebase Admin</span>
       <span class="stack-tag">Gemini API</span>
+      <span class="stack-tag">OpenAI SDK</span>
       <span class="stack-tag">TipTap</span>
-      <span class="stack-tag">Lucide React</span>
+      <span class="stack-tag">@xyflow/react</span>
+      <span class="stack-tag">Recharts</span>
+      <span class="stack-tag">Zod</span>
+      <span class="stack-tag">SQLite</span>
       <span class="stack-tag">Vitest · Playwright</span>
-      <span class="stack-tag">ESLint · Prettier</span>
-      <span class="stack-tag">Husky</span>
     </div>
   </div>
 
@@ -580,19 +582,19 @@
     <h2>Screenshots</h2>
     <div class="screenshots">
       <div class="screenshot-card">
-        <img src="../../docs/images/Baza_wiedzy_1.png" alt="Second Brain — Resources module: tag filters, favorite pages, and Firestore link list">
+        <img src="../../docs/images/Baza_wiedzy_1.png" alt="Nexus — Resources module: tag filters, favorite pages, and Firestore link list">
         <p class="screenshot-caption">Knowledge - Resources (tags, favorites, list)</p>
       </div>
       <div class="screenshot-card">
-        <img src="../../docs/images/Baza_wiedzy_2.png" alt="Second Brain — Mind maps: node tree, toolbar, and node notes panel">
+        <img src="../../docs/images/Baza_wiedzy_2.png" alt="Nexus — Mind maps: node tree, toolbar, and node notes panel">
         <p class="screenshot-caption">Knowledge - Mind maps</p>
       </div>
       <div class="screenshot-card">
-        <img src="../../docs/images/Kalendarz_1.png" alt="Second Brain — Planning: weekly calendar with time blocks and tags">
+        <img src="../../docs/images/Kalendarz_1.png" alt="Nexus — Planning: weekly calendar with time blocks and tags">
         <p class="screenshot-caption">Planning - Calendar</p>
       </div>
       <div class="screenshot-card">
-        <img src="../../docs/images/Kalendarz_2.png" alt="Second Brain — My Work: time log and chart of hours by tags">
+        <img src="../../docs/images/Kalendarz_2.png" alt="Nexus — My Work: time log and chart of hours by tags">
         <p class="screenshot-caption">Planning - My Work (log + chart)</p>
       </div>
     </div>
@@ -603,8 +605,12 @@
     <h2>Key Features</h2>
     <div class="features-grid">
       <div class="feature-card">
-        <div class="feature-title">Knowledge - RAG and chat</div>
-        <div class="feature-desc">Chat with a personal document base (embeddings + context-grounded answers) in the Knowledge module. (User-document RAG planned for a future release).</div>
+        <div class="feature-title">Home — dashboard</div>
+        <div class="feature-desc">Starting module with activity overview and quick access to Knowledge and Planning.</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-title">Knowledge — AI chat and RAG</div>
+        <div class="feature-desc">AI assistant chat in Knowledge; user-document RAG (embeddings + context) is on the roadmap.</div>
       </div>
       <div class="feature-card">
         <div class="feature-title">TipTap Notes</div>
@@ -612,7 +618,7 @@
       </div>
       <div class="feature-card">
         <div class="feature-title">Mind maps</div>
-        <div class="feature-desc">Horizontal tree, notes per node, AI actions (node/subtree), text/image import through API, HTML export, and drag-and-drop node nesting.</div>
+        <div class="feature-desc">@xyflow/react canvas: nodes and edges, notes per node, AI actions (node/subtree), text/image import through API, HTML export, and drag-and-drop node nesting.</div>
       </div>
       <div class="feature-card">
         <div class="feature-title">Resources and Favorites</div>
@@ -623,23 +629,31 @@
         <div class="feature-desc">Calendar view with overnight event segmentation; tasks with due date, status, and note in detail modal; tags and activity log.</div>
       </div>
       <div class="feature-card">
+        <div class="feature-title">Knowledge graph</div>
+        <div class="feature-desc">Visualization of links between notes and resources (d3-force) — network overview in the Knowledge module.</div>
+      </div>
+      <div class="feature-card">
         <div class="feature-title">Plan AI</div>
         <div class="feature-desc">Model chat panel in planning context (message history), aligned with the Planning module architecture in the repository.</div>
       </div>
+      <div class="feature-card">
+        <div class="feature-title">Waitlist and i18n</div>
+        <div class="feature-desc">Access only for approved emails (<code style="color:var(--blue3);">/api/waitlist/check</code>); EN/PL UI toggle across the app.</div>
+      </div>
     </div>
   </div>
-
   <!-- TECHNICAL CHALLENGES -->
   <div class="section">
     <h2>Key Technical Challenges</h2>
     <div class="challenges">
       <ul>
-        <li><strong>RAG cost/quality balance:</strong> Context chunk selection, token limits, and Gemini response consistency against user documents.</li>
-        <li><strong>Firebase + Next.js split:</strong> Clear client (web SDK) and server (Admin) separation, secure Firestore rules, and Vercel environment variables.</li>
-        <li><strong>Mind-map import:</strong> Text/image import handling in API, format stability, and tree-editing UX consistency.</li>
+        <li><strong>Waitlist and auth:</strong> Consistent access control via <code style="color:var(--blue3);">/api/waitlist/check</code> and Firebase Auth (email/password, Google OAuth).</li>
+        <li><strong>Dual AI SDKs:</strong> Gemini (primary) and OpenAI (secondary) — correct model routing per endpoint.</li>
+        <li><strong>Firebase + Next.js split:</strong> Client (web SDK) and server (Admin) separation, Firestore rules, and Vercel environment variables.</li>
+        <li><strong>Mind maps (@xyflow):</strong> Text/image import, HTML export, and stable canvas state when nesting nodes.</li>
+        <li><strong>Knowledge graph:</strong> Efficient link visualization (d3-force) as notes and resources grow.</li>
         <li><strong>Calendar engine:</strong> Correct segmentation of multi-day events into hour-grid slices (<code style="color:var(--blue3);">expandEventToSegments</code>).</li>
-        <li><strong>Testing:</strong> Vitest (unit/integration with emulator) and Playwright E2E, kept stable during API/UI changes.</li>
-        <li><strong>Deployment:</strong> Vercel domain configuration in Firebase Authorized domains and full secret set based on <code style="color:var(--blue3);">.env.example</code>.</li>
+        <li><strong>Testing:</strong> Vitest (unit/integration with emulator) and Playwright E2E during API/UI changes.</li>
       </ul>
     </div>
   </div>
@@ -648,24 +662,24 @@
   <div class="section">
     <h2>How it works</h2>
     <p>
-      <strong>1. Sign in</strong> -> User authenticates with Firebase Auth; protected routes live in the <code style="color:var(--blue3);">(protected)</code> group.
+      <strong>1. Sign in and waitlist</strong> -> Firebase Auth; after login, <code style="color:var(--blue3);">/api/waitlist/check</code> verifies access — registration without approval is blocked.
     </p>
     <p>
-      <strong>2. Knowledge</strong> -> Documents and notes are stored in user space; RAG chat calls Next.js API endpoints backed by Gemini and embeddings.
+      <strong>2. Home</strong> -> Starting dashboard with quick navigation to Knowledge and Planning.
     </p>
     <p>
-      <strong>3. Maps and resources</strong> -> Mind map state and resource collections are stored in Firestore; import/export run through dedicated API endpoints.
+      <strong>3. Knowledge</strong> -> TipTap notes, resources, @xyflow mind maps, knowledge graph, and AI chat; data in Firestore, with local SQLite (<code style="color:var(--blue3);">brain.db</code>) support.
     </p>
     <p>
-      <strong>4. Planning</strong> -> Calendar events, tasks, and activity log sync with the backend; AI Planning extends the flow with model chat.
+      <strong>4. Maps and resources</strong> -> Mind map import/export via API; tagged resources and favorites in Firestore.
     </p>
     <p>
-      <strong>5. Admin and server</strong> -> Operations requiring elevated permissions use Firebase Admin in Route Handlers (<code style="color:var(--blue3);">app/api/</code>).
+      <strong>5. Planning</strong> -> Calendar, tasks, activity log, and AI Planning (Gemini / OpenAI) in one module.
     </p>
     <p>
-      <strong>6. Build and hosting</strong> -> <code style="color:var(--blue3);">npm run build</code> / Vercel; local dev on port 3100 (<code style="color:var(--blue3);">npm run dev</code>).
+      <strong>6. Admin and server</strong> -> Firebase Admin in Route Handlers (<code style="color:var(--blue3);">app/api/</code>); Vercel build, dev on port 3100 (<code style="color:var(--blue3);">npm run dev</code>).
     </p>
-  </div>
+</div>
 
 </div>
 

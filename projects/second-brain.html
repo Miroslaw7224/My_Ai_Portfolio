@@ -8,7 +8,7 @@
 <link rel="alternate" hreflang="pl" href="https://miroslaw7224.github.io/My_Ai_Portfolio/projects/second-brain.html">
 <link rel="alternate" hreflang="en" href="https://miroslaw7224.github.io/My_Ai_Portfolio/en/projects/second-brain.html">
 <link rel="alternate" hreflang="x-default" href="https://miroslaw7224.github.io/My_Ai_Portfolio/">
-<title>Second Brain (Freelancer Edition) — Mirosław Baczkowski</title>
+<title>Nexus (Freelancer Edition) — Mirosław Baczkowski</title>
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Oxanium:wght@700;800&family=Share+Tech+Mono&family=Exo+2:wght@300;400;600&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
@@ -534,9 +534,9 @@
 
   <div class="project-header">
     <div class="project-tag">Full Stack · AI · Wiedza i planowanie</div>
-    <h1>Second Brain</h1>
+    <h1>Nexus</h1>
     <p class="project-subtitle">
-      Aplikacja do zarządzania wiedzą i planowaniem z AI: ( RAG na dokumentach użytkownika- w przyszłości), notatki (TipTap), mapy myśli z importem i eksportem, zasoby z Firestore, kalendarz i zadania oraz panel Plan AI. Stack: Next.js 14 (App Router), Firebase (Auth, Firestore, Admin), Google Gemini. Hosting: Vercel.
+      Freelancer Edition — aplikacja do zarządzania wiedzą i planowaniem z AI: moduły Home, Wiedza i Planowanie. Notatki TipTap, mapy myśli (@xyflow/react), graf wiedzy, zasoby w Firestore, kalendarz i zadania oraz panel Plan AI. RAG na dokumentach użytkownika — w roadmapie. System waitlisty, interfejs PL/EN. Stack: Next.js 14 (App Router), Firebase (Auth, Firestore, Admin), Gemini i OpenAI. Live demo na Vercel.
     </p>
     <div class="project-links">
       <a href="https://second-brain-neon-pi.vercel.app/" class="btn-primary" target="_blank" rel="noopener">// LIVE DEMO ↗</a>
@@ -551,7 +551,7 @@
       <strong style="color: var(--blue3);">Problem:</strong> Notatki, linki, dokumenty i plan działania często rozjeżdżają się między narzędziami; trudno w jednym miejscu łączyć własną bazę wiedzy z rozmową z modelem i realnym kalendarzem zadań bez spójnej warstwy danych i auth.
     </p>
     <p>
-      <strong style="color: var(--blue3);">Rozwiązanie:</strong> Jedna aplikacja Next.js 14 (App Router) z Firebase (logowanie, Firestore, Admin po stronie API) i Gemini do RAG oraz asysty w planowaniu. Moduły Wiedza i Planowanie dzielą ten sam model użytkownika i persystencję w chmurze.
+      <strong style="color: var(--blue3);">Rozwiązanie:</strong> Jedna aplikacja Next.js 14 (App Router) z Firebase (logowanie, Firestore, Admin w Route Handlers), Gemini i OpenAI oraz waitlistą kontrolującą dostęp. Trzy moduły — Home, Wiedza i Planowanie — dzielą ten sam model użytkownika i persystencję w chmurze; lokalnie wspierany jest SQLite (<code style="color:var(--blue3);">brain.db</code>).
     </p>
   </div>
 
@@ -561,17 +561,19 @@
     <div class="stack-grid">
       <span class="stack-tag">Next.js 14</span>
       <span class="stack-tag">React 19</span>
-      <span class="stack-tag">TypeScript (strict)</span>
+      <span class="stack-tag">TypeScript</span>
       <span class="stack-tag">Tailwind CSS</span>
       <span class="stack-tag">Firebase Auth</span>
       <span class="stack-tag">Firestore</span>
       <span class="stack-tag">Firebase Admin</span>
       <span class="stack-tag">Gemini API</span>
+      <span class="stack-tag">OpenAI SDK</span>
       <span class="stack-tag">TipTap</span>
-      <span class="stack-tag">Lucide React</span>
+      <span class="stack-tag">@xyflow/react</span>
+      <span class="stack-tag">Recharts</span>
+      <span class="stack-tag">Zod</span>
+      <span class="stack-tag">SQLite</span>
       <span class="stack-tag">Vitest · Playwright</span>
-      <span class="stack-tag">ESLint · Prettier</span>
-      <span class="stack-tag">Husky</span>
     </div>
   </div>
 
@@ -580,19 +582,19 @@
     <h2>Screenshoty</h2>
     <div class="screenshots">
       <div class="screenshot-card">
-        <img src="../docs/images/Baza_wiedzy_1.png" alt="Second Brain — moduł Zasoby: filtry tagów, ulubione strony, lista linków w Firestore">
+        <img src="../docs/images/Baza_wiedzy_1.png" alt="Nexus — moduł Zasoby: filtry tagów, ulubione strony, lista linków w Firestore">
         <p class="screenshot-caption">Wiedza — Zasoby (tagi, ulubione, lista)</p>
       </div>
       <div class="screenshot-card">
-        <img src="../docs/images/Baza_wiedzy_2.png" alt="Second Brain — Mapy myśli: drzewo węzłów, toolbar, panel notatek węzła">
+        <img src="../docs/images/Baza_wiedzy_2.png" alt="Nexus — Mapy myśli: drzewo węzłów, toolbar, panel notatek węzła">
         <p class="screenshot-caption">Wiedza — Mapy myśli</p>
       </div>
       <div class="screenshot-card">
-        <img src="../docs/images/Kalendarz_1.png" alt="Second Brain — Planowanie: kalendarz tygodniowy z blokami czasu i tagami">
+        <img src="../docs/images/Kalendarz_1.png" alt="Nexus — Planowanie: kalendarz tygodniowy z blokami czasu i tagami">
         <p class="screenshot-caption">Planowanie — Kalendarz</p>
       </div>
       <div class="screenshot-card">
-        <img src="../docs/images/Kalendarz_2.png" alt="Second Brain — Moja Praca: log czasu i wykres rozłożenia godzin po tagach">
+        <img src="../docs/images/Kalendarz_2.png" alt="Nexus — Moja Praca: log czasu i wykres rozłożenia godzin po tagach">
         <p class="screenshot-caption">Planowanie — Moja Praca (log + wykres)</p>
       </div>
     </div>
@@ -603,8 +605,12 @@
     <h2>Kluczowe Funkcje</h2>
     <div class="features-grid">
       <div class="feature-card">
-        <div class="feature-title">Wiedza — RAG i czat</div>
-        <div class="feature-desc">Czat z własną bazą dokumentów użytkownika (embeddingi + odpowiedzi z kontekstem) w module Wiedza. (RAG na dokumentach użytkownika- w przyszłości)</div>
+        <div class="feature-title">Home — dashboard</div>
+        <div class="feature-desc">Moduł startowy z przeglądem aktywności i szybkim dostępem do Wiedzy oraz Planowania.</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-title">Wiedza — czat AI i RAG</div>
+        <div class="feature-desc">Czat z asystą AI w module Wiedza; RAG na dokumentach użytkownika (embeddingi + kontekst) — w roadmapie.</div>
       </div>
       <div class="feature-card">
         <div class="feature-title">Notatki TipTap</div>
@@ -612,7 +618,7 @@
       </div>
       <div class="feature-card">
         <div class="feature-title">Mapy myśli</div>
-        <div class="feature-desc">Drzewo poziome, notatki per węzeł, akcje AI (węzeł / poddrzewo), import tekstu lub obrazu przez API, eksport do HTML, zagnieżdżanie węzłów przeciągnięciem.</div>
+        <div class="feature-desc">Canvas @xyflow/react: węzły i krawędzie, notatki per węzeł, akcje AI (węzeł / poddrzewo), import tekstu lub obrazu przez API, eksport do HTML, zagnieżdżanie węzłów przeciągnięciem.</div>
       </div>
       <div class="feature-card">
         <div class="feature-title">Zasoby i ulubione</div>
@@ -623,23 +629,31 @@
         <div class="feature-desc">Widok kalendarza z segmentacją zdarzeń przez północ; zadania z terminem, statusem i notatką w modalu szczegółów; tagi i log aktywności.</div>
       </div>
       <div class="feature-card">
+        <div class="feature-title">Graf wiedzy</div>
+        <div class="feature-desc">Wizualizacja powiązań między notatkami i zasobami (d3-force) — przegląd sieci wiedzy w module Wiedza.</div>
+      </div>
+      <div class="feature-card">
         <div class="feature-title">Plan AI</div>
         <div class="feature-desc">Pasek rozmowy z modelem w kontekście planowania (historia wiadomości), zgodnie z architekturą modułu Planowanie w repozytorium.</div>
       </div>
+      <div class="feature-card">
+        <div class="feature-title">Waitlista i i18n</div>
+        <div class="feature-desc">Dostęp tylko dla zatwierdzonych e-maili (<code style="color:var(--blue3);">/api/waitlist/check</code>); przełącznik interfejsu PL/EN w całej aplikacji.</div>
+      </div>
     </div>
   </div>
-
   <!-- WYZWANIA TECHNICZNE -->
   <div class="section">
     <h2>Kluczowe Wyzwania Techniczne</h2>
     <div class="challenges">
       <ul>
-        <li><strong>RAG i koszty / jakość:</strong> Dobór fragmentów kontekstu, limity tokenów i spójność odpowiedzi Gemini względem dokumentów użytkownika.</li>
-        <li><strong>Firebase + Next.js:</strong> Rozdział klienta (SDK web) i serwera (Admin), bezpieczne reguły Firestore oraz zmienne środowiskowe na Vercel.</li>
-        <li><strong>Import map myśli:</strong> Obsługa tekstu i obrazu w API importu, stabilność formatu i UX edycji drzewa.</li>
+        <li><strong>Waitlista i auth:</strong> Spójna kontrola dostępu przez <code style="color:var(--blue3);">/api/waitlist/check</code> oraz Firebase Auth (e-mail/hasło, Google OAuth).</li>
+        <li><strong>Dwa SDK AI:</strong> Gemini (główny) i OpenAI (pomocniczy) — właściwy wybór modelu per endpoint bez mieszania konfiguracji.</li>
+        <li><strong>Firebase + Next.js:</strong> Rozdział klienta (SDK web) i serwera (Admin), reguły Firestore oraz zmienne środowiskowe na Vercel.</li>
+        <li><strong>Mapy myśli (@xyflow):</strong> Import tekstu/obrazu, eksport HTML i stabilny stan canvasu przy zagnieżdżaniu węzłów.</li>
+        <li><strong>Graf wiedzy:</strong> Wydajna wizualizacja powiązań (d3-force) przy rosnącej liczbie notatek i zasobów.</li>
         <li><strong>Kalendarz:</strong> Poprawne dzielenie wielodniowych zdarzeń na segmenty siatki godzin (<code style="color:var(--blue3);">expandEventToSegments</code>).</li>
-        <li><strong>Testy:</strong> Vitest (jednostkowe / integracyjne z emulatorem) oraz Playwright E2E — utrzymanie przy zmianach w API i UI.</li>
-        <li><strong>Deploy:</strong> Konfiguracja domeny Vercel w Firebase Authorized domains oraz pełny zestaw sekretów zgodnie z <code style="color:var(--blue3);">.env.example</code>.</li>
+        <li><strong>Testy:</strong> Vitest (jednostkowe / integracyjne z emulatorem) oraz Playwright E2E przy zmianach w API i UI.</li>
       </ul>
     </div>
   </div>
@@ -648,24 +662,24 @@
   <div class="section">
     <h2>Jak to działa?</h2>
     <p>
-      <strong>1. Logowanie</strong> → Użytkownik uwierzytelnia się przez Firebase Auth; chronione trasy w grupie <code style="color:var(--blue3);">(protected)</code>.
+      <strong>1. Logowanie i waitlista</strong> → Firebase Auth; po zalogowaniu <code style="color:var(--blue3);">/api/waitlist/check</code> weryfikuje dostęp — rejestracja bez zatwierdzenia jest blokowana.
     </p>
     <p>
-      <strong>2. Wiedza</strong> → Dokumenty i notatki trafiają do magazynu użytkownika; czat RAG woła API Next.js, które korzysta z Gemini i embeddingów.
+      <strong>2. Home</strong> → Dashboard startowy z szybkim przejściem do modułów Wiedza i Planowanie.
     </p>
     <p>
-      <strong>3. Mapy i zasoby</strong> → Stan map myśli i kolekcja zasobów są zapisywane w Firestore; import i eksport przechodzą przez dedykowane endpointy API.
+      <strong>3. Wiedza</strong> → Notatki (TipTap), zasoby, mapy myśli (@xyflow), graf wiedzy i czat AI; dane w Firestore, lokalnie wspierany SQLite (<code style="color:var(--blue3);">brain.db</code>).
     </p>
     <p>
-      <strong>4. Planowanie</strong> → Zdarzenia kalendarza, zadania i log aktywności synchronizują się z backendem; Plan AI uzupełnia przepływ rozmową z modelem.
+      <strong>4. Mapy i zasoby</strong> → Import/eksport map przez API; zasoby z tagami i ulubionymi w Firestore.
     </p>
     <p>
-      <strong>5. Admin i serwer</strong> → Operacje wymagające podniesionych uprawnień używają Firebase Admin w Route Handlers (<code style="color:var(--blue3);">app/api/</code>).
+      <strong>5. Planowanie</strong> → Kalendarz, zadania, log aktywności i Plan AI (Gemini / OpenAI) w jednym module.
     </p>
     <p>
-      <strong>6. Build i hosting</strong> → <code style="color:var(--blue3);">npm run build</code> / Vercel; lokalnie dev na porcie 3100 (<code style="color:var(--blue3);">npm run dev</code>).
+      <strong>6. Admin i serwer</strong> → Firebase Admin w Route Handlers (<code style="color:var(--blue3);">app/api/</code>); build na Vercel, dev na porcie 3100 (<code style="color:var(--blue3);">npm run dev</code>).
     </p>
-  </div>
+</div>
 
 </div>
 
